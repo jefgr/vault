@@ -1,0 +1,17 @@
+SEM1: 27
+SEM2: 33
+
+| Vak                            | SP  | Sem | Exam Info                                                                                                                                                                                                 |
+| ------------------------------ | --- | --- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| algorithms & data structures 1 | 5   | 1   | mondeling examen 45%, schriftelijk examen 45%, taken door het jaar VERPLICHT 10%                                                                                                                          |
+| algorithms & data structures 2 | 5   | 2   | theorie examen 50%, programmeer opdrachten met verdediging 50%                                                                                                                                            |
+| algorithms & data structures 3 | 3   | 1   | theorie examen mondeling 50%, programmeertaken met verdediging 50%                                                                                                                                        |
+| structure 1                    | 6   | 1   | huistaken, examen 100%, tussentijdse evaluatie (week 6/7) als tussentijdse > examen --> telt me voor 20%                                                                                                  |
+| automata & computability       | 5   | 2   | oefenigen examen 50%, theorie examen mondeling 50%                                                                                                                                                        |
+| discrete math                  | 5   | 1   | 2 taken 2x10%, theorie examen met mondelinge toelichting 40%, oefeningenexamen 40%                                                                                                                        |
+| interpret of computer programs | 5   | 2   | mogelijkheid tot mondeling examen voor 20%, mag ook gwn 100% schriftelijk                                                                                                                                 |
+| logic & formal systems         | 5   | 1   | praktijkopdracht 5%, examen (theorie+oefeningen) schriftelijk 95%, tussentijdse evaluatie (week 6/7) if 14 of meer, deel 1 niet op examen                                                                 |
+| calculus & linear algebra      | 6   | 1+2 | examen calculus 1 (januari) 24%, examen lineaire algebra (juni) 32%, calculus 2 (juni) 30%, permanente evaluatie calculus 6%, permanente evaluatie lineaire algebra 8%, minimum 8/20 voor alle onderdelen |
+| statistics                     | 5   | 2   | examen theorie+oefeningen 100%                                                                                                                                                                            |
+| wetenschappelijk rekenen       | 5   | 2   | examen 100%                                                                                                                                                                                               |
+| intro to AI (keuze)            | 5   | 2   | examen 100%                                                                                                                                                                                               |
