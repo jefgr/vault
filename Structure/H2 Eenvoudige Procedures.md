@@ -48,3 +48,15 @@ Variabele ariteit (vb: + in scheme)
 > (>= 23 24)
 #f
 ```
+# Types
+You can check for types using the following format:
+```scheme
+> (number? 10)
+> #t
+> (real? 10)
+> #t
+> (integer? 10.0)
+> #t
+> (procedure? abs)
+> #t
+```
