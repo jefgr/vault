@@ -60,3 +60,6 @@ You can check for types using the following format:
 > (procedure? abs)
 > #t
 ```
+## Predicaten:
+
+eindigen meestal op '?' en geven aan of iets klopt, vb: number?
