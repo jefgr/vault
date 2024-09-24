@@ -16,3 +16,35 @@ variabele defineren
 10
 ```
 
+# Math
+```scheme
+> (sqrt 9)
+3
+> (abs -5)
+5
+...
+```
+
+# Ariteit
+Unaire (1), Binaire (2) en ternaire (3) procedures.
+vb: (abs 1), (modulo 17 3), if x then y else z
+Variabele ariteit (vb: + in scheme)
+
+# Booleans
+```scheme
+> #t ;true
+> #f ;false
+> (not #f)
+#t
+> (and #t #f)
+#f
+> (or #t #f #f)
+#t
+```
+# Relational Operators
+```scheme
+> (= 10 10)
+#t
+> (>= 23 24)
+#f
+```
