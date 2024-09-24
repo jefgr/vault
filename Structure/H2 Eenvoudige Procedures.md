@@ -15,7 +15,13 @@ variabele defineren
 > y
 10
 ```
+procedures aanmaken
+```scheme
+> (define (f x)
+	(+ (* x x x) 17.3)) ; f(x) = x**3 + 17.3
+> (f 13)
 
+```
 # Math
 ```scheme
 > (sqrt 9)
