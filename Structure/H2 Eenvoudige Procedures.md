@@ -69,3 +69,7 @@ You can check for types using the following format:
 ## Predicaten:
 
 eindigen meestal op '?' en geven aan of iets klopt, vb: number?
+
+
+**formele parameters** en **actuele parameters**, aka parameters en argumenten
+formele parameters in definitie van procedure, actuele in de aanroep
