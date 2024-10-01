@@ -150,7 +150,8 @@
       (1+ (rec-add a (1- b)))))
 
 ```
-## ##   Som: Iteratief d.m.v. staartrecursie
+
+## Som: Iteratief d.m.v. staartrecursie
 
 ```scheme
 (define (1- x) (- x 1))
@@ -171,4 +172,3 @@
   )
 ```
 
-## 
