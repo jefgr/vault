@@ -60,13 +60,16 @@ Als we tracen laat elk begin+einde van een procedure-oproep een spoor op het sch
 
 # Build in Procedures
 
-| Procedure      | ARGS                   | Description          |
-| -------------- | ---------------------- | -------------------- |
-| string-append  | string, string, ...    | string concatenation |
-| substring      | string, number, number | substring selectie   |
-| string->number | string                 | conversion           |
-| string-length  | string                 | length               |
-| sqrt           | number                 | squareroot           |
-| abs            | number                 | absolute value       |
-| string         | char,...               | van chars to string  |
-| string=?       | string, string, ...    | string vergelijking  |
+| Procedure      | ARGS                   | Description                 |
+| -------------- | ---------------------- | --------------------------- |
+| string-append  | string, string, ...    | string concatenation        |
+| substring      | string, number, number | substring selectie          |
+| string->number | string                 | conversion                  |
+| string-length  | string                 | length                      |
+| sqrt           | number                 | squareroot                  |
+| abs            | number                 | absolute value              |
+| string         | char,...               | van chars to string         |
+| string=?       | string, string, ...    | string vergelijking         |
+| newline        | _void_                 | /n, newline char in console |
+| display        | string                 | print to console            |
+| read           | _void_                 | user input from console     |
