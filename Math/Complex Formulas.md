@@ -11,13 +11,13 @@ $$ \overline{z_1 \cdot z_2} = \overline{z_1} \cdot \overline{z_2}$$
 $$\forall (z \in \mathbb{C} ): ( z = a + bi ), \exists ( a, b \in \mathbb{R} )$$
 
 **Modulus of \( z \)**:  
-  $$ \text{mod}(z) = \vert z \vert = r = \sqrt{a^2 + b^2} $$  
+  $$\text{mod}(z) = \vert z \vert = r = \sqrt{a^2 + b^2}$$  
   (length of the complex vector in the Gauss plane)
 
 **Argument of \( z \)**:  
-  $$ \arg(z) = \alpha $$  
+  $$\arg(z) = \alpha $$  
   (angle of the complex vector in the Gauss plane)  
-  $$ \tan(\alpha) = \frac{b}{a} $$
+  $$\tan(\alpha) = \frac{b}{a}$$
 
 Thus,  
 $$ z = a + bi = r(\cos(\alpha) + i \sin(\alpha)) $$

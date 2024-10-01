@@ -1,5 +1,5 @@
 Case Insensitive
-Void wordt niet geprint, maar bestaat wel als hidden object
+_Void_ wordt niet geprint, maar bestaat wel als hidden object
 
 ---
 # Special Forms
@@ -25,12 +25,12 @@ ex. absolute value
  	(- x)
  	x))
 ```
-
+\<alternatief> kan je weglaten, dan wordt _void_ gereturned
 ## Cond
 conditional (switch-case)
 Bestaat uit verschillende test-consequent koppels, ook wel clausules genoemd.
 Clausules worden afgegaan van boven naar onder en exit bij de eerste true test.
-Als er geen clausule true test word er void gereturned.
+Als er geen clausule true test word er _void_ gereturned.
 Er kan een "catch-all" toegevoegd worden met else, deze clausule moet de laatste zijn.
 ```scheme
 > (cond (<test1> <consequent1>)
@@ -69,4 +69,4 @@ Als we tracen laat elk begin+einde van een procedure-oproep een spoor op het sch
 | sqrt           | number                 | squareroot           |
 | abs            | number                 | absolute value       |
 | string         | char,...               | van chars to string  |
-|                |                        |                      |
+| string=?       | string, string, ...    | string vergelijking  |
