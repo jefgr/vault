@@ -151,7 +151,7 @@
 
 ```
 
-## Som: Iteratief d.m.v. staartrecursie
+### Som: Iteratief d.m.v. staartrecursie
 
 ```scheme
 (define (1- x) (- x 1))
@@ -159,7 +159,7 @@
 (define (iter-add a b) (if (= b 0) a (iter-add (1+ a) (1- b))))
 ```
 
-## Som: Iteratief d.m.v. do
+### Som: Iteratief d.m.v. do
 
 ```scheme
 (define (1- x) (- x 1))
