@@ -191,6 +191,64 @@
 ###   Multiply: Logaritmisch proces (Recursief & Iteratief)
 
 ```scheme
+(define (double a) (* a 2))
+(define (halve a) (/ a 2))
 
+(define (rec-fast-multiply a b)
+  (cond ((= b 0) 0)
+        ((even? b) (double (rec-fast-multiply a (halve b))))
+        (else (+ a (rec-fast-multiply a (- b 1))))))
+
+(define (iter-fast-multiply a b)
+  (define (hulp a b result)
+     (cond 
+       ((= b 0) result)
+          ((even? b) (hulp (double a) (halve b) result))
+          (else (hulp a (- b 1) (+ result a)))
+    ))
+  (hulp a b 0))
+```
+
+**Pseudocode for iterative variant from chatgpt:**
+```
+function logMultiplication(a, b, result):
+    # Base case: if b is 0, return the accumulated result
+    if b == 0:
+        return result
+
+    # If b is even, use the property a * b = (2 * a) * (b // 2)
+    if b is even:
+        return logMultiplication(2 * a, b // 2, result)
+
+    # If b is odd, reduce b by 1 and accumulate a into result
+    else:
+        return logMultiplication(a, b - 1, result + a)
+
+# Wrapper function for ease of calling
+function multiply(a, b):
+    return logMultiplication(a, b, 0)
+
+```
+**Explanation:**
+
+- The function `logMultiplication` works by dividing the multiplication problem into smaller subproblems.
+- If `b` is even, it doubles `a` and halves `b` (reducing the problem size).
+- If `b` is odd, it decreases `b` by 1 and adds `a` to the result, and continues reducing the problem.
+- The base case is when `b` becomes 0, in which case the accumulated `result` is returned.
+- The `multiply` function serves as a wrapper to initialize the recursion with a `result` of 0.
+
+**Time complexity:**
+
+- The function operates in O(log⁡b)O(\log b)O(logb) time because the value of `b` is halved in each recursive step.
+
+This technique minimizes the number of multiplication operations.
+### Mutuele recursie: De Hofstadter-reeksen
+
+```scheme
+(define (hofstadter-V n)
+  (if (= n 0) 1 (- n (hofstadter-M (hofstadter-V (- n 1))))))
+
+(define (hofstadter-M n)
+  (if (= n 0) 0 (- n (hofstadter-V (hofstadter-M (- n 1))))))
 ```
 
