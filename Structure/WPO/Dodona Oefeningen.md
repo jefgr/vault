@@ -172,3 +172,25 @@
   )
 ```
 
+### Multiply: Linear proces (Recursief & Iteratief)
+
+```scheme
+(define (rec-multiply a b)
+  (if (= b 0)
+      0
+      (+ (rec-multiply a (- b 1)) a)))
+
+(define (iter-multiply a b)
+  (define (hulp b c)
+     (if (= b 0)
+         c
+         (hulp (- b 1) (+ c a))))
+  (hulp b 0))
+```
+
+###   Multiply: Logaritmisch proces (Recursief & Iteratief)
+
+```scheme
+
+```
+
