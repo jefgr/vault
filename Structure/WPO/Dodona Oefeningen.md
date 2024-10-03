@@ -369,5 +369,35 @@ De opdracht is niet juist geschreven, er word gezocht naar de procedure die weir
 ### display-n: parasol met do
 
 ```scheme
+(define (display-n x n)
+  (do (
+       (count 0 (+ count 1))
+       )
+    ((= count n))
+    (display x)
+  )
+  )
 
+(define (display-stem n)
+  (do (
+       (count 0 (+ count 1))
+       )
+    ((= count 3))
+    (display-n " " (- n 1))
+    (display "*")
+    (newline)
+    )
+  )
+
+(define (parasol n)
+  (do (
+       (row 0 (+ row 1))
+       (treewidth 1 (+ treewidth 2))
+       )
+    ((= row n) (display-stem n))
+    (display-n " " (- n row 1))
+    (display-n "*" treewidth)
+    (newline)
+    )
+  )
 ```
