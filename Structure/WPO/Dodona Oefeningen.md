@@ -273,5 +273,101 @@ This technique minimizes the number of multiplication operations.
 
 ### Reeksen: Het getal van Euler
 ```scheme
+;optimisation by removing recursion, but not used in new calc-e procedure
+(define (factorial n)
+  (do ((count 1 (+ count 1))
+       (result 1 (* result count)))
+       ((< n count) result)
+       ))
+
+(define (calc-e n)
+  (define (help i prev-fac)
+    (define next-fac (* prev-fac i))
+     (if (> i n)
+         1
+         (+ (/ 1 next-fac)
+            (help (+ i 1) next-fac)))
+    )
+  (help 1 1)
+  )
+```
+
+### Reeksen: Het getal van Euler d.m.v. do
+
+```scheme
+(define (calc-e n)
+  (do (
+       (count 1 (+ count 1))
+       (next-fac 1 (* next-fac count))
+       (result 0 (+ result (/ 1 next-fac))))
+    ((> count (+ n 1)) result)))
+```
+
+### Recursiediepte: Implementeer de procedure "weird"
+De opdracht is niet juist geschreven, er word gezocht naar de procedure die weird blijft aanroepen tot resultaat 1 is
+```scheme
+;call weird once
+(define (weird-one x)
+  (cond ((= x 1) 1)
+        ((even? x) (/ x 2))
+        (else (+ 1 (* x 3)))))
+; call weird until result is 1
+(define (weird x)
+  (cond ((= x 1) 1)
+        ((even? x) (weird(/ x 2)))
+        (else (weird (+ 1 (* x 3))))))
+```
+
+### Recursiediepte: Bereken de recursiediepte van "weird"
+
+```scheme
+(define (weird-one x)
+  (cond ((= x 1) 1)
+        ((even? x) (/ x 2))
+        (else (+ 1 (* x 3)))))
+
+(define (weird x)
+  (cond ((= x 1) 1)
+        ((even? x) (weird(/ x 2)))
+        (else (weird (+ 1 (* x 3))))))
+
+(define (depth-weird x)
+  (do ((count 0 (+ count 1))
+       (xn x (weird-one xn)))
+    ((= xn 1) count)
+    )
+  )
+```
+
+### Terugkeerpunten: Binaire vormen
+
+```scheme
+(define (display-as-binary n)
+  (if (= n 0) (display "0"))
+  (define output "")
+  (do ((remainer n (quotient remainer 2))
+       )
+    ((= remainer 0) (display output))
+    (if (even? remainer) (set! output (string-append "0" output)) (set! output (string-append "1" output)))
+    )
+  )
+```
+
+### display-n met do
+
+```scheme
+(define (display-n x n)
+  (do (
+       (count 0 (+ count 1))
+       )
+    ((= count n))
+    (display x)
+  )
+  )
+```
+
+### display-n: parasol met do
+
+```scheme
 
 ```
