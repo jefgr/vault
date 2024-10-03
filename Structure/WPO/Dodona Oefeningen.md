@@ -252,3 +252,26 @@ This technique minimizes the number of multiplication operations.
   (if (= n 0) 0 (- n (hofstadter-V (hofstadter-M (- n 1))))))
 ```
 
+### Mutuele recursie: De Hofstadter-reeksen printen d.m.v. do
+
+```scheme
+(define (hofstadter-V n)
+  (if (= n 0) 1 (- n (hofstadter-M (hofstadter-V (- n 1))))))
+
+(define (hofstadter-M n)
+  (if (= n 0) 0 (- n (hofstadter-V (hofstadter-M (- n 1))))))
+
+(define (hofstadter-reeksen n)
+  (do ((counter 0 (+ counter 1)))
+       ((= counter n) ) 
+       (display (hofstadter-V counter))
+       (display " ")
+       (display (hofstadter-M counter))
+       (newline)
+  ))
+```
+
+### Reeksen: Het getal van Euler
+```scheme
+
+```
