@@ -281,15 +281,11 @@ This technique minimizes the number of multiplication operations.
        ))
 
 (define (calc-e n)
-  (define (help i prev-fac)
-    (define next-fac (* prev-fac i))
-     (if (> i n)
-         1
-         (+ (/ 1 next-fac)
-            (help (+ i 1) next-fac)))
-    )
-  (help 1 1)
-  )
+  (define (help i prev-fac acc)
+    (if (> i n)
+        acc
+        (help (+ i 1) (* prev-fac i) (+ acc (/ 1 (* prev-fac i))))))
+  (help 1 1 1))
 ```
 
 ### Reeksen: Het getal van Euler d.m.v. do
