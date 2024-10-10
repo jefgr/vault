@@ -11,3 +11,8 @@
 | beside       | image, image, ...              |                                |
 | overlay      | image, image, ...              |                                |
 | random       | int                            | random getal tussen 0 en input |
+
+R5RS --> Racket
+cons --> ncons
+car --> ncar
+cdr --> mcdr

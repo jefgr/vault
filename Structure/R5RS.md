@@ -40,6 +40,19 @@ Er kan een "catch-all" toegevoegd worden met else, deze clausule moet de laatste
 > 		(else <alternatief>))
 ```
 
+## CONS, CAR, CDR
+CONS word gebruikt om paren te definiëren. CAR (eerste element) en CDR (tweede element) worden gebruikt om de data uit een CONS te halen.
+```scheme
+> (define my-pair (cons a b))
+> my-pair
+(a . b)
+> (car my-pair)
+a
+> (cdr my-pair)
+b
+```
+
+
 ---
 # Trace
 Als we tracen laat elk begin+einde van een procedure-oproep een spoor op het scherm achter
@@ -73,3 +86,5 @@ Als we tracen laat elk begin+einde van een procedure-oproep een spoor op het sch
 | newline        | _void_                 | /n, newline char in console |
 | display        | string                 | print to console            |
 | read           | _void_                 | user input from console     |
+| list           | any, ...               | make a list (linked pairs)  |
+|                |                        |                             |
