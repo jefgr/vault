@@ -87,4 +87,5 @@ Als we tracen laat elk begin+einde van een procedure-oproep een spoor op het sch
 | display        | string                 | print to console            |
 | read           | _void_                 | user input from console     |
 | list           | any, ...               | make a list (linked pairs)  |
+| length         | list                   | length of a list            |
 |                |                        |                             |
