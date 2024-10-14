@@ -110,26 +110,30 @@ Als we tracen laat elk begin+einde van een procedure-oproep een spoor op het sch
 
 # Build in Procedures
 
-| Procedure      | ARGS                           | Description                                                                            |
-| -------------- | ------------------------------ | -------------------------------------------------------------------------------------- |
-| string-append  | string, string, ...            | string concatenation                                                                   |
-| substring      | string, number, number         | substring selectie                                                                     |
-| string->number | string                         | conversion                                                                             |
-| string-length  | string                         | length                                                                                 |
-| sqrt           | number                         | squareroot                                                                             |
-| abs            | number                         | absolute value                                                                         |
-| string         | char,...                       | van chars to string                                                                    |
-| string=?       | string, string, ...            | string vergelijking                                                                    |
-| newline        | _void_                         | /n, newline char in console                                                            |
-| display        | string                         | print to console                                                                       |
-| read           | _void_                         | user input from console                                                                |
-| list           | any, ...                       | make a list (linked pairs)                                                             |
-| length         | list                           | length of a list                                                                       |
-| list-ref       | list, integer                  | get item at index, starts at 0                                                         |
-| list-tail      | list, integer                  | returns list without the first _integer_ elements                                      |
-| reverse        | list                           | reverses list                                                                          |
-| append         | list, list, ...                | joins lists                                                                            |
-| flatten        | list(list,...) _geneste lijst_ | flatten the list of lists to a single list                                             |
-| eq?            | any, any                       | check equality in memory<br>warning: 5 not eq? 5.0<br>gaat checken op geheugen locatie |
-| equal?         | any, any                       | check equality of content not location<br>warning: 5 not equal? 5.0                    |
-|                |                                |                                                                                        |
+| Procedure      | ARGS                           | Description                                                                                                                                   |
+| -------------- | ------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------- |
+| string-append  | string, string, ...            | string concatenation                                                                                                                          |
+| substring      | string, number, number         | substring selectie                                                                                                                            |
+| string->number | string                         | conversion                                                                                                                                    |
+| string-length  | string                         | length                                                                                                                                        |
+| sqrt           | number                         | squareroot                                                                                                                                    |
+| abs            | number                         | absolute value                                                                                                                                |
+| string         | char,...                       | van chars to string                                                                                                                           |
+| string=?       | string, string, ...            | string vergelijking                                                                                                                           |
+| newline        | _void_                         | /n, newline char in console                                                                                                                   |
+| display        | string                         | print to console                                                                                                                              |
+| read           | _void_                         | user input from console                                                                                                                       |
+| list           | any, ...                       | make a list (linked pairs)                                                                                                                    |
+| length         | list                           | length of a list                                                                                                                              |
+| list-ref       | list, integer                  | get item at index, starts at 0                                                                                                                |
+| list-tail      | list, integer                  | returns list without the first _integer_ elements                                                                                             |
+| reverse        | list                           | reverses list                                                                                                                                 |
+| append         | list, list, ...                | joins lists                                                                                                                                   |
+| flatten        | list(list,...) _geneste lijst_ | flatten the list of lists to a single list                                                                                                    |
+| eq?            | any, any                       | check equality in memory<br>warning: 5 not eq? 5.0<br>gaat checken op geheugen locatie                                                        |
+| equal?         | any, any                       | check equality of content not location<br>warning: 5 not equal? 5.0                                                                           |
+| memq           | any, list                      | looks for first element in the list<br>not found -> #f<br>else -> part of list starting from location<br>of search term inclusive search term |
+| member         | any, list                      | same as memq, but uses _equal?_ instead of _eq?_                                                                                              |
+| assq           | key, map*                      | looks for key in associatielijst<br>returns key-value pair                                                                                    |
+| assoc          | key, map*                      | same as assq, but uses equals? instead of eq?                                                                                                 |
+|                |                                |                                                                                                                                               |

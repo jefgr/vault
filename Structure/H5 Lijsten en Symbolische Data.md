@@ -85,3 +85,8 @@ Een belangrijk kenmerk van symbols is dat ze vergeleken worden op identiteit, ni
 
 Metaprogrammeren stelt je in staat om flexibeler en dynamischer te programmeren, bijvoorbeeld door templates of codegeneratie te gebruiken, of zelfs programma's te laten reageren op hun eigen structuur (zoals bij homoiconische talen zoals Lisp).
 
+## Associatielijsten
+
+> **definition:**
+> _Een lijst van koppels noemt men vaak een associatielijst. Ieder koppel stelt een “verband” voor tussen een key en een value._
+
