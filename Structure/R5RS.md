@@ -52,6 +52,41 @@ a
 b
 ```
 
+## AND en OR
+Evalueren de uitdrukkingen niet allemaal op voorhand (_lazy_). Werken van links naar rechts:
+- and exit als er een false tegenkomt
+- or exit als hij een true tegenkomt
+
+> dus ook errors die achter true(or)/false(and) staan zullen niet doorkomen
+
+```scheme
+> (and <uitdrukking1> <uitdrukking2> … <uitdrukkingk>)
+> (or <uitdrukking1> <uitdrukking2> … <uitdrukkingk>)
+```
+
+## Quote
+Neemt één expressie en evalueerd die niet.
+
+```scheme
+> (quote <uitdrukking>)
+> ; ex.:
+> (quote #t)
+#t 
+> (quote (+ 1 2))
+(+ 1 2)
+> (quote (+ 1 (+ 2 3)))
+(+ 1 (+ 2 3))
+> (quote (fac 5))
+(fac 5)
+> (quote (oei (oei oei ((ai) ai) ai)))
+(oei (oei oei ((ai) ai) ai))
+; of afgekort door '
+> '(1 2 3)
+(1 2 3)
+> '()
+()
+```
+
 
 ---
 # Trace
@@ -75,24 +110,26 @@ Als we tracen laat elk begin+einde van een procedure-oproep een spoor op het sch
 
 # Build in Procedures
 
-| Procedure      | ARGS                           | Description                                       |
-| -------------- | ------------------------------ | ------------------------------------------------- |
-| string-append  | string, string, ...            | string concatenation                              |
-| substring      | string, number, number         | substring selectie                                |
-| string->number | string                         | conversion                                        |
-| string-length  | string                         | length                                            |
-| sqrt           | number                         | squareroot                                        |
-| abs            | number                         | absolute value                                    |
-| string         | char,...                       | van chars to string                               |
-| string=?       | string, string, ...            | string vergelijking                               |
-| newline        | _void_                         | /n, newline char in console                       |
-| display        | string                         | print to console                                  |
-| read           | _void_                         | user input from console                           |
-| list           | any, ...                       | make a list (linked pairs)                        |
-| length         | list                           | length of a list                                  |
-| list-ref       | list, integer                  | get item at index, starts at 0                    |
-| list-tail      | list, integer                  | returns list without the first _integer_ elements |
-| reverse        | list                           | reverses list                                     |
-| append         | list, list, ...                | joins lists                                       |
-| flatten        | list(list,...) _geneste lijst_ | flatten the list of lists to a single list        |
-|                |                                |                                                   |
+| Procedure      | ARGS                           | Description                                                                            |
+| -------------- | ------------------------------ | -------------------------------------------------------------------------------------- |
+| string-append  | string, string, ...            | string concatenation                                                                   |
+| substring      | string, number, number         | substring selectie                                                                     |
+| string->number | string                         | conversion                                                                             |
+| string-length  | string                         | length                                                                                 |
+| sqrt           | number                         | squareroot                                                                             |
+| abs            | number                         | absolute value                                                                         |
+| string         | char,...                       | van chars to string                                                                    |
+| string=?       | string, string, ...            | string vergelijking                                                                    |
+| newline        | _void_                         | /n, newline char in console                                                            |
+| display        | string                         | print to console                                                                       |
+| read           | _void_                         | user input from console                                                                |
+| list           | any, ...                       | make a list (linked pairs)                                                             |
+| length         | list                           | length of a list                                                                       |
+| list-ref       | list, integer                  | get item at index, starts at 0                                                         |
+| list-tail      | list, integer                  | returns list without the first _integer_ elements                                      |
+| reverse        | list                           | reverses list                                                                          |
+| append         | list, list, ...                | joins lists                                                                            |
+| flatten        | list(list,...) _geneste lijst_ | flatten the list of lists to a single list                                             |
+| eq?            | any, any                       | check equality in memory<br>warning: 5 not eq? 5.0<br>gaat checken op geheugen locatie |
+| equal?         | any, any                       | check equality of content not location<br>warning: 5 not equal? 5.0                    |
+|                |                                |                                                                                        |
