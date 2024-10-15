@@ -420,3 +420,15 @@ De opdracht is niet juist geschreven, er word gezocht naar de procedure die weir
 ```
 
 ## Element toevoegen achteraan een lijst: add-to-end
+
+```scheme
+; kan ook recursief zonder de reverse
+(define (add-to-end e l)
+  (define (iter l res)
+    (if (null? l)
+        (cons e res)
+        (iter (cdr l)
+              (cons (car l) res))))
+  (reverse (iter l '())))
+```
+
