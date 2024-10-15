@@ -549,3 +549,14 @@ De opdracht is niet juist geschreven, er word gezocht naar de procedure die weir
   )
 ```
 
+## Samenvoegen van twee lijsten: merge-n
+
+```scheme
+
+```
+
+## Samenvoegen van een willekeurig aantal lijsten: super-merge-n
+
+```scheme
+
+```
