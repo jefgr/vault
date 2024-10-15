@@ -523,7 +523,7 @@ De opdracht is niet juist geschreven, er word gezocht naar de procedure die weir
     )
 ```
 
-## Sommatie van elementen in lijsten: sum-list (Recursief)
+## Sommatie van elementen in lijsten: sum-lists (Recursief)
 ```scheme
 (define (rec-sum-lists l1 l2)
   (cond ((and (null? l1) (null? l2)) '())
@@ -533,3 +533,19 @@ De opdracht is niet juist geschreven, er word gezocht naar de procedure die weir
         )
   )
 ```
+
+## Sommatie van elementen in lijsten: sum-lists (Iteratief)
+
+```scheme
+(define (iter-sum-lists l1 l2)
+  (define (iter lst1 lst2 res)
+  (cond ((and (null? lst1) (null? lst2)) res)
+        ((null? lst2) (iter (cdr lst1) '() (cons (car lst1) res)))
+        ((null? lst1) (iter '() (cdr lst2) (cons (car lst2) res)))
+        (else  (iter (cdr lst1) (cdr lst2) (cons (+ (car lst1) (car lst2)) res)))
+        )
+    )
+  (reverse (iter l1 l2 '()))
+  )
+```
+
