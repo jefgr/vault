@@ -1,5 +1,5 @@
 #dodona #oefeningen
-## Eenvoudige Procedures
+# Eenvoudige Procedures
 ### Van infix- naar prefixnotatie
 ```scheme
 (- (/ (+ a b) e) (/ (+ c d) f ))
@@ -90,7 +90,7 @@
 (define (discount prijs korting) (* prijs (/ (- 100 korting) 100)))
 ```
 
-## Complexe Procedures
+# Complexe Procedures
 ### Sign
 ```scheme
 (define (sign number) (cond ((< number 0) -1)
@@ -137,7 +137,7 @@
   )
 ```
 
-## Soorten Recursie
+# Soorten Recursie
 
 ### Som: Recursie
 
@@ -397,3 +397,26 @@ De opdracht is niet juist geschreven, er word gezocht naar de procedure die weir
     )
   )
 ```
+
+# Lijsten en Symbolische Data
+
+## Modeloplossing
+
+```scheme
+(define (list-procedure-rec lst)
+  (if (null? lst)
+      base-result
+      (combine-car/res (do-something-with (car lst))
+                       (list-procedure-rec (cdr lst)))))
+ 
+(define (list-procedure-it lst)
+  (define (iter lst res)
+    (if (null? lst)
+        res
+        (iter (cdr lst)
+              (combine-car/res (do-something-with (car lst))
+                               res))))
+  (iter lst base-result))
+```
+
+## Element toevoegen achteraan een lijst: add-to-end
