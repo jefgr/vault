@@ -430,5 +430,106 @@ De opdracht is niet juist geschreven, er word gezocht naar de procedure die weir
         (iter (cdr l)
               (cons (car l) res))))
   (reverse (iter l '())))
+; recursief
+(define (add-to-end e lst)
+  (if (null? lst)
+	  (cons e '())
+	  (cons (car lst)
+			  (add-to-end e (cdr lst))
+			  )
+			)
+		)
 ```
 
+## Lijsten aaneen plakken: my-append (iteratief)
+
+```scheme
+(define (my-append lst1 lst2)
+  (define (iter lst res)
+    (if (null? lst)
+        res
+        (iter (cdr lst)
+              (cons (car lst) res))))
+  (reverse (iter lst2 (iter lst1 '()))))
+```
+
+## Lijsten omdraaien 
+
+```scheme
+(define (iter-reverse l)
+  (define (iter l res)
+    (if (null? l)
+        res
+        (iter (cdr l)
+              (cons (car l) res))))
+  (iter l '()))
+
+(define (rec-reverse l)
+  (if (null? l)
+      '()
+      (append (rec-reverse (cdr l)) (list (car l)))
+      )
+    )
+```
+
+## Laatste element van een lijst bepalen: last
+
+```scheme
+(define (last lst)
+  (define (iter lst res)
+    (if (null? lst)
+        res
+        (iter (cdr lst) (car lst))
+        )
+    )
+  (iter lst #f)
+  )
+```
+
+## Elementen in een lijst vervangen: replace
+
+```scheme
+(define (replace e1 e2 l)
+    (if (null? l)
+        '()
+        (cons (if (eq? (car l) e1) e2 (car l)) (replace e1 e2 (cdr l)))
+        )
+    )
+```
+
+## Gelijkheid van twee lijsten bepalen: my-equal?
+
+```scheme
+(define (my-equal? l1 l2)
+    (cond ((and (null? l1) (null? l2)) #t)
+        ((or (null? l1) (null? l2)) #f)
+        (else (and (eq? (car l1) (car l2)) (my-equal? (cdr l1) (cdr l2))))
+        )
+    )
+```
+
+## Element tussenvoegen in een lijst: intersperse
+
+```scheme
+(define (intersperse e l)
+    (if (null? l)
+        '()
+        (cons (car l) (if (null? (cdr l))
+				        (intersperse e (cdr l))
+				        (cons e (intersperse e (cdr l)))
+				        )
+			)
+        )
+    )
+```
+
+## Sommatie van elementen in lijsten: sum-list (Recursief)
+```scheme
+(define (rec-sum-lists l1 l2)
+  (cond ((and (null? l1) (null? l2)) '())
+        ((null? l2) (cons (car l1) (rec-sum-lists (cdr l1) '())))
+        ((null? l1)(cons (car l2) (rec-sum-lists '() (cdr l2))))
+        (else (cons (+ (car l1) (car l2)) (rec-sum-lists (cdr l1) (cdr l2))))
+        )
+  )
+```
