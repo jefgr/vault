@@ -5,12 +5,15 @@ _Void_ wordt niet geprint, maar bestaat wel als hidden object
 # Special Forms
 Een _special form_ is een samengestelde uitdrukking waarvan de component die in de eerste positie staat een gereserveerd "sleutelwoord" is
 ## Define
+
 ```scheme
 ;declare a variable:
 (define <naam> <uitdrukking>)
 ;declare a procedure:
 (define (<naam> <parameters>)
-	  <uitdrukking>)
+	  <uitdrukkingen>)
+;only one fundamental define, second define can be rewritten as follows and will be handled as such
+(define <name> (lambda (<parameters>) <uitdrukkingen>))
 ```
 ## If
 If fungeert als een if-else blok
@@ -85,6 +88,32 @@ Neemt één expressie en evalueerd die niet.
 (1 2 3)
 > '()
 ()
+```
+
+## Lambda
+Anonieme procedures
+Worden garbage collected na gebruik
+
+```scheme
+> (lambda (<naam1> <naam2> … <naamn>) <uitdrukking1> … <uitdrukkingm>)
+;ex. square:
+> ((lambda (x) (* 2 x)) 5)
+25
+```
+
+## Let
+> zoals "zij ..." in de wiskunde
+
+```scheme
+> (let (
+ 		(<naam1> <uitdrukking1>)
+ 		(<naam2> <uitdrukking2>)
+ 		…
+ 		(<naamn> <uitdrukkingn>)
+ 		)
+ 		<uitdrukking'1>
+ 		…
+ 		<uitdrukking’m> )
 ```
 
 
