@@ -588,5 +588,14 @@ De opdracht is niet juist geschreven, er word gezocht naar de procedure die weir
 ## Veralgemeende Fibonacci Procedure
 
 ```scheme
-
+(define (fib-p n p)
+  (define (sum-p n p)
+    (do ((i 0 (+ i 1))
+         (sum 0 (+ sum (fib-p (- n i 1) p))))
+      ((= i p) sum)))
+  (cond ((< n (- p 1)) 0)
+        ((= n (- p 1)) 1)
+        (else (sum-p n p)) 
+      )
+  )
 ```
