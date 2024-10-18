@@ -560,3 +560,33 @@ De opdracht is niet juist geschreven, er word gezocht naar de procedure die weir
 ```scheme
 
 ```
+
+# Taak
+
+## Fibonacci van de Derde Orde
+
+```scheme
+(define (fib-3 n)
+  (cond ((< n 2) 0)
+        ((= n 2) 1)
+        (else (+ (fib-3 (- n 1)) (fib-3 (- n 2)) (fib-3 (- n 3)))) 
+         )
+  )
+```
+
+## Fibonacci van de Vijfde Orde
+
+```scheme
+(define (fib-5 n)
+  (cond ((< n 4) 0)
+        ((= n 4) 1)
+        (else (+ (fib-5 (- n 1)) (fib-5 (- n 2)) (fib-5 (- n 3)) (fib-5 (- n 4)) (fib-5 (- n 5)))) 
+         )
+  )
+```
+
+## Veralgemeende Fibonacci Procedure
+
+```scheme
+
+```
