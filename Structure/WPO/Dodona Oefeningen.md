@@ -561,6 +561,34 @@ De opdracht is niet juist geschreven, er word gezocht naar de procedure die weir
 
 ```
 
+# Interludium: Lazy Special Forms
+
+## my-and
+
+```scheme
+(define (my-and a b)
+  (if a (if b #t #f) #f)
+  )
+```
+
+## my-and: my-or
+
+```scheme
+(define (my-or a b)
+  (if a #t (if b #t #f))
+  )
+```
+
+## my-if
+
+```scheme
+(define (my-if a b c)
+  (cond (a b)
+        (else c)
+  )
+  )
+```
+
 # Taak
 
 ## Fibonacci van de Derde Orde
