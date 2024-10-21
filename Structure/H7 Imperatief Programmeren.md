@@ -1,0 +1,1 @@
+In procedures die geheugen aanpast eindigen op ! ("bang"), vb. set! ("set bang")

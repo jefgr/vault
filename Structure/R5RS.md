@@ -116,6 +116,19 @@ Worden garbage collected na gebruik
  		<uitdrukking’m> )
 ```
 
+## Set
+Variabelen aanpassen nadat ze gedeclareerd zijn. Type kan veranderen, vb. procedure kan een number worden.
+
+```scheme
+> (set! <naam> <uitdrukking>)
+```
+
+## Begin
+Om meerdere expressies na elkaar te doen. De waarde van begin is de waarde van de laatste uitdrukking.
+
+```scheme
+> (begin <uitdrukking1> <uitdrukking2> … <uitdrukkingn>)
+```
 
 ---
 # Trace
