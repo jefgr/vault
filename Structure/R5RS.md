@@ -178,4 +178,5 @@ Als we tracen laat elk begin+einde van een procedure-oproep een spoor op het sch
 | member         | any, list                      | same as memq, but uses _equal?_ instead of _eq?_                                                                                              |
 | assq           | key, map*                      | looks for key in associatielijst<br>returns key-value pair                                                                                    |
 | assoc          | key, map*                      | same as assq, but uses equals? instead of eq?                                                                                                 |
-|                |                                |                                                                                                                                               |
+| set-car!       | cons, value                    |                                                                                                                                               |
+| set-cdr!       | cons, value                    |                                                                                                                                               |
