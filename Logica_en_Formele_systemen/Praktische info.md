@@ -16,6 +16,7 @@ doryan.temmerman@vub.be
 - vanaf 14/20 vrijstelling op het examen in 1e zit
 - Geen inhaalmomenten
 - 2e zit alle onderdelen
+- propositielogica tot en met afleidingen, bewijstechnieken
 **Taak week 12/13**
 * 5% van examen 1e zit
 **Examen**
