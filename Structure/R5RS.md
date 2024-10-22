@@ -1,6 +1,7 @@
 Case Insensitive
 _Void_ wordt niet geprint, maar bestaat wel als hidden object
 
+
 ---
 # Special Forms
 Een _special form_ is een samengestelde uitdrukking waarvan de component die in de eerste positie staat een gereserveerd "sleutelwoord" is
@@ -180,3 +181,9 @@ Als we tracen laat elk begin+einde van een procedure-oproep een spoor op het sch
 | assoc          | key, map*                      | same as assq, but uses equals? instead of eq?                                                                                                 |
 | set-car!       | cons, value                    |                                                                                                                                               |
 | set-cdr!       | cons, value                    |                                                                                                                                               |
+| make-vector    | number, any(optional)          | makes a vector (array) of length _number_ with value _any_ in each cell                                                                       |
+| vector         | any, ...                       | makes a vector of the inputs                                                                                                                  |
+| vector-ref     | vector, number                 | gets the value of index _number_ in _vector_                                                                                                  |
+| vector-set!    | vector, number, any            | changes value of index _number_ to value _any_ in _vector_                                                                                    |
+| vector-length  | vector                         | gets the length of _vector_ (O(1), because length is stored in memory)                                                                        |
+|                |                                |                                                                                                                                               |
