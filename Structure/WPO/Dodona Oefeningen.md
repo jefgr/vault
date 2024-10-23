@@ -586,7 +586,37 @@ De opdracht is niet juist geschreven, er word gezocht naar de procedure die weir
 ## Samenvoegen van een willekeurig aantal lijsten: super-merge-n
 
 ```scheme
-
+(define (super-merge-n lsts n)
+  (define (replace-list lsts new-list index)
+    (define (replace-helper lsts index current-index)
+      (cond
+        ((null? lsts) '())
+        ((= current-index index)
+         (cons new-list (cdr lsts)))
+        (else
+         (cons (car lsts)
+               (replace-helper (cdr lsts) index (+ current-index 1)))))
+      )
+    (replace-helper lsts index 0)
+    )
+  (define (all-empty? lsts)
+    (cond
+      ((null? lsts) #t)
+      ((not (null? (car lsts))) #f)
+      (else (all-empty? (cdr lsts))))
+    )
+  (define (lift-index index len)
+    (if (= (+ index 1) len) 0 (+ index 1))
+    )
+  (define (hulp lsts lst len n i lstindex)
+    (cond ((null? lst) (if (all-empty? lsts) '() (hulp lsts (list-ref lsts (lift-index lstindex len)) len n 0 (lift-index lstindex len))))
+          ((= i n) (hulp lsts (list-ref lsts (lift-index lstindex len)) len n 0 (lift-index lstindex len)))
+          (else (cons (car lst) (hulp (replace-list lsts (cdr lst) lstindex) (cdr lst) len n (+ i 1) lstindex)))
+          )
+    )
+  (trace hulp)
+  (hulp lsts (list-ref lsts 0) (length lsts) n 0 0)
+  )
 ```
 
 # Interludium: Lazy Special Forms
