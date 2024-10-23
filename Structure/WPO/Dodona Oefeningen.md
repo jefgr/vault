@@ -617,6 +617,17 @@ De opdracht is niet juist geschreven, er word gezocht naar de procedure die weir
   (trace hulp)
   (hulp lsts (list-ref lsts 0) (length lsts) n 0 0)
   )
+;modeloplossing
+(define (super-merge-n-opl lsts n)
+  (define (hulp curr rest i)
+    (cond ((and (null? curr) (null? rest)) '())
+          ((null? curr) (hulp (car rest) (cdr rest) 0))
+          ((= i n) (hulp (car rest) (append (cdr rest) (list curr)) 0))
+          (else (cons (car curr) (hulp (cdr curr) rest (+ i 1))))
+          )
+    )
+  (hulp (car lsts) (cdr lsts) 0)
+  )
 ```
 
 # Interludium: Lazy Special Forms
