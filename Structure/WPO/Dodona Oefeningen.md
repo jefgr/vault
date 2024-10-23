@@ -528,7 +528,14 @@ De opdracht is niet juist geschreven, er word gezocht naar de procedure die weir
 (define (rec-sum-lists l1 l2)
   (cond ((and (null? l1) (null? l2)) '())
         ((null? l2) (cons (car l1) (rec-sum-lists (cdr l1) '())))
-        ((null? l1)(cons (car l2) (rec-sum-lists '() (cdr l2))))
+        ((null? l1) (cons (car l2) (rec-sum-lists '() (cdr l2))))
+        (else (cons (+ (car l1) (car l2)) (rec-sum-lists (cdr l1) (cdr l2))))
+        )
+  )
+; oplossing uit de les
+(define (rec-sum-lists l1 l2)
+  (cond ((null? l2) l1)
+        ((null? l1) l2)
         (else (cons (+ (car l1) (car l2)) (rec-sum-lists (cdr l1) (cdr l2))))
         )
   )
@@ -552,7 +559,28 @@ De opdracht is niet juist geschreven, er word gezocht naar de procedure die weir
 ## Samenvoegen van twee lijsten: merge-n
 
 ```scheme
-
+;recursief
+(define (rec-merge-n lst1 lst2 n)
+  (define (hulp lst1 lst2 n i)
+    (cond ((null? lst2) lst1)
+          ((null? lst1) lst2)
+          ((= i n) (hulp lst2 lst1 n 0))
+          (else (cons (car lst1) (hulp (cdr lst1) lst2 n (+ i 1))))
+          )
+    )
+  (hulp lst1 lst2 n 0)
+  )
+;iteratief
+(define (iter-merge-n lst1 lst2 n)
+  (define (hulp lst1 lst2 n i res)
+    (cond ((null? lst2) (append (reverse res) lst1))
+          ((null? lst1) (append (reverse res) lst2))
+          ((= i n) (hulp lst2 lst1 n 0 res))
+          (else (hulp (cdr lst1) lst2 n (+ i 1) (cons (car lst1) res)))
+          )
+    )
+  (hulp lst1 lst2 n 0 '())
+  )
 ```
 
 ## Samenvoegen van een willekeurig aantal lijsten: super-merge-n
