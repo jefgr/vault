@@ -868,7 +868,9 @@ De opdracht is niet juist geschreven, er word gezocht naar de procedure die weir
 (define (zip lst1 lst2 combine)
   (if (null? lst1)
       '()
-      (cons (combine (car lst1) (car lst2)) (zip (cdr lst1) (cdr lst2) combine)))
+      (cons (combine (car lst1) (car lst2)) (zi
+      
+      p (cdr lst1) (cdr lst2) combine)))
   )
 ```
 
@@ -884,3 +886,4 @@ De opdracht is niet juist geschreven, er word gezocht naar de procedure die weir
   )
 ```
 
+## Next
