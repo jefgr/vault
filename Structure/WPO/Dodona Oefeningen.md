@@ -210,6 +210,7 @@
 ```
 
 **Pseudocode for iterative variant from chatgpt:**
+
 ```
 function logMultiplication(a, b, result):
     # Base case: if b is 0, return the accumulated result
@@ -696,3 +697,190 @@ De opdracht is niet juist geschreven, er word gezocht naar de procedure die weir
       )
   )
 ```
+
+# Hogere Orde Procedures
+
+## Product
+
+```scheme
+(define (product term a next b)
+  (if (> a b)
+      1
+      (* (term a) (product term (next a) next b))))
+```
+
+## Product: staartrecursie
+
+```scheme
+(define (iter-product term a next b)
+  (define (hulp a res)
+    (if (> a b)
+        res
+        (hulp (next a) (* res (term a))))
+    )
+  (hulp a 1)
+  )
+```
+
+## Product: factorial
+
+```scheme
+; zelfde als hiervoor, maar wordt gebruikt door de rest
+(define (product term a next b)
+  (if (> a b)
+      1
+      (* (term a) (product term (next a) next b))))
+
+(define (factorial x)
+  (product (lambda (a) a) 1 (lambda (b) (+ b 1) ) x)
+  )
+```
+
+## Accumulate
+
+```scheme
+(define (accumulate combiner null-value term a next b)
+  (define (iter a res) 
+    (if (> a b)
+        res
+        (iter (next a) (combiner res (term a))))
+    )
+  (iter a null-value)
+  )
+```
+
+## Accumulate: Product en Sum
+
+```scheme(define (accumulate combiner null-value term a next b)
+  (define (iter a res) 
+    (if (> a b)
+        res
+        (iter (next a) (combiner res (term a))))
+    )
+  (iter a null-value)
+  )
+
+(define (sum term a next b)
+  (accumulate + 0 term a next b)
+  )
+
+(define (product term a next b)
+  (accumulate * 1 term a next b)
+  )
+```
+
+## Accumulate: Add en Multiply
+
+```scheme
+(define (accumulate combiner null-value term a next b)
+  (define (iter a res) 
+    (if (> a b)
+        res
+        (iter (next a) (combiner res (term a))))
+    )
+  (iter a null-value)
+  )
+
+(define (add a b)
+  (accumulate + b (lambda (x) x) a (lambda (y) (+ y 1)) a)
+  )
+
+(define (multiply a b)
+  (accumulate * b (lambda (x) x) a (lambda (y) (+ y 1)) a)
+  )
+```
+
+## Filtered-Accumulate
+
+```scheme
+(define (filtered-accumulate combiner filter? null-value term a next b)
+  (define (iter a res) 
+    (if (> a b)
+        res
+        (iter (next a) (if (filter? (term a)) (combiner res (term a)) res)))
+    )
+  (iter a null-value)
+  )
+```
+
+## Filtered-Accumulate: grootste gemene deler
+
+```scheme
+(define (filtered-accumulate combiner filter? null-value term a next b)
+  (define (iter a res) 
+    (if (> a b)
+        res
+        (iter (next a) (if (filter? (term a)) (combiner res (term a)) res)))
+    )
+  (iter a null-value)
+  )
+
+(define (product-gcd n)
+  (filtered-accumulate * (lambda (i) (= (gcd i n) 1)) 1 (lambda (x) x) 1 (lambda (y) (+ y 1)) n)
+  )
+```
+
+## Procedures die procedures maken: Compose
+
+```scheme
+(define (compose f g)
+  (lambda (x) (f (g x)))
+  )
+```
+
+## Procedures die procedures maken: make-do-n d.m.v. do
+
+```scheme
+(#%require racket/trace)
+(define (make-do-n f n)
+  (lambda () (do ((i 0 (+ i 1)))
+               ((= n i) )
+               (f)
+               ))
+  )
+```
+
+## Hogere Orde Procedures op lijsten: replace d.m.v. map
+
+```scheme
+(define (replace-dmv-map e1 e2 l)
+  (map (lambda (x) (if (eq? x e1) e2 x)) l)
+  )
+```
+
+## Hogere Orde Procedures op lijsten: All?
+
+```Scheme
+(define (all? pred l)
+  (cond ((null? l) #t)
+    ((pred (car l)) (all? pred (cdr l)))
+    (else #f))
+  )
+```
+
+## Hogere Orde Procedures op lijsten: zip
+
+```scheme
+(define (zip lst1 lst2 combine)
+  (map combine lst1 lst2)
+  )
+; zonder gebruik van map
+(define (zip lst1 lst2 combine)
+  (if (null? lst1)
+      '()
+      (cons (combine (car lst1) (car lst2)) (zip (cdr lst1) (cdr lst2) combine)))
+  )
+```
+
+## Hogere Orde Procedures op lijsten: sum-of-squares d.m.v. zip
+
+```scheme
+(define (zip lst1 lst2 combine)
+  (map combine lst1 lst2)
+  )
+
+(define (sum-of-squares lst1 lst2)
+  (zip lst1 lst2 (lambda (x y) (+ (* x x) (* y y))))
+  )
+```
+

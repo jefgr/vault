@@ -6,6 +6,7 @@ Viviane Jonckers (op pensioen, geeft minderheid van de cursus)
 * telt mee voor 20% als <= 4 of >= eindresultaat examen
 * Gesloten boek (met Cheatsheet)
 * Op papier
+* Dodona oefeningen tot interludium: lazy special forms
 **Examen**
 * Gesloten boek (met Cheatsheet)
 **[Dodona](https://dodona.be/nl/courses/4234)**
