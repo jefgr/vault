@@ -75,7 +75,7 @@ In **Scheme** (een dialect van Lisp) is een **symbol** een primitief datatype da
 Een belangrijk kenmerk van symbols is dat ze vergeleken worden op identiteit, niet op de stringinhoud. Als je twee keer dezelfde naam invoert, is dat dezelfde symbol.
 
 ```scheme
-`(define x 'apple)  ; 'apple is een symbol`
+> (define x 'apple)  ; 'apple is een symbol`
 ;Hier is `'apple` een symbol, en niet de string "apple".
 ```
 
