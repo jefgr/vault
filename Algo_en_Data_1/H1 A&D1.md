@@ -29,4 +29,7 @@ $$ f ∈ Θ(g) \Leftrightarrow f ∈ Ω(g) \ en \ f ∈ O(g) $$
 $$ O( t1(n) + t2(n) ) = O (max(t1(n), t2(n))) $$ $$ Ω( t1(n) + t2(n) ) = Ω (min(t1(n), t2(n)))$$ waarbij: $1 < log(n) < √n < n < n.log(n) < nk-1 < nk < 2n < n!$
 
 - $O(c.f) = O(f)$ voor alle constanten c
-- 
+
+
+# Geheugengebruik
+O(1): in-place
