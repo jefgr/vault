@@ -833,6 +833,20 @@ De opdracht is niet juist geschreven, er word gezocht naar de procedure die weir
 
 (define f5 (lambda () (lambda () (lambda (x) 5))))
 ```
+
+## Het verschil tussen let en let*: Lambda-notatie
+
+```scheme
+(let* ((x 2) (y (+ x 8)) (z (/ y x))) (+ x y z))
+;herschreven a.d.h.v. lambda's
+((lambda (x)
+   ((lambda (y)
+      ((lambda (z)
+         (+ x y z))
+       (/ y x)))
+    (+ x 8)))
+   2)
+```
 ## Procedures die procedures maken: Compose
 
 ```scheme
