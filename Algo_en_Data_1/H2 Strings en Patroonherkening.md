@@ -72,8 +72,18 @@ Geneste loop:
 	- if gelijk: check t2 tegen p2
 	- else: move 1tje vooruit en start terug te testen bij p1
 herhaal tot einde tekst of tot t-x == p-eind
+Dit geeft timecomplexity worst-case $O(n_{t}.n_{p})$ 
 
+belangrijk  $O(n_{t}.n_{p}) \neq O(n²)$
 # Quicksearch Algoritme
 
+In de praktijk zeer goed, average-case zeer goed voor engelse teksten
+Worst-case blijft  $O(n_{t}.n_{p})$ 
 
+- **Vergelijking**: Quicksearch vergelijkt het patroon met de tekst van links naar rechts.    
+- **Mismatch Afhandeling**: Bij een mismatch kijkt de algoritme naar het karakter net _achter_ het patroon in de tekst:
+    - **Karakter niet in patroon**: Als dit karakter helemaal niet voorkomt in het patroon, schuiven we het patroon verder voorbij dit karakter. Dit kan een grote sprong betekenen.
+    - **Karakter wel in patroon**: Als het karakter wél in het patroon voorkomt, verschuift Quicksearch het patroon zodanig dat dit karakter in de tekst gelijkkomt met de laatste overeenkomstige positie in het patroon. Zo bespaart het algoritme tijd door onnodige posities over te slaan.
+
+modulo in slides is om index out of bounds te vermijden
 # Knuth-Morris-Pratt Algoritme
