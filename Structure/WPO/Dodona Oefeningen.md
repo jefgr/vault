@@ -820,6 +820,19 @@ De opdracht is niet juist geschreven, er word gezocht naar de procedure die weir
   )
 ```
 
+## Syntactische Suiker: define met lambda-notatie
+
+```scheme
+(define f1 5)
+
+(define f2 (lambda () 5))
+
+(define f3 (lambda (x) 5))
+
+(define f4 (lambda () (lambda () 5)))
+
+(define f5 (lambda () (lambda () (lambda (x) 5))))
+```
 ## Procedures die procedures maken: Compose
 
 ```scheme
