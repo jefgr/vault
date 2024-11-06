@@ -62,4 +62,4 @@ Given this description:
      (/ (frac:numer frac1) (frac:denom frac1)))))
 ```
 - Fourth, reimplement the constructor such that rationals are always represented in reduced form. Does this reimplementation affect your code for `=`?
-
+> nu moeten we de deling niet meer uitvoeren, kunnen gewoon gelijkheid van teller en noemer
