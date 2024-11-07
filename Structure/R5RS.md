@@ -30,6 +30,12 @@ ex. absolute value
  	x))
 ```
 \<alternatief> kan je weglaten, dan wordt _void_ gereturned
+
+### When
+equivalent van (if (begin (...)))
+### Unless
+equivalent van (if (not (begin (...))))
+
 ## Cond
 conditional (switch-case)
 Bestaat uit verschillende test-consequent koppels, ook wel clausules genoemd.
@@ -186,4 +192,14 @@ Als we tracen laat elk begin+einde van een procedure-oproep een spoor op het sch
 | vector-ref     | vector, number                 | gets the value of index _number_ in _vector_                                                                                                  |
 | vector-set!    | vector, number, any            | changes value of index _number_ to value _any_ in _vector_                                                                                    |
 | vector-length  | vector                         | gets the length of _vector_ (O(1), because length is stored in memory)                                                                        |
-|                |                                |                                                                                                                                               |
+
+
+# SRFI
+Extra libraries voor scheme
+## extra uit SRFI 60
+
+| logior | number, number | logical inclusive or, bitwise |
+| ------ | -------------- | ----------------------------- |
+| logand | number, number | logical and, bitwise          |
+| lognot | number         | logical not, bitwise          |
+warning: for logical operators, 2's compliment
