@@ -913,4 +913,151 @@ De opdracht is niet juist geschreven, er word gezocht naar de procedure die weir
   )
 ```
 
-## Next
+# Imperatief Programmeren
+
+## Vectoren transformeren: vector-map!
+
+```scheme
+(define (vector-map! f vec)
+  (do ((i 0 (+ i 1)))
+    ((= i (vector-length vec)))
+    (vector-set! vec i (f (vector-ref vec i)))))
+```
+
+## Vectoren transformeren: vector-map
+
+```scheme
+(define (vector-map f vec)
+  (define new-v (make-vector (vector-length vec)))
+  (do ((i 0 (+ i 1)))
+    ((= i (vector-length vec)) new-v)
+    (vector-set! new-v i (f (vector-ref vec i)))))
+```
+
+## Stukken uit een vector selecteren: vector-slice
+
+```scheme
+(define (vector-slice begin end vect)
+  (define slice (make-vector (- end begin -1)))
+  (do ((i begin (+ i 1)))
+    ((> i end) slice)
+    (vector-set! slice (- i begin) (vector-ref vect i))))
+```
+
+## Vectoren aaneen plakken: vector-append
+
+```scheme
+(define (vector-append v1 v2)
+  (define vout (make-vector (+ (vector-length v1) (vector-length v2))))
+  (do ((i 0 (+ i 1)))
+    ((= i (vector-length v1)))
+    (vector-set! vout i (vector-ref v1 i)))
+  (do ((j 0 (+ j 1)))
+    ((= j (vector-length v2)) vout)
+    (vector-set! vout (+ j (vector-length v1)) (vector-ref v2 j))))
+```
+
+## Circulaire Datastructuren: make-ring!
+
+```scheme
+(define (make-ring! n)
+  (define lst
+    (let make-list
+      ((current n))
+      (if (< current 0) '()
+          (cons current (make-list (- current 1))))))
+  (set-cdr! (list-tail lst n) lst)
+  l)
+
+(define (print-ring r)
+  (define (aux l)
+    (if (not (null? l))
+        (cond ((eq? (cdr l) r) (display " ")
+                               (display (car l))
+                               (display "..."))
+              (else (display " ")
+                    (display (car l))
+                    (aux (cdr l))))))
+  (aux r))
+```
+
+## Circulaire Datastructuren: shift-forward
+
+```scheme
+(define (make-ring! n)
+  (define lst
+    (let make-list
+      ((current n))
+      (if (< current 0) '()
+          (cons current (make-list (- current 1))))))
+  (set-cdr! (list-tail lst n) lst)
+  lst)
+
+(define (print-ring r)
+  (define (aux l)
+    (if (not (null? l))
+        (cond ((eq? (cdr l) r) (display " ")
+                               (display (car l))
+                               (display "..."))
+              (else (display " ")
+                    (display (car l))
+                    (aux (cdr l))))))
+  (aux r))
+
+(define (shift-forward r)
+  (set! r (cdr r))
+  r)
+```
+
+## Circulaire Datastructuren: shift-backward
+
+```scheme
+(define (make-ring! n)
+  (define lst
+    (let make-list
+      ((current n))
+      (if (< current 0) '()
+          (cons current (make-list (- current 1))))))
+  (set-cdr! (list-tail lst n) lst)
+  lst)
+
+(define (print-ring r)
+  (define (aux l)
+    (if (not (null? l))
+        (cond ((eq? (cdr l) r) (display " ")
+                               (display (car l))
+                               (display "..."))
+              (else (display " ")
+                    (display (car l))
+                    (aux (cdr l))))))
+  (aux r))
+
+(define (shift-backward r)
+  (define (aux l)
+    (if (eq? (cdr l) r) (set! r l)
+        (aux (cdr l))))
+  (aux r)
+  r)
+```
+
+## Destructieve Procedures: map!
+
+```scheme
+(define (map! f lst)
+  (if (not (null? lst))
+      (begin
+      (set-car! lst (f (car lst)))
+      (map! f (cdr lst)))))
+```
+
+## Destructieve Procedures: schuif-in!
+
+```scheme
+(define (schuif-in! lst1 lst2)
+  (if (null? lst1) "ok"
+      (let
+          ((l1 (cdr lst1)))
+        (set-cdr! lst1 lst2)
+        (schuif-in! lst2 l1))))
+```
+
