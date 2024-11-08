@@ -1061,3 +1061,34 @@ De opdracht is niet juist geschreven, er word gezocht naar de procedure die weir
         (schuif-in! lst2 l1))))
 ```
 
+## Destructieve Procedures: merge! (Implementatie)
+
+```scheme
+(define (merge! b1 b2)
+  (define res (if (symbol<? (caar b1) (caar b2)) b1 b2))
+  (let aux
+    ((best1 b1)
+     (best2 b2))
+    (cond ((or (null? best1) (null? best2)))
+          ((element=? (car best1) (car best2))
+           (aux best1 (cdr best2)))
+          ((symbol<? (caar best2) (caar best1))
+           (aux best2 best1))
+          ((null? (cdr best1))
+           (set-cdr! best1 best2))
+          ((symbol<? (caadr best1) (caar best2))
+           (aux (cdr best1) best2))
+          (else
+           (let
+               ((l1 (cdr best1)))
+             (set-cdr! best1 best2)
+             (aux best2 l1)))))
+  res)
+
+(define (symbol<? s1 s2)
+  (string<? (symbol->string s1) (symbol->string s2)))
+ 
+(define (element=? el1 el2)
+  (equal? el1 el2))
+
+```
