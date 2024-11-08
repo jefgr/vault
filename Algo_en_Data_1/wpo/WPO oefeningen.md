@@ -124,3 +124,102 @@ Given these types,
 - Implement both procedures.
 - What is the wort-case performance characteristic of these procedures?
 - What is the best-case performance characteristic of the procedures?
+```scheme
+(define (last-of-list lst)
+  (cond ((null? l) #f)
+	    ((null? (cdr lst)) (car lst)
+        (else (last-of-list (cdr lst)))))
+; worst-case O(n)
+; best-case Omega(n)
+; dus ook Theta(n)
+
+(define (last-of-vector vct)
+  (vector-ref vct (- (vector-length vct) 1)))
+; worst-case O(1)
+; best-case Omega(1)
+; dus ook Theta(1)
+```
+
+# 1.4.2
+Specify the procedural type of the following higher-order procedures. You can use the same data types as in the previous exercise.
+- `(map f l)` applies a procedure `f` to all elements of a list `l`. The result is a new list.
+> ((any -> any) pair -> pair)
+
+- `(sum a b term next)` begins at `a` and perpetually adds `(term a)` to the number that corresponds to `(sum (next a) b term next)`. It does this as long as `a` is smaller than `b`.
+```scheme
+(define (sum a b term next)
+	(if (> a b)
+	    0
+        (+ (term a) (sum (next a) b term next))))
+```
+> (number number (number -> number) (number -> number) -> number>)
+
+- `(compose f g)` takes two one-argument procedures `f` and `g` and it returns their mathematical composition.
+```scheme
+(define (compose f g)
+	(lambda (x) (f (g x))))
+```
+> ((any -> any) (any -> any) -> (any -> any))
+
+# 1.4.8
+Consider the following Scheme procedure.
+```scheme
+(define (all-but-first-n l n)
+  (let iterate
+    ((current l)
+     (counter n))
+    (if (or (= counter 0)
+            (null? current))
+      current
+      (iterate (cdr current) (- counter 1)))))
+```
+Convert it to an equivalent procedure that does not use a named let.
+```scheme
+(define (all-but-first-n-no-let l n)
+  (define (iterate current counter)
+    (if (or (= counter 0)
+            (null? current))
+      current
+      (iterate (cdr current) (- counter 1))))
+  (iterate l n))
+```
+
+# 1.4.9
+What is the worst-case performance characteristic of the following two-argument procedures?
+A procedure to compute $n −m$:
+```scheme
+(define (subtract n m)
+  (if (= m 0)
+    n
+    (subtract (- n 1) (- m 1))))
+```
+> b = O(1) rec = O(m) -> O(m)
+
+A procedure that zips two lists in a pairwise fashion:
+```scheme
+(define (zip l1 l2)
+  (if (or (null? l1) (null? l2))
+    '()
+    (cons (cons (car l1)
+                (car l2))
+          (zip (cdr l1) (cdr l2)))))
+```
+> b = O(1) r = O(min (n, m)) -> O(min(n, m))
+
+# 1.4.10
+What is the worst-case performance characteristic of the following procedure?
+```scheme
+(define (all-i-to-j n)
+  (define (i-to-j i j)
+    (if (= j 0)
+      1
+      (* i (i-to-j i (- j 1)))))
+  (define (sum i)
+    (if (= i 0)
+      0
+      (+ (sum (- i 1)) (i-to-j i i))))
+  (sum n))
+```
+> i-to-j: b = O(1) r = O(j) -> O(j)
+> sum: b = O(i) r = O(i) -> O(i²)
+> all-i-to-j: O(n²)
