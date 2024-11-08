@@ -204,7 +204,7 @@ A procedure that zips two lists in a pairwise fashion:
                 (car l2))
           (zip (cdr l1) (cdr l2)))))
 ```
-> b = O(1) r = O(min (n, m)) -> O(min(n, m))
+> b = O(1) r = O(min (l1, l2)) -> O(min(l1, l2))
 
 # 1.4.10
 What is the worst-case performance characteristic of the following procedure?
