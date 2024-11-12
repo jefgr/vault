@@ -87,3 +87,6 @@ Worst-case blijft  $O(n_{t}.n_{p})$
 
 modulo in slides is om index out of bounds te vermijden
 # Knuth-Morris-Pratt Algoritme
+
+Als Prefix en Suffix van het stuk dat **WEL matchten** gelijk zijn, moet er rekening gehouden worden met mogelijke overshooting
+We nemen de langste _echte pre/suffix_ (hele string of lege string zijn onechte suf/prefixen)
