@@ -90,7 +90,7 @@ Dichter bij de realiteit, maar niet exact
 - Als de procedure afgelopen is worden de resultaten terug gegeven en de uitgebreide omgeving wordt vernietigd door de **garbage collector**
 Dit gebeurt recursief voor geneste operaties.
 ### Omgevingsdiagrammen
-Echte werking van Scheme, zie [[H9]]
+Echte werking van Scheme, zie [[H9 Closures en omgevingsmodellen]]
 
 
 # Programmeerstijl & Abstractie
