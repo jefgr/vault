@@ -192,6 +192,7 @@ Als we tracen laat elk begin+einde van een procedure-oproep een spoor op het sch
 | vector-ref     | vector, number                 | gets the value of index _number_ in _vector_                                                                                                  |
 | vector-set!    | vector, number, any            | changes value of index _number_ to value _any_ in _vector_                                                                                    |
 | vector-length  | vector                         | gets the length of _vector_ (O(1), because length is stored in memory)                                                                        |
+| apply          | procedure, list                | applies procedure to elements of the list                                                                                                     |
 
 
 # SRFI
