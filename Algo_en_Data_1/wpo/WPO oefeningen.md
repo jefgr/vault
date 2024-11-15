@@ -277,14 +277,14 @@ Consider the string `"Hello"`. Enumerate all prefixes, all suffixes, all proper
 Write the procedure type for the `match` procedures discussed in this chapter.
 ```scheme
 Match:
-(string string -> number)
+(string string -> number U {#f})
 ```
 
 ## 2.7.6
 Adapt the original brute-force algorithm such that it can be used to find multiple occurrences of a pattern in the text. Instead of returning the shift of just one match, the modified procedure returns a list of shifts of all matches. Bear in mind however that patterns with repetitions can cause several matches to overlap. For example, the text `"bababxzy"` contains two occurrences of the pattern `"bab"`; one at shift 0 and another one at shift 2. Your algorithm should return `'(0 2)`.
 
 ```scheme
-(define (match t p)
+(define (multi-match t p)
   (define n-t (string-length t))
   (define n-p (string-length p))
   (let loop
@@ -301,3 +301,4 @@ Adapt the original brute-force algorithm such that it can be used to find multip
       (else
        (loop (+ i-t 1) 0 res)))))
 ```
+
