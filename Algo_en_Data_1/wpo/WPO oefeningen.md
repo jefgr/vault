@@ -1,4 +1,5 @@
-# 1.4.3
+# Hoofdstuk 1
+## 1.4.3
 Analogous to the complex ADT, let's define the fraction ADT. Here are the procedures that should be supported by the ADT:
 
 - `(new n d)` returns the rational number whose numerator is the number `n` and whose denominator is the number `d`.
@@ -64,7 +65,7 @@ Given this description:
 - Fourth, reimplement the constructor such that rationals are always represented in reduced form. Does this reimplementation affect your code for `=`?
 > nu moeten we de deling niet meer uitvoeren, kunnen gewoon gelijkheid van teller en noemer
 
-# 1.4.1
+## 1.4.1
 Specify the procedural type of the following built-in Scheme procedures: `cons`, `car`, `cdr`, `vector-ref`, `vector-set!`, `member`. You can use the following data types: any, pair, vector, number, boolean and ∅. You can also use singleton sets such as {`#f`}.
 
 ```scheme
@@ -82,7 +83,7 @@ member
 	(any, pair -> pair U {#f})
 ```
 
-# 1.4.5
+## 1.4.5
 Consider the ADT dictionary and suppose that we want to use an implementation of the ADT in the following applications. Formally specify K and V for all cases.
 - A dictionary Dutch-English that maps a Dutch word onto its only translation in English.
 > dict<string, string>
@@ -114,7 +115,7 @@ full?
 	( dictionary< K V > -> boolean )
 ```
 
-# 1.4.6
+## 1.4.6
 Consider two procedures to retrieve the last element from a data structure. Their procedural type looks as follows:
 - `last-of-list`  
 	(pair → number)
@@ -140,7 +141,7 @@ Given these types,
 ; dus ook Theta(1)
 ```
 
-# 1.4.2
+## 1.4.2
 Specify the procedural type of the following higher-order procedures. You can use the same data types as in the previous exercise.
 - `(map f l)` applies a procedure `f` to all elements of a list `l`. The result is a new list.
 > ((any -> any) pair -> pair)
@@ -161,7 +162,7 @@ Specify the procedural type of the following higher-order procedures. You can us
 ```
 > ((any -> any) (any -> any) -> (any -> any))
 
-# 1.4.8
+## 1.4.8
 Consider the following Scheme procedure.
 ```scheme
 (define (all-but-first-n l n)
@@ -184,7 +185,7 @@ Convert it to an equivalent procedure that does not use a named let.
   (iterate l n))
 ```
 
-# 1.4.9
+## 1.4.9
 What is the worst-case performance characteristic of the following two-argument procedures?
 A procedure to compute $n −m$:
 ```scheme
@@ -206,7 +207,7 @@ A procedure that zips two lists in a pairwise fashion:
 ```
 > b = O(1) r = O(min (l1, l2)) -> O(min(l1, l2))
 
-# 1.4.10
+## 1.4.10
 What is the worst-case performance characteristic of the following procedure?
 ```scheme
 (define (all-i-to-j n)
@@ -223,3 +224,80 @@ What is the worst-case performance characteristic of the following procedure?
 > i-to-j: b = O(1) r = O(j) -> O(j)
 > sum: b = O(i) r = O(i) -> O(i²)
 > all-i-to-j: O(n²)
+
+# Hoofdstuk 2
+
+## 2.7.1
+Determine the range of ASCII-values that correspond to the characters `#\0` to `#\9`, `#\a` to `#\z` and `#\A` to `#\Z`. What is the Scheme procedure to use?
+> 0 -> 48
+> {...}
+> 9 -> 57
+> a -> 97
+> {...}
+> z -> 122
+> A -> 65
+> {...}
+> Z -> 90
+```scheme
+>(char->integer #\A)
+65
+```
+
+## 2.7.2
+Write a procedure of type (string → number) that converts a string containing any combination of numeric characters (i.e., characters between `#\0` and `#\9`) to the corresponding number. Determine Ω(f(n)) for your algorithm:
+- when n is the length of the string.
+> Omega(n)
+- when n is the value of the number.
+> Omega(log(n))
+
+```scheme
+(define (convert str)
+  (let conv
+    (
+     (v 0)
+     (i 0))
+    (if (= (string-length str) i) v
+    (conv (+ (* v 10) (- (char->integer (string-ref str i)) 48)) (+ i 1)))))
+```
+
+## 2.7.3
+Consider the text t="helterskelter" and the pattern p="elter". Consider the fragments v="helter" and w="ter". Fill in the blanks:
+   - v is a _prefix_ of t.
+   - w is a _suffix_ of t.     
+   - Is v a proper prefix of t? Yes/No because _yes, not equal to the entire string or the empty string_
+
+## 2.7.4
+Consider the string `"Hello"`. Enumerate all prefixes, all suffixes, all proper prefixes and all proper suffixes.
+> (proper) prefixes: 
+> h, he, hel, hell (non proper: "" and hello)
+> (proper) suffixes:
+> o, lo, llo, ello (non proper: "" hello)
+
+## 2.7.5
+Write the procedure type for the `match` procedures discussed in this chapter.
+```scheme
+Match:
+(string string -> number)
+```
+
+## 2.7.6
+Adapt the original brute-force algorithm such that it can be used to find multiple occurrences of a pattern in the text. Instead of returning the shift of just one match, the modified procedure returns a list of shifts of all matches. Bear in mind however that patterns with repetitions can cause several matches to overlap. For example, the text `"bababxzy"` contains two occurrences of the pattern `"bab"`; one at shift 0 and another one at shift 2. Your algorithm should return `'(0 2)`.
+
+```scheme
+(define (match t p)
+  (define n-t (string-length t))
+  (define n-p (string-length p))
+  (let loop
+    ((i-t 0)
+     (i-p 0)
+     (res '())) ; aangepast
+    (cond
+      ((> i-p (- n-p 1))
+       (loop (+ i-t 1) 0 (cons i-t res))) ; aangepast
+      ((> i-t (- n-t n-p))
+       (reverse res)) ; aangepast
+      ((eq? (string-ref t (+ i-t i-p)) (string-ref p i-p))
+       (loop i-t (+ i-p 1) res))
+      (else
+       (loop (+ i-t 1) 0 res)))))
+```
