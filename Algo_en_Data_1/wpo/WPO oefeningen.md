@@ -302,3 +302,36 @@ Adapt the original brute-force algorithm such that it can be used to find multip
        (loop (+ i-t 1) 0 res)))))
 ```
 
+## 2.7.7
+Suppose that we allow patterns to contain “holes” indicated by `*`. E.g., the pattern `"hel*skel"` will match any text that contains the fragments `"hel"` and `"skel"` separated by zero or more irrelevant characters. In other words, every such hole (usually called a wildcard) is allowed to correspond to any number of characters. Implement a variant of the brute-force algorithm that enables matching patterns with holes. What is the performance characteristic of your algorithm?
+
+```scheme
+(define (wild-match t p)
+  (define (count-non-* str)
+    (let count
+      ((c 0)
+       (i 0))
+      (cond ((= i (string-length str))
+             c)
+            ((char=? #\* (string-ref str i))
+             (count c (+ i 1)))
+            (else 
+             (count (+ c 1) (+ i 1))))))
+  (define n-t (string-length t))
+  (define n-p (count-non-* p))
+  (let loop
+    ((i-t 0)
+     (i-p 0))
+    (cond
+      ((> i-p (- n-p 1))
+       i-t)
+      ((> i-t (- n-t n-p))
+       #f)
+      ((eq? (string-ref p i-p) #\*)
+       (if (wild-match (substring t i-t) (substring p (+ i-p 1)))
+           i-t (loop (+ i-t 1) 0)))
+      ((eq? (string-ref t (+ i-t i-p)) (string-ref p i-p))
+       (loop i-t (+ i-p 1)))
+      (else
+       (loop (+ i-t 1) 0)))))
+```
