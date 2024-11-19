@@ -211,24 +211,20 @@
 
 **Pseudocode for iterative variant from chatgpt:**
 
-```
+```python
 function logMultiplication(a, b, result):
     # Base case: if b is 0, return the accumulated result
     if b == 0:
         return result
-
     # If b is even, use the property a * b = (2 * a) * (b // 2)
     if b is even:
         return logMultiplication(2 * a, b // 2, result)
-
     # If b is odd, reduce b by 1 and accumulate a into result
     else:
         return logMultiplication(a, b - 1, result + a)
-
 # Wrapper function for ease of calling
 function multiply(a, b):
     return logMultiplication(a, b, 0)
-
 ```
 **Explanation:**
 
@@ -1092,3 +1088,171 @@ De opdracht is niet juist geschreven, er word gezocht naar de procedure die weir
   (equal? el1 el2))
 
 ```
+
+# Closures en Omgevingsdiagrammen
+
+## sum & add-c
+
+omgevingsmodel:
+
+| Global |                    |
+| ------ | ------------------ |
+| c      | 3                  |
+| add-c  | pointer naar add-c |
+| sum    | pointer naar sum   |
+
+| add-c                    |                     |
+| ------------------------ | ------------------- |
+| pointer naar definitions | pointer naar global |
+| definitions:             |                     |
+| (x y)                    | (+x y c)            |
+
+| sum                      |                     |
+| ------------------------ | ------------------- |
+| pointer naar definitions | pointer naar global |
+| (x y c)                  | (add-c x y)         |
+
+## sum & add-c: dynamische scoping
+
+> 12
+
+## let naar lambda
+
+```scheme
+(let ((x 1)
+      (y (+ 1 x)))
+  (+ x y))
+; omgezet naar lambda
+((lambda (x y) (+ x y)) 1 (+ 1 x))
+```
+__error x: undefined; cannot reference an identifier before its definition__
+ 
+Omgevingsdiagram van de lambda
+
+| global |                     |
+| ------ | ------------------- |
+| lambda | pointer naar lambda |
+
+| lambda                  |                                |
+| ----------------------- | ------------------------------ |
+| pointer naar definition | pointer naar global            |
+| x                       | 1                              |
+| y                       | ((+ 1 x) =>) error x undefined |
+| definition              |                                |
+| (x y)                   | (+ x y)                        |
+Lambda word opgeroepen in de globale omgeving en er wordt in de oproep x aangeroepen die niet bestaat in die omgeving
+
+## Omgevingsmodel let
+
+```scheme
+(define (print-abc a b c)
+  (display a) (display " ")
+  (display b) (display " ")
+  (display c) (newline))
+ 
+(define (foo a b c)
+  (print-abc a b c)
+  (let ((a 4) ; 1
+        (c 5)
+        (b c))
+    (print-abc a b c)
+    (let ((b 6) ; 2
+          (c a))
+      (print-abc a b c))
+    (let ((a b) ; 3
+          (c a))
+      (print-abc a b c)))
+  (print-abc a b c))
+```
+
+omgevings model tijdens (foo 1 2 3)
+output:
+>1 2 3
+>4 5 3
+>4 6 4
+>3 5 4
+
+| global    |                        |
+| --------- | ---------------------- |
+| print-abc | pointer naar print-abc |
+| foo       | pointer naar foo       |
+
+| print-abc                |                                                                                 |
+| ------------------------ | ------------------------------------------------------------------------------- |
+| pointer naar definitions | pointer naar global                                                             |
+| definitions              |                                                                                 |
+| (a b c)                  | (display a) (display " ")<br>(display b) (display " ")<br>(display c) (newline) |
+
+| foo                      |                                                                                                                                                                                                                                                              |
+| ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| pointer naar definitions | pointer naar global                                                                                                                                                                                                                                          |
+| a                        | 1                                                                                                                                                                                                                                                            |
+| b                        | 2                                                                                                                                                                                                                                                            |
+| c                        | 3                                                                                                                                                                                                                                                            |
+| definitions              |                                                                                                                                                                                                                                                              |
+| (a b c)                  | (print-abc a b c)<br>  (let ((a 4)<br>        (c 5)<br>        (b c))<br>    (print-abc a b c)<br>    (let ((b 6)<br>          (c a))<br>      (print-abc a b c))<br>    (let ((a b)<br>          (c a))<br>      (print-abc a b c)))<br>  (print-abc a b c) |
+
+| let 1                   |                                                                                                                                             |
+| ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
+| pointer naar definition | pointer naar foo                                                                                                                            |
+| a                       | 4                                                                                                                                           |
+| c                       | 5                                                                                                                                           |
+| b                       | (c =>) 3                                                                                                                                    |
+| definitions             |                                                                                                                                             |
+| (a c b)                 | (print-abc a b c)<br>(let ((b 6)<br>        (c a))<br>      (print-abc a b c))<br>(let ((a b)<br>       (c a))<br>      (print-abc a b c))) |
+
+
+| let 2                   |                    |
+| ----------------------- | ------------------ |
+| pointer naar definition | pointer naar let 1 |
+| b                       | 6                  |
+| c                       | (a =>) 4           |
+| definitions             |                    |
+| (b c)                   | (print-abc a b c)  |
+
+| let 3                   |                    |
+| ----------------------- | ------------------ |
+| pointer naar definition | pointer naar let 1 |
+| a                       | (b =>) 3           |
+| c                       | (a =>) 4           |
+| definition              |                    |
+| (a c)                   | (print-abc a b c)  |
+
+## let* naar lambda
+
+```scheme
+(let* ((x 1)
+       (y (+ 1 x)))
+  (+ x y))
+; omgezet naar lambda
+((lambda (x)
+   ((lambda (y)
+      (+ x y)) (+ 1 x)))
+ 1)
+```
+
+Omgevingsdiagram van de lambda
+
+| global |                     |
+| ------ | ------------------- |
+| lambda | pointer naar lambda |
+
+| lambda 1                |                                         |
+| ----------------------- | --------------------------------------- |
+| pointer naar definition | pointer naar global                     |
+| x                       | 1                                       |
+| definition              |                                         |
+| (x)                     | ((lambda (y)<br>      (+ x y)) (+ 1 x)) |
+
+| lambda 2                |                       |
+| ----------------------- | --------------------- |
+| pointer naar definition | pointer naar lambda 1 |
+| y                       | ((+ 1 x) =>) 2        |
+| definition              |                       |
+| (y)                     | (+ x y)               |
+
+Lambda 2 word opgeroepen in de lambda 1 omgeving en er wordt in de oproep x aangeroepen die nu wel bestaat in die omgeving
+
+## Omgevingsmodel let*
+
+## Flip
