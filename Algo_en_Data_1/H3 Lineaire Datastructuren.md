@@ -12,3 +12,5 @@ When traversing the list if (current value > search value) you can stop searchin
 Requires indexing in O(1) and sorted list, so only works in our sorted vectorial implementation.
 Look at the middle element, then repeat with the first/second half if it is greater/lesser than the search element.
 This results in a O(log(n)) search algorithm.
+
+# Ring
