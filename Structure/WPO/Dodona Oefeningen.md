@@ -1114,7 +1114,7 @@ omgevingsmodel:
 
 ## sum & add-c: dynamische scoping
 
-> 12
+> 9
 
 ## let naar lambda
 
@@ -1168,55 +1168,10 @@ Lambda word opgeroepen in de globale omgeving en er wordt in de oproep x aangero
 omgevings model tijdens (foo 1 2 3)
 output:
 >1 2 3
->4 5 3
+>4 3 5
 >4 6 4
->3 5 4
-
-| global    |                        |
-| --------- | ---------------------- |
-| print-abc | pointer naar print-abc |
-| foo       | pointer naar foo       |
-
-| print-abc                |                                                                                 |
-| ------------------------ | ------------------------------------------------------------------------------- |
-| pointer naar definitions | pointer naar global                                                             |
-| definitions              |                                                                                 |
-| (a b c)                  | (display a) (display " ")<br>(display b) (display " ")<br>(display c) (newline) |
-
-| foo                      |                                                                                                                                                                                                                                                              |
-| ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| pointer naar definitions | pointer naar global                                                                                                                                                                                                                                          |
-| a                        | 1                                                                                                                                                                                                                                                            |
-| b                        | 2                                                                                                                                                                                                                                                            |
-| c                        | 3                                                                                                                                                                                                                                                            |
-| definitions              |                                                                                                                                                                                                                                                              |
-| (a b c)                  | (print-abc a b c)<br>  (let ((a 4)<br>        (c 5)<br>        (b c))<br>    (print-abc a b c)<br>    (let ((b 6)<br>          (c a))<br>      (print-abc a b c))<br>    (let ((a b)<br>          (c a))<br>      (print-abc a b c)))<br>  (print-abc a b c) |
-
-| let 1                   |                                                                                                                                             |
-| ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
-| pointer naar definition | pointer naar foo                                                                                                                            |
-| a                       | 4                                                                                                                                           |
-| c                       | 5                                                                                                                                           |
-| b                       | (c =>) 3                                                                                                                                    |
-| definitions             |                                                                                                                                             |
-| (a c b)                 | (print-abc a b c)<br>(let ((b 6)<br>        (c a))<br>      (print-abc a b c))<br>(let ((a b)<br>       (c a))<br>      (print-abc a b c))) |
-
-
-| let 2                   |                    |
-| ----------------------- | ------------------ |
-| pointer naar definition | pointer naar let 1 |
-| b                       | 6                  |
-| c                       | (a =>) 4           |
-| definitions             |                    |
-| (b c)                   | (print-abc a b c)  |
-
-| let 3                   |                    |
-| ----------------------- | ------------------ |
-| pointer naar definition | pointer naar let 1 |
-| a                       | (b =>) 3           |
-| c                       | (a =>) 4           |
-| definition              |                    |
-| (a c)                   | (print-abc a b c)  |
+>3 3 4
+>1 2 3 
 
 ## let* naar lambda
 
@@ -1256,3 +1211,32 @@ Lambda 2 word opgeroepen in de lambda 1 omgeving en er wordt in de oproep x aang
 ## Omgevingsmodel let*
 
 ## Flip
+
+```scheme
+(define (make-flip)
+  (let ((state #f))
+    (lambda ()
+       (set! state (not state))
+       (if state 1 0))))
+(define flip (make-flip))
+```
+
+## Flip: Omgevingsmodel-diagram
+
+
+## Flip: Make-flip
+
+```scheme
+(define (make-flip)
+  (let ((state #f))
+    (lambda ()
+       (set! state (not state))
+       (if state 1 0))))
+(define flip (make-flip))
+```
+
+## Flip: Voorspel
+
+## Twice: omgevingsmodel
+
+## Examen Informatica Partieel januari 1995
