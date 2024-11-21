@@ -1208,6 +1208,10 @@ Lambda 2 word opgeroepen in de lambda 1 omgeving en er wordt in de oproep x aang
 
 ## Omgevingsmodel let*
 
+## Twice: omgevingsmodel
+
+## Examen Informatica Partieel januari 1995
+
 ## sum & add-c: dynamische scoping
 
 > 9
@@ -1244,6 +1248,23 @@ Lambda 2 word opgeroepen in de lambda 1 omgeving en er wordt in de oproep x aang
 
 ## Flip: Voorspel
 
-## Twice: omgevingsmodel
+```scheme
+(define flip (make-flip))
+(define flap1 (flip))
+(define (flap2) (flip))
+(define flap3 flip)
+(define (flap4) flip)
+```
+1. `flap1`: 1
+2. `flap2`: procedure
+3. `flap3`: procedure
+4. `flap4`: procedure
+5. `(flap1)`: error not a procedure
+6. `(flap2)`: 0
+7. `(flap3)`: 1
+8. `(flap4)`: procedure
+9. `flap1`: 1
+10. `(flap3)`: 0
+11. `(flap2)`: 1
 
-## Examen Informatica Partieel januari 1995
+
