@@ -1112,9 +1112,7 @@ omgevingsmodel:
 | pointer naar definitions | pointer naar global |
 | (x y c)                  | (add-c x y)         |
 
-## sum & add-c: dynamische scoping
 
-> 9
 
 ## let naar lambda
 
@@ -1209,6 +1207,15 @@ Omgevingsdiagram van de lambda
 Lambda 2 word opgeroepen in de lambda 1 omgeving en er wordt in de oproep x aangeroepen die nu wel bestaat in die omgeving
 
 ## Omgevingsmodel let*
+
+## sum & add-c: dynamische scoping
+
+> 9
+
+## Dynamische scoping: Voorspel
+
+> 1:  'global
+> 2: 'local
 
 ## Flip
 
