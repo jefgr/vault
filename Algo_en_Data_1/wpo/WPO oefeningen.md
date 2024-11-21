@@ -382,8 +382,7 @@ Manually work out the `sigma-table` used in σ for the pattern `"haahiihaah
 
 ## 2.7.13
 Find an example which illustrates that the worst-case performance characteristic of the QuickSearch algorithm is in O(nt.np).
-
-
+> in de tekst "aaaaaaaaaaaaaaaa" en met het patroon "aaaaza" zal alle posities in de tekst moeten checken dus nt keer en zal altijd tot aan bijna het einde van het patroon moeten doorlopen dus np keer, dit geeft tijdcomplexiteit O(nt.np)
 ## 2.7.14
 The QuickSearch algorithm works better for some kinds of inputs than others. Modify the QuickSearch algorithm and explore for _which kinds of inputs_ this is the case.
     1. Extend the QuickSearch algorithm so that it logs the positions to which the algorithm shifts after a mismatch (i.e. the new value of `i-t`) in a list. The modified algorithm returns a vector of 2 values: (1) the original result of the algorithm, and (2) the accumulated list of positions.
