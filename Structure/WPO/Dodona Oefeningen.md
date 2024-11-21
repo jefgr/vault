@@ -1171,6 +1171,7 @@ output:
 >3 3 4
 >1 2 3 
 
+![[omgevingsmodelLet.png]]
 ## let* naar lambda
 
 ```scheme
@@ -1208,28 +1209,31 @@ Lambda 2 word opgeroepen in de lambda 1 omgeving en er wordt in de oproep x aang
 
 ## Omgevingsmodel let*
 
+![[omgevingsmodelLetSter.png]]
 ## Twice: omgevingsmodel
+
+![[omgevingsmodelTwice.png]]
 
 ## Examen Informatica Partieel januari 1995
 
+![[omgevingsmodelExamen1995.png]]
 ## sum & add-c: dynamische scoping
 
 > 9
 
 ## Dynamische scoping: Voorspel
 
-> 1:  'global
+> 1: 'global
 > 2: 'local
 
 ## Flip
 
 ```scheme
-(define (make-flip)
+(define flip 
   (let ((state #f))
     (lambda ()
        (set! state (not state))
        (if state 1 0))))
-(define flip (make-flip))
 ```
 
 ## Flip: Omgevingsmodel-diagram
