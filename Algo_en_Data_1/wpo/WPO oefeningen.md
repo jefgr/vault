@@ -337,4 +337,93 @@ Suppose that we allow patterns to contain “holes” indicated by `*`. E.g., t
 ```
 
 ## 2.7.8
-Papa, mama, ...
+Find 2 common words in your mother tongue that contain repetitions of at least 2 characters. In some languages, entire words can occur several times as constituents of a composite word.
+> Papa, mama, ...
+
+## 2.7.9
+Study the application of the KMP algorithm for the pattern `"ABCDABD"` and the text `"ABC ABCDAB ABCDABCDABDE"`. Extend the code of the algorithm with `display` instructions in order to display it and ip throughout the iterations. Use the generated trace to graphically show the consecutive alignments of the pattern against the text.
+
+```scheme
+; print function that must be added to the algorithm in match before the cond in the named let
+(define (print-t-p t p i-t)
+  (begin
+    (display t)
+    (newline)
+    (display (make-string i-t #\space))
+    (display p)
+    (newline)
+    (display "---")
+    (newline)))
+```
+
+## 2.7.10
+What is the procedure type of the `compute-failure-function` procedure?
+
+```scheme
+(string -> (number -> number))
+```
+
+## 2.7.11
+Manually work out the `sigma-table` used in σ for the pattern `"abracadabra"`. Verify your answer using the procedure `compute-failure-function`.
+
+> sigma-table
+
+| a   | b   | r   | a   | c   | a   | d   | a   | b   | r   | a   |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| -1  | 0   | 0   | 0   | 1   | 0   | 1   | 0   | 1   | 2   | 3   |
+## 2.7.12
+Manually work out the `sigma-table` used in σ for the pattern `"haahiihaahaahii"`. Verify your answer using the procedure `compute-failure-function`.
+
+> sigma-table
+
+| h   | a   | a   | h   | i   | i   | h   | a   | a   | h   | a   | a   | h   | i   | i   |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| -1  | 0   | 0   | 0   | 1   | 0   | 0   | 1   | 2   | 3   | 4   | 2   | 3   | 4   | 5   |
+
+## 2.7.13
+Find an example which illustrates that the worst-case performance characteristic of the QuickSearch algorithm is in O(nt.np).
+
+
+## 2.7.14
+The QuickSearch algorithm works better for some kinds of inputs than others. Modify the QuickSearch algorithm and explore for _which kinds of inputs_ this is the case.
+    1. Extend the QuickSearch algorithm so that it logs the positions to which the algorithm shifts after a mismatch (i.e. the new value of `i-t`) in a list. The modified algorithm returns a vector of 2 values: (1) the original result of the algorithm, and (2) the accumulated list of positions.
+    2. Run your modified algorithm with the following two inputs of similar length.
+        - Input 1   
+            - Text: `"GGCAGCACGATCGCATGTCCCACGTGAACCATTGGTAAACCCTGTGGCCTGTGAGCGACAAAAGCTTTAATGGGAAATTCGCGCCCATAACTTGGTCCGAATACGGGTCCTAGCAACGTTCGTCTGAGTTTGATCTATATAATACGGGCGGTATGTCTGCTTTGATCAACCTCCAATAGCTCGTATGATAGTGCACCCGCTGGTGATCACTCAATGATCTGGGCTCCCCGTTGCAACTACGGGGATTTTTCGAGACCGACCTGCGTTCGGCATTGTGGGCACAGTGAAGTATTAGCAAACGTTAAGTCCCGAACTAGATGTGACCTAACGGTAAGAGAATTTCATAATACGTCCTGCCGCACGCGCAAGGTACATTTGGAAGTATTGAATGGACTCTGATCAACCTTCACACCGATCTAGAATCGAATGCGTAGATCAGCCAGGTGCAAACCAAAAATTCTAGGTTACTAGAAGTTTTGCGACGTTCTAAGTGTTGGACGAAATGATTCGCGACCCAGGATGAGGTCGCCCTAAAAAATAGATTTCTGCAACTCTCCTCGTGAGCAGTCTGGTGTATCGAAAGTACAGGACTAGCCTTCCTAGCAACCGCGGGCTGGGAGTCTGAGACATCACTCAAGATATATGCTCGGTAACGTATGCTCTAGCCATCTAACTATTCCCTATGTCTTATAGGGGCCTACGTTATCTGCCTGTCGAACCATAGGATTCGCGTCAGCGCGCAGGCTTGGATCGAGATGAAATCTCCGGAGCCTAAGACCACGAGCGTCTGGCGTCTTGGCTAATCCCCCTACATGTTGTTATAAACAATCAGTGGAAACTCAGTGCTAGAGGGTGGAGTGACCTTAAATCAAGGACGATATTAATCGGAAGGAGTATTCAACGCAATGAAGTCGCAGGGTTGACGTGGGAATGGTGCTTCTGTCCAAACAGGTAAGGGTATGAGGCCGCAACCGTCCCCCAAGCGTACAGGGTGCACTT"`  
+            - Pattern: `"GCAACCGTCCCCCAAGCGTACA"`
+        - Input 2
+            - Text: `"Once upon a time, in a quaint village nestled between rolling hills and lush forests, there was a small community of artisans and farmers. The villagers were known for their craft and the quality of their produce. Every morning, the marketplace bustled with activity as people exchanged goods, shared stories, and formed bonds over the freshest bread, the ripest fruits, and the most intricate handcrafted items. Among them was a young blacksmith named Eric, whose reputation for creating the finest tools had spread far and wide. Eric was not only skilled in his craft but also known for his kindness and willingness to help anyone in need. One summer, as the village prepared for the annual harvest festival, Eric found himself particularly busy, fulfilling orders and repairing tools to ensure everything was ready for the celebrations. The festival was a time for joy, gratitude, and a showcase of the village's talents, drawing visitors from neighboring towns and far-off places."`      
+            - Pattern: `"drawing visitors"`
+    3. Based on your findings, can you determine for which kind of input QuickSearch works better, and why?
+
+> 1.
+> See also a-d/patternmatching/quicksearch.rkt
+```scheme
+(define (quickmatch t p) ;quicksearch with shift position output
+  (define n-t (string-length t))
+  (define n-p (string-length p))
+  (define shift (compute-shift-function p))
+  (define pos-list '()) ; empty list define
+  (let loop
+    ((i-t 0)
+     (i-p 0))
+    (cond 
+      ((> i-p (- n-p 1))
+       (list i-t (reverse pos-list))) ; return with the reversed list
+      ((> i-t (- n-t n-p))
+       (list #f (reverse pos-list))) ; return with the reversed list
+      ((eq? (string-ref t (+ i-t i-p)) (string-ref p i-p))
+       (loop i-t (+ i-p 1)))
+      (else
+       (let ((c-t (string-ref t (modulo (+ i-t n-p) n-t))))
+         (set! pos-list (cons (+ i-t (shift c-t)) pos-list)) ; fill the list 
+         (loop (+ i-t (shift c-t)) 0))))))))
+```
+> 2.
+> Output 1:
+> _(967 (2 6 8 9 13 17 19 21 26 28 33 35 36 38 39 40 41 46 47 48 52 53 54 55 59 61 63 65 69 73 77 78 79 83 88 92 93 94 96 100 104 105 110 111 115 119 120 124 129 133 137 139 143 147 149 153 154 158 162 163 167 168 173 175 177 179 184 188 192 196 198 203 205 207 212 213 214 216 217 219 224 228 230 231 236 237 239 243 247 252 257 259 261 266 271 272 277 279 283 288 293 294 299 304 305 306 308 313 314 319 323 324 325 329 333 338 339 341 343 345 346 351 352 356 361 362 366 367 371 373 375 380 381 383 387 389 391 396 397 402 407 409 413 417 419 420 425 426 427 428 430 431 432 433 434 435 439 440 445 447 448 453 457 459 460 462 466 467 468 473 478 479 480 481 485 489 494 495 500 501 506 508 510 511 512 513 514 515 516 520 524 528 529 531 533 535 539 544 549 554 558 559 560 565 570 571 576 578 582 583 584 586 591 593 598 602 603 608 610 612 614 615 620 621 625 627 632 637 639 641 642 647 649 650 651 653 654 658 660 661 665 669 670 675 677 678 680 684 686 691 695 696 698 699 703 704 708 710 714 716 718 720 725 730 735 740 742 744 749 751 752 753 758 760 761 766 770 775 780 781 785 787 791 795 800 801 802 803 805 806 810 814 815 816 818 820 825 826 831 835 840 842 846 850 855 856 860 861 862 866 867 868 873 874 878 879 881 883 884 888 893 894 899 904 909 913 918 922 924 925 926 928 933 938 942 947 948 949 951 956 958 959 960 965 967))_
+> Output 2:
+>_(925 (17 34 51 60 69 78 79 88 105 106 120 121 138 155 160 174 188 197 206 208 213 217 234 251 265 279 296 312 320 337 354 363 380 391 395 412 426 443 456 461 464 481 482 486 489 498 512 529 540 549 551 568 577 594 599 600 601 610 624 641 645 653 670 684 693 710 727 744 747 764 773 782 790 800 817 821 822 839 840 849 852 869 880 881 898 899 908 917 925))_
+>3.
+>Quicksearch works best for texts and patterns without a lot of repeated characters. This is the case in written english but is not the case when analysing DNA-sequences (a lot of repeating characters in both pattern and text)
+
