@@ -1,4 +1,6 @@
 [[wpo1-slides-studenten.pdf]]
+
+**See alsp a-d/disk/disk-wpo1.rkt**
 # Exercise 1
 What is the number of blocks needed on a 4 GiB* disk when the block size is 512 bytes?
 1 block / 512 bytes
