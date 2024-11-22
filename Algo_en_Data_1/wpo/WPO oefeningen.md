@@ -426,3 +426,99 @@ The QuickSearch algorithm works better for some kinds of inputs than others. Mod
 >3.
 >Quicksearch works best for texts and patterns without a lot of repeated characters. This is the case in written english but is not the case when analysing DNA-sequences (a lot of repeating characters in both pattern and text)
 
+
+# Hoofdstuk 3
+
+**See also wpo/libraries/wpo_h3.rkt**
+## 3.6.1
+Write Scheme expressions for the headed lists and headed vectors shown in Figure 3.5. Based on the drawings, try to distill a meaningful semantics for the extra information stored.
+Figure 3.5:
+![[figure3_5AD1.png|400]]
+```scheme
+(define-record-type exercise-c
+  (new a b c)
+  exercise-c?
+  (a get-a set-a!)
+  (b get-b set-b!)
+  (c get-c set-c!))
+
+
+(define ex-c (let ((the-last-cell (list 7))
+                   (the-list (list -5 -8 -1 6 2 0)))
+               (new the-last-cell
+                    3
+                    (append the-list the-last-cell))))
+```
+
+## 3.6.2
+- Pick any implementation of the positional-list ADT (i.e. deciding on P is up to you) and use the operations of the ADT to construct the list `'("hello" "world" "and" "goodday" "to" "me")` by adding the words in the following order: `"and"`, `"me"`, `"to"`, `"goodday"`, `"hello"`, `"world"`.
+- Write a procedure which runs over the elements of the list and which counts the number of words that contain an `#\e`. Use a pattern matching algorithm of [Chapter 2](https://soft.vub.ac.be/~jnicolay/courses/ad1/html-dynamic/index.html#stringprocessing).
+
+```scheme
+#lang r7rs
+(import (scheme base)
+        (scheme write)
+        (prefix (a-d positional-list augmented-double-linked-positional-list) adlp:)
+        (prefix (a-d pattern-matching quicksearch) quick:)) ; part 2
+
+(define (plist-display l)
+  (adlp:for-each l (lambda (element)
+                     (display element)
+                     (display #\space)))
+  (newline))
+
+
+(define list (adlp:new string=?))
+
+(adlp:add-before! list "and")
+(adlp:add-after! list "me")
+(adlp:add-after! list "to" (adlp:first list))
+(adlp:add-after! list "goodday" (adlp:first list))
+(adlp:add-before! list "hello")
+(adlp:add-after! list "world" (adlp:first list))
+
+(define (find-e plist) ; part 2
+  (let ((count 0))
+    (adlp:for-each plist (lambda (element)
+                           (if (quick:match element (string #\e))
+                               (set! count (+ count 1)))))
+    count))
+```
+
+## 3.6.3
+Use your positional list of the previous exercise. Use `map` to generate a positional list of pairs (i.e. V=pair) that consists of a string and its length. In order to do so, define your own procedure `pair-eq?` that declares two pairs equal whenever they store the same number in their cdr. Subsequently , apply `find` in order to locate the word whose length is 7.
+
+```scheme
+(define (pair-eq? x y)
+  (equal? (cdr x) (cdr y)))
+
+   
+(define pair-list (adlp:map my-list
+                            (lambda (x) (cons x (string-length x)))
+                            pair-eq?))
+; REPL
+> (adlp:find pair-list (cons " " 7))
+```
+
+## 3.6.4
+The implementation of the positional-list ADT as a double-linked list defines a list-node record. Replace this record with ordinary Scheme functions that have the same functionality as the original list-node record. In other words, after removing the list-node record, all other code works the same as before.
+> **See also a-d/positional-list/double-linked-list.rkt**
+```scheme
+; alternative with vectors instead of records
+(define (make-list-node v p n) (vector 'node v p n))
+(define (list-node? node) (eq? (vector-ref node 0) 'node))
+(define (list-node-val node) (vector-ref node 1))
+(define (list-node-val! node v) (vector-set! node 1 v))
+(define (list-node-prev node) (vector-ref node 2))
+(define (list-node-prev! node v) (vector-set! node 2 v))
+(define (list-node-next node) (vector-ref node 3))
+(define (list-node-next! node v) (vector-set! node 3 v))
+
+; original:
+(define-record-type list-node
+  (make-list-node v p n)
+  list-node?
+  (v list-node-val list-node-val!)
+  (p list-node-prev list-node-prev!)
+  (n list-node-next list-node-next!))
+```
