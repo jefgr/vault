@@ -1,7 +1,7 @@
 #lang r7rs
 (import (scheme base)
         (scheme write)
-        (prefix (a-d positional-list double-linked-positional-list) adlp:)
+        (prefix (a-d positional-list double-linked-positional-list) dlp:)
         (prefix (a-d pattern-matching quicksearch) quick:))
 
 ; 3.6.1
@@ -21,24 +21,24 @@
 ; 3.6.2
 ; part 1
 (define (plist-display l)
-  (adlp:for-each l (lambda (element)
+  (dlp:for-each l (lambda (element)
                      (display element)
                      (display #\space)))
   (newline))
 
 
-(define my-list (adlp:new string=?))
+(define my-list (dlp:new string=?))
 
-(adlp:add-before! my-list "and")
-(adlp:add-after! my-list "me")
-(adlp:add-after! my-list "to" (adlp:first my-list))
-(adlp:add-after! my-list "goodday" (adlp:first my-list))
-(adlp:add-before! my-list "hello")
-(adlp:add-after! my-list "world" (adlp:first my-list))
+(dlp:add-before! my-list "and")
+(dlp:add-after! my-list "me")
+(dlp:add-after! my-list "to" (dlp:first my-list))
+(dlp:add-after! my-list "goodday" (dlp:first my-list))
+(dlp:add-before! my-list "hello")
+(dlp:add-after! my-list "world" (dlp:first my-list))
 ; part 2
 (define (find-e plist)
   (let ((count 0))
-    (adlp:for-each plist (lambda (element)
+    (dlp:for-each plist (lambda (element)
                            (if (quick:match element (string #\e))
                                (set! count (+ count 1)))))
     count))
@@ -48,7 +48,7 @@
   (equal? (cdr x) (cdr y)))
 
    
-(define pair-list (adlp:map my-list
+(define pair-list (dlp:map my-list
                             (lambda (x) (cons x (string-length x)))
                             pair-eq?))
 
