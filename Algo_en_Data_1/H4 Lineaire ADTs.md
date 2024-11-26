@@ -20,3 +20,4 @@ peek
 serve!
 ```
 # 4. Heaps
+Bewijzen van tijdscomplexiteit kennen (heapify)

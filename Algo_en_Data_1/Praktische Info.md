@@ -9,3 +9,5 @@ Prof:
 	- 5% dodona (indiviueel)
 - tweede zit
 	- 100% examen (50% oefeningen, 50% theorie schriftelijk, gesloten boek)
+
+Minstens 1 bewijs op het examen
