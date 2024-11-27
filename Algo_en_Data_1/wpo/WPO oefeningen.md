@@ -522,3 +522,16 @@ The implementation of the positional-list ADT as a double-linked list defines 
   (p list-node-prev list-node-prev!)
   (n list-node-next list-node-next!))
 ```
+
+## 3.6.5
+Write a procedure which takes two positional-list arguments and which returns a positional-list that only contains the data elements contained by both argument lists (i.e. the intersection of both input lists).
+> **See also libraries/wpo_h3.rkt**
+```scheme
+(define (intersect plist1 plist2)
+  (define pout (dlp:new =))
+  (dlp:for-each plist1 (lambda (el) (if (dlp:find plist2 el) (dlp:add-after! pout el))))
+  pout)
+```
+
+## 3.6.7
+Implement a procedure `ternary-search` that resembles binary search except that it divides a sorted list in three instead of two parts in every phase of the iteration. What is the worst-case performance characteristic of your procedure? Can you identify the price to pay for the improvement? (_hint:_ what does the implementation look like for 4-ary, 5-ary, 6-ary, ... searching?)
