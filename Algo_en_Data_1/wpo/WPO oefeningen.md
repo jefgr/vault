@@ -535,3 +535,61 @@ Write a procedure which takes two positional-list arguments and which returns 
 
 ## 3.6.7
 Implement a procedure `ternary-search` that resembles binary search except that it divides a sorted list in three instead of two parts in every phase of the iteration. What is the worst-case performance characteristic of your procedure? Can you identify the price to pay for the improvement? (_hint:_ what does the implementation look like for 4-ary, 5-ary, 6-ary, ... searching?)
+> **See also libraries/wpo_h3.rkt
+> 		a-d/sorted-list/vectorial.rkt**
+
+```scheme
+; binary
+(define (find! slst key)
+      (define ==? (equality slst))
+      (define <<? (lesser slst))
+      (define vect (storage slst))
+      (define leng (size slst))
+      (let binary-search
+        ((left 0)
+         (right (- leng 1)))
+        (if (<= left right)
+            (let ((mid (quotient (+ left right 1) 2)))
+              (cond
+                ((==? (vector-ref vect mid) key)
+                 (current! slst mid))
+                ((<<? (vector-ref vect mid) key)
+                 (binary-search (+ mid 1) right))
+                (else
+                 (binary-search left (- mid 1)))))
+            (current! slst -1)))
+      slst)
+
+; ex 3.6.7
+(define (find-ternary! slst key)
+	(define ==? (equality slst))
+	(define <<? (lesser slst))
+	(define vect (storage slst))
+	(define leng (size slst))
+	(let ternary-search
+		((left 0)
+		 (right (- leng 1)))
+		(if (<= left right)
+			(let ((fmid (+ left (quotient (- right left) 3)))
+				  (smid (+ left (* (quotient (- right left) 3) 2))))
+			  (cond
+				((==? (vector-ref vect fmid) key)
+				 (current! slst fmid))
+				((==? (vector-ref vect smid) key)
+				 (current! slst smid))
+				((<<? (vector-ref vect smid) key)
+				 (ternary-search (+ smid 1) right))
+				((<<? key (vector-ref vect fmid))
+				 (ternary-search left (- fmid 1)))
+				(else
+				 (ternary-search (+ fmid 1) (- smid 1)))))
+			(current! slst -1)))
+	  slst)
+```
+
+> [geeksforgeeks explaination](https://www.geeksforgeeks.org/binary-search-preferred-ternary-search/)
+>  It looks like the performance will improve, but the amount of comparisons will increase faster than that the recursion reduces.
+>  In AD3 we will see an exception where there will be improvements.
+
+## 3.6.8
+Write a procedure `sort` which takes a plain Scheme list and which returns a new list that consists of the same elements but in sorted order. Use the sorted-list ADT to implement your procedure. What is the worst-case performance characteristic of your implementation?
