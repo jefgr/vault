@@ -1272,3 +1272,32 @@ Lambda 2 word opgeroepen in de lambda 1 omgeving en er wordt in de oproep x aang
 # Objectgebaseerd Programmeren
 
 ## Random: Simpele Generator
+
+```scheme
+(define (make-random m a seed)
+  (let ((xi seed))
+    (lambda ()
+      (set! xi (modulo (* xi a) m))
+      (exact->inexact (/ xi m)))))
+```
+
+## Random: Generator met berichten
+
+```scheme
+(define (make-random m a seed)
+  (let ((xi seed))
+    (lambda (args)
+      (cond ((eq? 'generate args)
+             (lambda ()
+               (set! xi (modulo (* xi a) m))
+               (exact->inexact (/ xi m))))
+            ((eq?  args 'reset)
+             (lambda (new-seed)
+               (set! xi seed)))))))
+```
+
+## Examen Wiskunde Partieel januari 1995
+
+```scheme
+
+```
