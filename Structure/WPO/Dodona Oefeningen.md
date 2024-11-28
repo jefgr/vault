@@ -1,4 +1,4 @@
-#dodona #oefeningen
+ #dodona #oefeningen
 # Eenvoudige Procedures
 ### Van infix- naar prefixnotatie
 ```scheme
@@ -1112,8 +1112,6 @@ omgevingsmodel:
 | pointer naar definitions | pointer naar global |
 | (x y c)                  | (add-c x y)         |
 
-
-
 ## let naar lambda
 
 ```scheme
@@ -1238,7 +1236,7 @@ Lambda 2 word opgeroepen in de lambda 1 omgeving en er wordt in de oproep x aang
 
 ## Flip: Omgevingsmodel-diagram
 
-
+![[omgevingsmodelFlip.png]]
 ## Flip: Make-flip
 
 ```scheme
@@ -1271,4 +1269,6 @@ Lambda 2 word opgeroepen in de lambda 1 omgeving en er wordt in de oproep x aang
 10. `(flap3)`: 0
 11. `(flap2)`: 1
 
+# Objectgebaseerd Programmeren
 
+## Random: Simpele Generator
