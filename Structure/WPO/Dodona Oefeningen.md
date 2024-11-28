@@ -1299,5 +1299,50 @@ Lambda 2 word opgeroepen in de lambda 1 omgeving en er wordt in de oproep x aang
 ## Examen Wiskunde Partieel januari 1995
 
 ```scheme
+(define (make-counter initial)
+  (define (increase!)
+    (set! initial (+ initial 1)))
+ 
+  (define (decrease!)
+    (set! initial (- initial 1)))
+ 
+  (define (dispatch m)
+    (cond ((eq? m 'increase!) increase!)
+          ((eq? m 'decrease!) decrease!)
+          ((eq? m 'read) initial)
+          (else (display "wrong message"))))
+ 
+  dispatch)
 
+(define (make-parking capacity1 capacity2)
+  (let ((cars1 0)
+        (cars2 0))
+    (define (full?)
+      (if (and (= cars1 capacity1) (= cars2 capacity2)) #t #f))
+
+    (define (empty?)
+      (if (and (= cars1 0) (= cars2 0)) #t #f))
+
+    (define (level)
+      (if (= cars1 capacity1) 2 1))
+
+    (define (car-enters!)
+      (cond ((< cars1 capacity1) (set! cars1 (+ cars1 1)))
+            ((< cars2 capacity2) (set! cars2 (+ cars2 1)))
+            (else #f)))
+
+    (define (car-leaves!)
+      (cond ((> cars1 0) (set! cars1 (- cars1 1)))
+            ((> cars2 0) (set! cars2 (- cars2 1)))
+            (else #f)))
+
+    (define (dispatch m)
+      (cond ((eq? m 'full?) (full?))
+            ((eq? m 'empty?) (empty?))
+            ((eq? m 'level) (level))
+            ((eq? m 'car-enters!) car-enters!)
+            ((eq? m 'car-leaves!) car-leaves!)))
+    dispatch))
 ```
+
+## Examen januari 2018
