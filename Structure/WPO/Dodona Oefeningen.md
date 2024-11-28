@@ -1346,3 +1346,52 @@ Lambda 2 word opgeroepen in de lambda 1 omgeving en er wordt in de oproep x aang
 ```
 
 ## Examen januari 2018
+
+### Laadpaal
+
+```scheme
+(define (maak-laadstation)
+  (let ((auto #f)
+        (stroom 0))
+    (define (withdraw! number)
+      (set! stroom (+ stroom number)))
+    (define (koppel! new-auto)
+      (set! auto new-auto))
+    (define (ontkoppel!)
+      (set! auto #f))
+    (define (vrij?)
+      (not auto))
+    (define (dispatch m . args)
+      (cond ((eq? m 'withdraw!) (withdraw! (car args)))
+            ((eq? m 'koppel!) (koppel! (car args)))
+            ((eq? m 'ontkoppel!) (ontkoppel!))
+            ((eq? m 'vrij?) (vrij?))))
+    dispatch))
+```
+
+### Auto
+
+```scheme
+(define (maak-auto capaciteit)
+  (let ((current-battery capaciteit)
+        (laadpaal #f))
+    (define (charge)
+      current-battery)
+    (define (charge!)
+      (set! current-battery capaciteit))
+    (define (koppel! laadstation)
+      (set! laadpaal laadstation)
+      (laadstation 'koppel! dispatch))
+    (define (ontkoppel!)
+      (laadpaal 'ontkoppel!)
+      (set! laadpaal #f))
+    (define (dispatch m . args)
+      (cond ((eq? m 'charge) (charge))
+            ((eq? m 'charge!) (charge!))
+            ((eq? m 'koppel!) (koppel! (car args)))
+            ((eq? m 'ontkoppel!) (ontkoppel!))
+            (else (display "Wrong message"))))
+    dispatch))
+```
+
+###
