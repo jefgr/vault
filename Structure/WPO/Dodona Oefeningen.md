@@ -1395,3 +1395,120 @@ Lambda 2 word opgeroepen in de lambda 1 omgeving en er wordt in de oproep x aang
 ```
 
 ### Laadpark
+
+```scheme
+(define (maak-laadpark n)
+  (let ((laadpalen (make-vector n)))
+    (define (full?)
+      (not (find-empty)))
+    (define (find-empty)
+      (let loop ((i 0))
+        (cond ((= i n) #f)
+              (((vector-ref laadpalen i) 'vrij?)
+               i)
+              (else
+               (loop (+ i 1))))))
+    (define (enter! auto)
+      (cond ((full?) #f)
+            (else
+             (let ((id (find-empty)))
+               (auto 'koppel! (vector-ref laadpalen id)))
+             #t)))
+    (define (dispatch m . args)
+      (cond ((eq? m 'full?) (full?))
+            ((eq? m 'enter!) (enter! (car args)))
+            (else (display "wrong message"))))
+    (let loop ((i 0))
+        (cond ((= i n))
+              (else
+               (vector-set! laadpalen i (maak-laadstation))
+               (loop (+ i 1)))))
+    dispatch
+    ))
+```
+
+### Gebruik van objecten
+Volledige code samen
+```scheme
+(define (maak-laadstation)
+  (let ((auto #f)
+        (stroom 0))
+    (define (withdraw! number)
+      (set! stroom (+ stroom number)))
+    (define (koppel! new-auto)
+      (set! auto new-auto))
+    (define (ontkoppel!)
+      (set! auto #f))
+    (define (vrij?)
+      (not auto))
+    (define (dispatch m . args)
+      (cond ((eq? m 'withdraw!) (withdraw! (car args)))
+            ((eq? m 'koppel!) (koppel! (car args)))
+            ((eq? m 'ontkoppel!) (ontkoppel!))
+            ((eq? m 'vrij?) (vrij?))))
+    dispatch))
+
+(define (maak-auto capaciteit)
+  (let ((current-battery capaciteit)
+        (laadpaal #f))
+    (define (charge)
+      current-battery)
+    (define (charge!)
+      (set! current-battery capaciteit))
+    (define (koppel! laadstation)
+      (set! laadpaal laadstation)
+      (laadstation 'koppel! dispatch))
+    (define (ontkoppel!)
+      (laadpaal 'ontkoppel!)
+      (set! laadpaal #f))
+    (define (dispatch m . args)
+      (cond ((eq? m 'charge) (charge))
+            ((eq? m 'charge!) (charge!))
+            ((eq? m 'koppel!) (koppel! (car args)))
+            ((eq? m 'ontkoppel!) (ontkoppel!))
+            (else (display "Wrong message"))))
+    dispatch))
+
+(define (maak-laadpark n)
+  (let ((laadpalen (make-vector n)))
+    (define (full?)
+      (not (find-empty)))
+    (define (find-empty)
+      (let loop ((i 0))
+        (cond ((= i n) #f)
+              (((vector-ref laadpalen i) 'vrij?)
+               i)
+              (else
+               (loop (+ i 1))))))
+    (define (enter! auto)
+      (cond ((full?) #f)
+            (else
+             (let ((id (find-empty)))
+               (auto 'koppel! (vector-ref laadpalen id)))
+             #t)))
+    (define (dispatch m . args)
+      (cond ((eq? m 'full?) (full?))
+            ((eq? m 'enter!) (enter! (car args)))
+            (else (display "wrong message"))))
+    (let loop ((i 0))
+        (cond ((= i n))
+              (else
+               (vector-set! laadpalen i (maak-laadstation))
+               (loop (+ i 1)))))
+    dispatch
+    ))
+
+(define auto1 (maak-auto 10))
+(define auto2 (maak-auto 10))
+(define auto3 (maak-auto 10))
+(define laadpark (maak-laadpark 2))
+
+(laadpark 'enter! auto1)
+(laadpark 'enter! auto2)
+(laadpark 'enter! auto3)
+(auto1 'ontkoppel!)
+(laadpark 'enter! auto2)
+```
+
+# Bomen en operaties op bomen: Boominterpretatie van Geneste Lijsten
+
