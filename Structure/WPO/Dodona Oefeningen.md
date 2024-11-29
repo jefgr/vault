@@ -1530,7 +1530,6 @@ Volledige code samen
 ```scheme
 (define (atom? x)
   (not (pair? x)))
-    
 (define (leaf-count lst)
   (cond ((null? lst) 0)
         ((atom? lst) 1)
@@ -1539,3 +1538,36 @@ Volledige code samen
 ```
 
 ## Diepte en bladeren van een boom: Diepte
+
+```scheme
+(define (atom? x)
+  (not (pair? x)))
+(define (depth lst)
+  (cond ((null? lst) 0)
+        ((atom? lst) 0)
+        (else (max (+ 1 (depth (car lst)))
+                   (depth (cdr lst))))))
+```
+
+## Diepte en bladeren van een boom: Combinatie
+
+```scheme
+(define (atom? x)
+  (not (pair? x)))
+(define (depth-and-leaf-count tree)
+  (define count 0)
+  (cons
+   (let loop
+     ((lst tree))
+     (cond ((null? lst)
+            0)
+           ((atom? lst)
+            (set! count (+ count 1))
+            0)
+           (else
+            (max (+ 1 (loop (car lst)))
+                 (loop (cdr lst))))))
+   count))
+```
+
+## Fringe
