@@ -1571,3 +1571,36 @@ Volledige code samen
 ```
 
 ## Fringe
+
+```scheme
+(define (atom? x)
+  (not (pair? x)))
+(define (fringe tree)
+  (define out '())
+  (let loop ((lst tree))
+    (cond ((null? lst))
+          ((atom? lst) (set! out (cons lst out)))
+          (else (loop (car lst))
+                (loop (cdr lst)))))
+  (reverse out))
+; Alternatieve versie
+(define (fringe2 lst)
+  (cond ((null? lst) '())
+        ((atom? lst) (list lst))
+        (else (append (fringe2 (car lst))
+                      (fringe2 (cdr lst))))))
+```
+
+
+## Structuur vergelijken
+
+```scheme
+(define (atom? x)
+  (not (pair? x)))
+(define (same-structure? l1 l2)
+  (cond ((and (null? l1) (null? l2) #t))
+        ((and (atom? l1) (atom? l2) #t))
+        ((or (null? l1) (null? l2) (atom? l1) (atom? l2)) #f)
+        (else (and (same-structure? (car l1) (car l2))
+                   (same-structure? (cdr l1) (cdr l2))))))
+```
