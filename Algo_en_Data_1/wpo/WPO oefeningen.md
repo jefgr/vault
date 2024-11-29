@@ -613,3 +613,92 @@ Write a procedure `sort` which takes a plain Scheme list and which returns a n
 
 ## 4.5.1
 Implement a procedure `postfix-eval` that evaluates a Scheme list representing expressions in postfix notation. For example, `(postfix-eval '(5 6 +))` should return 11 and `(postfix-eval '(5 6 + 7 -))` should return 4. You can use the predicate `number?` to test whether or not a Scheme value is a number.
+> **See also wpo/libraries/wpo_h4.rkt**
+```scheme
+(define (postfix-eval args)
+  (define stk (stack:new))
+  (let loop
+    ((arg args))
+    (cond ((number? (car arg))
+           (stack:push! stk (car arg)))
+          (else
+           (let empty-stack ((lst '()))
+             (cond ((stack:empty? stk)
+                    (stack:push! stk (apply (car arg) lst)))
+                   (else
+                    (empty-stack (cons (stack:pop! stk) lst)))))))
+    (if (null? (cdr arg))
+        (stack:pop! stk)
+        (loop (cdr arg)))))
+```
+
+## 4.5.2
+XML is a language that allows one to represent documents by including data it in arbitrarily deep nestings of “parentheses”. Instead of using real parentheses like `(` and `)` or `[` and `]`, XML allows us to define our own parentheses. Every string that is included in angular brackets `<` and `>` is considered to be an “opening” parenthesis. The corresponding closing parenthesis uses an additional slash in front of the string. For example, `<open>` is an opening parenthesis. Its corresponding closing parenthesis is `</open>`. For example, the list `'(<html> <head> This is the head </head> <body> And this is the body </body> </html>)` could be a valid XML document. Notice that we can nest these “parentheses” in an arbitrarily deep way. Write a procedure `(valid? lst)` that takes a list of Scheme symbols and that checks whether or not the list constitutes a valid XML document. You will need `symbol->string` to convert the symbols to strings which you can further investigate using `string-length` and `string-ref`. Write auxiliary procedures `opening-parenthesis?` and `closing-parenthesis?` that check whether or not a given symbol is an opening or closing parenthesis. Also write a procedure `matches?` that takes two symbols and that checks whether they both represent an opening parenthesis and its matching closing parenthesis. The `substring` procedure, explained in [Chapter 2](https://soft.vub.ac.be/~jnicolay/courses/ad1/html-dynamic/index.html#stringprocessing), may simplify your procedures.
+> **See also wpo/libraries/wpo_h4.rkt**
+```scheme
+(define (opening-parenthesis? symbol)
+  (let ((str (symbol->string symbol)))
+    (if (and (eq? #\< (string-ref str 0))
+             (not (eq? #\/ (string-ref str 1)))
+             (eq? #\> (string-ref str (- (string-length str) 1))))
+        #t
+        #f)))
+
+(define (closing-parenthesis? symbol)
+  (let ((str (symbol->string symbol)))
+    (if (and (eq? #\< (string-ref str 0))
+             (eq? #\/ (string-ref str 1))
+             (eq? #\> (string-ref str (- (string-length str) 1))))
+        #t
+        #f)))
+
+(define (matches? sopen sclose)
+  (let ((strO (symbol->string sopen))
+        (strC (symbol->string sclose)))
+    (if (equal? (substring strO 1)
+             (substring strC 2))
+        #t
+        #f)))
+
+(define (valid? lst)
+  (define stk (stack:new))
+  (let loop
+    ((current-lst lst))
+    (if (null? current-lst)
+        (stack:empty? stk)
+        (let ((tag (car current-lst)))
+          (cond ((opening-parenthesis? tag)
+                 (stack:push! stk tag)
+                 (loop (cdr current-lst)))
+                ((closing-parenthesis? tag)
+                 (if (matches? (stack:pop! stk) tag)
+                     (loop (cdr current-lst))
+                     #f))
+                 (else
+                  (loop (cdr current-lst))))))))
+```
+
+## 4.5.3
+The Josephus Problem for a given number m is a mathematical problem where n people, numbered 1 to n sit in a circle. Starting at person 1, we count m people in a circular way. The last person in the count is removed from the circle[2](https://soft.vub.ac.be/~jnicolay/courses/ad1/html-dynamic/index.html#auto:69) after which we start counting m people again starting at the person sitting next to the person that was removed. And so on. The circle is getting smaller and smaller and the person that remains wins[3](https://soft.vub.ac.be/~jnicolay/courses/ad1/html-dynamic/index.html#auto:71). It is possible to solve the Josephus problem in a mathematical way. However, in this exercise we will write a simulation procedure `josephus` that takes n and m and which sets up an iterative process to simulate the flow of events and which returns the number of the winning person. Use the queue ADT to formulate the procedure.
+> **See also wpo/libraries/wpo_h4.rkt**
+```scheme
+(define (josephus n m)
+  (define q (queue:new))
+  (let loop
+    ((current 1))
+    (queue:enqueue! q current)
+    (if (< current n)
+        (loop (+ current 1))))
+  (let loopm
+    ((currentm 1))
+    (cond ((= currentm m)
+           (let ((maybelast (queue:serve! q)))
+             (display maybelast) (newline)
+             (if (queue:empty? q)
+                 maybelast
+                 (loopm 1))))
+          (else
+           (queue:enqueue! q (queue:serve! q))
+           (loopm (+ currentm 1))))))
+```
+
