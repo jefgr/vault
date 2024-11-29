@@ -593,3 +593,23 @@ Implement a procedure `ternary-search` that resembles binary search except tha
 
 ## 3.6.8
 Write a procedure `sort` which takes a plain Scheme list and which returns a new list that consists of the same elements but in sorted order. Use the sorted-list ADT to implement your procedure. What is the worst-case performance characteristic of your implementation?
+> **See also wpo/libraries/wpo_h3.rkt**
+```scheme
+(define (sort list <<? ==?)
+  (let* ((>>? (lambda (x y) (not (<<? x y))))
+         (slist (sorted:from-scheme-list list >>? ==?)))
+    (sorted:set-current-to-first! slist)
+    (let loop
+      ((element (sorted:peek slist))
+       (current-result '()))
+      (let ((new-result (cons element current-result)))
+        (cond ((sorted:current-has-next? slist)
+               (sorted:set-current-to-next! slist)
+               (loop (sorted:peek slist) new-result))
+              (else new-result))))))
+```
+
+# Hoofdstuk 4
+
+## 4.5.1
+Implement a procedure `postfix-eval` that evaluates a Scheme list representing expressions in postfix notation. For example, `(postfix-eval '(5 6 +))` should return 11 and `(postfix-eval '(5 6 + 7 -))` should return 4. You can use the predicate `number?` to test whether or not a Scheme value is a number.
