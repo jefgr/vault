@@ -10,6 +10,7 @@ p-ways balanced merge sort
 aantal runs na distributie is n/m
 Aantal keer dat we door de data moeten "passes" O(log_p(n/m))
 # Polyphase Sort
+p+1=3
 
 # p-Polyphase Sort
 > niet te kennen
