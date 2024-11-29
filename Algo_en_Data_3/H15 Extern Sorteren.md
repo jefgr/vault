@@ -12,6 +12,9 @@ Aantal keer dat we door de data moeten "passes" O(log_p(n/m))
 # Polyphase Sort
 p+1=3
 
+Aantal runs op in een gegeven file is een fibonaccigetal
+
+
 # p-Polyphase Sort
 > niet te kennen
 
