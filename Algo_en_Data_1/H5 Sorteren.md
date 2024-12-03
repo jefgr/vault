@@ -39,7 +39,10 @@ Hier zijn oplossingen voor om dit zo veel mogelijk te vermijden, bvb mediaan van
 O(n)
 Niet-Comparatief
 ### Bucket Sort
+1 stap van Radix Sort
 ### Counting Sort
+Stabiel
+Niet in-place
 ### Radix Sort
 > Radix = Grondtal
 
