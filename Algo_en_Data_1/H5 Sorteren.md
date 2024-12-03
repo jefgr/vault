@@ -20,8 +20,16 @@ O(n²)
 ## Geavenceerde Sorteeralgoritmen
 O(n.log(n))
 ### Merge Sort
+
 ### Heap Sort
 ### Quick Sort
+Niet stabiel, niet in place minstens Omega(log(n)) geheugen extra nodig (recursief **proces**)
+Werkt goed op dubbel gelinkte lijsten, maar niet op andere lijsten.
+gebruik maken van pivot
+Grote overhead dus voor kleine hoeveelheden data beter ander algo gebruiken
+Alleen average case is O(n.log(n))
+Kan degenereren naar O(n²) als de pivot altijd de grootste/kleinste is
+Hier zijn oplossingen voor om dit zo veel mogelijk te vermijden, bvb mediaan van 3 elementen nemen
 ## Lineaire Sorteeralgoritmen
 O(n)
 Niet-Comparatief
