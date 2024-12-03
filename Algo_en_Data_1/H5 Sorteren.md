@@ -41,3 +41,5 @@ Niet-Comparatief
 ### Bucket Sort
 ### Counting Sort
 ### Radix Sort
+> Radix = Grondtal
+
