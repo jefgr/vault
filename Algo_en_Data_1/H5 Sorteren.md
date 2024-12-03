@@ -20,8 +20,13 @@ O(n²)
 ## Geavenceerde Sorteeralgoritmen
 O(n.log(n))
 ### Merge Sort
-
+Niet stabiel met strikte ongelijkheid, wel met niet strikte ongelijkheid (onze implementatie)
+Niet in-place (hulp-vector en recursief process)
+Werkt goed op lijsten
+Basis van externe sorteeralgoritmen
+ 
 ### Heap Sort
+Niet stabiel (geen relatie horizontaal, alleen vertikaal als voorgesteld als volledige boom)
 ### Quick Sort
 Niet stabiel, niet in place minstens Omega(log(n)) geheugen extra nodig (recursief **proces**)
 Werkt goed op dubbel gelinkte lijsten, maar niet op andere lijsten.
