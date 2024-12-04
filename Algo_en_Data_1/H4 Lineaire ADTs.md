@@ -22,3 +22,4 @@ serve!
 # 4. Heaps
 Bewijzen van tijdscomplexiteit kennen (heapify)
 Heap is 1-indexed for heapcondition
+With strict < sift-up won't switch equal elements, but sift-down will
