@@ -702,3 +702,9 @@ The Josephus Problem for a given number m is a mathematical problem where n
            (loopm (+ currentm 1))))))
 ```
 
+## 4.5.9
+What can you say about the location of the greatest element of a heap?
+> It is located in a leaf, so in a vectorial representation in the last half of the vector.
+
+## 4.5.10
+Assume you have an empty heap with comparator `<`. Using `insert!`, we add the elements 5,2,3,1,2,1 in that order. Draw every phase of the heap during the construction. Now remove two elements from the heap and redraw the result. In all phases of the exercise, draw the heap as a complete binary tree and draw the underlying vector as well.
