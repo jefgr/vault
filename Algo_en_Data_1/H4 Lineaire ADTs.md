@@ -21,3 +21,4 @@ serve!
 ```
 # 4. Heaps
 Bewijzen van tijdscomplexiteit kennen (heapify)
+Heap is 1-indexed for heapcondition

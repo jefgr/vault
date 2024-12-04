@@ -702,9 +702,23 @@ The Josephus Problem for a given number m is a mathematical problem where n
            (loopm (+ currentm 1))))))
 ```
 
+## 4.5.8
+Manually perform the steps executed by the following algorithm to transform an arbitrary vector into a valid heap (in other words, do it on paper): `(from-scheme-vector (vector 25 2 17 20 84 5 7 12) <)`.
+    - What is the parent of the element sitting at index 3?
+    - Which element in the heap does not have a parent?
+    - Which element in the heap does not have a left child? Which element only has a left child?
+    - What is the formula to calculate the height of the heap?
+    - Is the following statement true or false? ``The value sitting at the root of a subheap of a heap is always the smallest element of all values contained by that subheap.''
+> - Element at index 3 = 20 with parent at index 1 = 12
+> - Element at index 0 = 2 has no parent
+> - Only leaves have no left child so, from index 4-7 (second half of the vector) (84 17 7 25), Element at index 3 = 20 has only a left child, because 4x2 = 8 (length of heap) but 4x2 + 1 = 9 (out of bounds)
+> - h = log(n) => h = int(log(8)) + 1 = 4
+> - True
+  ![[ad1-exercise-4-5-8.png|500]]
 ## 4.5.9
 What can you say about the location of the greatest element of a heap?
 > It is located in a leaf, so in a vectorial representation in the last half of the vector.
 
 ## 4.5.10
 Assume you have an empty heap with comparator `<`. Using `insert!`, we add the elements 5,2,3,1,2,1 in that order. Draw every phase of the heap during the construction. Now remove two elements from the heap and redraw the result. In all phases of the exercise, draw the heap as a complete binary tree and draw the underlying vector as well.
+> ![[ad1-exercise-4-5-10.png|500]]
