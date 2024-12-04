@@ -709,10 +709,11 @@ Manually perform the steps executed by the following algorithm to transform an a
     - Which element in the heap does not have a left child? Which element only has a left child?
     - What is the formula to calculate the height of the heap?
     - Is the following statement true or false? ``The value sitting at the root of a subheap of a heap is always the smallest element of all values contained by that subheap.''
-> - Element at index 3 = 20 with parent at index 1 = 12
-> - Element at index 0 = 2 has no parent
-> - Only leaves have no left child so, from index 4-7 (second half of the vector) (84 17 7 25), Element at index 3 = 20 has only a left child, because 4x2 = 8 (length of heap) but 4x2 + 1 = 9 (out of bounds)
-> - h = log(n) => h = int(log(8)) + 1 = 4
+**USE HEAP INDEX**
+> - Element at index 3 = 5 with parent at index 1 = 2
+> - Element at index 1 = 2 has no parent
+> - Only leaves have no left child so, from index 5-8 (second half of the vector) (84 17 7 25), Element at index 4 = 20 has only a left child, because 4x2 = 8 (length of heap) but 4x2 + 1 = 9 (out of bounds)
+> - h = log(n) => h = int(log(8)) = 3
 > - True
   ![[ad1-exercise-4-5-8.png|500]]
 ## 4.5.9
