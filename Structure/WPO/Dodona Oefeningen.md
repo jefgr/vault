@@ -1766,12 +1766,21 @@ Volledige code samen
   (bewerk-boom boom (lambda (x) '()) (lambda (x) (list (cdr x))) append '()))
 ```
 
-## Examen Informatica Partieel januari 1995
-
+## Circulaire Datastructuren: cycles?
+> Note: we are only looking at cycles in cdr
 ```scheme
-
+(define (cycles? r)
+  (define (loop visited r)
+    (cond ((null? r)
+           #f)
+          ((atom? r)
+           #f)
+          ((member r visited) #t)
+          (else           
+           (loop (cons r visited) (cdr r)))))
+  (loop '() r))
 ```
-## Examen Informatica Partieel januari 1995
+## Correcte versie count-pairs
 
 ```scheme
 
