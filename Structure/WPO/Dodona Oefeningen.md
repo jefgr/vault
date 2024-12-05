@@ -1604,3 +1604,175 @@ Volledige code samen
         (else (and (same-structure? (car l1) (car l2))
                    (same-structure? (cdr l1) (cdr l2))))))
 ```
+
+## Hogere Orde: deep-combine
+
+```scheme
+(define (atom? x)
+  (not (pair? x)))
+(define (deep-combine f neutral lst)
+  (cond ((null? lst) neutral)
+        ((atom? lst) lst)
+        (else (f (deep-combine f neutral (car lst))
+                 (deep-combine f neutral (cdr lst))))))
+```
+
+## Hogere Orde: deep-map
+
+```scheme
+(define (atom? x)
+  (not (pair? x)))
+(define (deep-map f lst)
+  (cond ((null? lst) '())
+        ((atom? lst) (f lst))
+        (else (cons (deep-map f (car lst))
+                 (deep-map f (cdr lst))))))
+```
+
+## Hogere Orde: deep-change
+
+```scheme
+; utils
+(define (atom? x)
+  (not (pair? x)))
+(define (deep-map f lst)
+  (cond ((null? lst) '())
+        ((atom? lst) (f lst))
+        (else (cons (deep-map f (car lst))
+                    (deep-map f (cdr lst))))))
+
+(define (deep-change e1 e2 lst)
+  (deep-map (lambda (x) (if (eq? x e1) e2 x)) lst)
+  )
+```
+## Hogere Orde: deep-atom-member?
+
+```scheme
+;utils
+(define (deep-map f lst)
+  (cond ((null? lst) '())
+        ((atom? lst) (f lst))
+        (else (cons (deep-map f (car lst))
+                    (deep-map f (cdr lst))))))
+(define (deep-combine f neutral lst)
+  (cond ((null? lst) neutral)
+        ((atom? lst) lst)
+        (else (f (deep-combine f neutral (car lst))
+                 (deep-combine f neutral (cdr lst))))))
+(define (atom? x)
+  (not (pair? x)))
+
+(define (deep-atom-member? e lst)
+  (let ((new (deep-map (lambda (x) (if (= e x) #t #f)) lst)))
+    (deep-combine (lambda (x y) (if (or x y) #t #f)) #f new)))
+```
+## Hogere Orde: count-atoms
+
+```scheme
+;utils
+(define (deep-map f lst)
+  (cond ((null? lst) '())
+        ((atom? lst) (f lst))
+        (else (cons (deep-map f (car lst))
+                    (deep-map f (cdr lst))))))
+(define (deep-combine f neutral lst)
+  (cond ((null? lst) neutral)
+        ((atom? lst) lst)
+        (else (f (deep-combine f neutral (car lst))
+                 (deep-combine f neutral (cdr lst))))))
+(define (atom? x)
+  (not (pair? x)))
+
+(define (count-atoms lst)
+  (let ((new (deep-map (lambda (x) 1) lst)))
+    (deep-combine (lambda (x y) (+ x y)) 0 new)))
+```
+
+## Examen Informatica Partieel januari 1995
+
+```scheme
+(define (deep-map f lst)
+  (cond ((null? lst) '())
+        ((atom? lst) (f lst))
+        (else (cons (deep-map f (car lst))
+                    (deep-map f (cdr lst))))))
+(define (deep-combine f neutral lst)
+  (cond ((null? lst) neutral)
+        ((atom? lst) lst)
+        (else (f (deep-combine f neutral (car lst))
+                 (deep-combine f neutral (cdr lst))))))
+(define (atom? x)
+  (not (pair? x)))
+
+(define boom
+  '((blad (appel . golden))
+    (blad (appel . granny))
+    (((appel . golden) blad) blad (appel . cox))))
+```
+### Tel bladeren
+
+```scheme
+(define (leafs lst)
+  (let ((new (deep-map (lambda (x) (if (eq? x 'blad) 1 0)) lst)))
+    (deep-combine (lambda (x y) (+ x y)) 0 new)))
+```
+
+### Zoek alle appels
+
+```scheme
+(define (all-apples lst)
+  (cond ((null? lst) '())
+        ((atom? lst) (if (not (or (eq? lst 'appel) (eq? lst 'blad))) (list lst) '()))
+        (else (append (all-apples (car lst))
+                      (all-apples (cdr lst))))))
+```
+
+### Geef de verschillende soorten appels
+
+```scheme
+(define (apple-types lst)
+  (let loop ((all (all-apples lst)))
+    (cond ((null? all)'())
+          ((null? (cdr all))
+           all)
+          ((not (member (car all) (cdr all)))
+           (cons (car all) (loop (cdr all))))
+          (else
+           (loop (cdr all))))))
+```
+
+### Procedure om de bomen te bewerken
+
+```scheme
+(define (bewerk-boom boom doe-blad doe-appel combiner init)
+  (cond ((null? boom) init)
+        ((atom? boom) (doe-blad boom))
+        ((eq? (car boom) 'appel) (doe-appel boom))
+        (else (combiner (bewerk-boom (car boom) doe-blad doe-appel combiner init)
+                        (bewerk-boom (cdr boom) doe-blad doe-appel combiner init)))))
+```
+
+### Tel bladeren (hogere orde)
+
+```scheme
+(define (leafs-dmv-bewerk boom)
+  (bewerk-boom boom (lambda (x) 1) (lambda (x) 0) + 0))
+```
+
+### Geef alle appels (hogere orde)
+
+```scheme
+(define (all-apples-dmv-bewerk boom)
+  (bewerk-boom boom (lambda (x) '()) (lambda (x) (list (cdr x))) append '()))
+```
+
+## Examen Informatica Partieel januari 1995
+
+```scheme
+
+```
+## Examen Informatica Partieel januari 1995
+
+```scheme
+
+```
