@@ -723,3 +723,92 @@ What can you say about the location of the greatest element of a heap?
 ## 4.5.10
 Assume you have an empty heap with comparator `<`. Using `insert!`, we add the elements 5,2,3,1,2,1 in that order. Draw every phase of the heap during the construction. Now remove two elements from the heap and redraw the result. In all phases of the exercise, draw the heap as a complete binary tree and draw the underlying vector as well.
 > ![[ad1-exercise-4-5-10.png|500]]
+
+# Hoofdstuk 5
+
+## 5.7.1
+Write a bubble sort procedure for ordinary (single linked) Scheme lists.
+> **See Also wpo/libraries/wpo_h5.rkt**
+```scheme
+; not based on bubble-sort for vectors, check that version as well
+(define (bubble-sort lst <<?)
+  (define changed? #f)
+  (let loop ((current lst))
+    (display current) (newline)
+    (if (null? (cdr current))
+        (if changed? (bubble-sort lst <<?) lst)
+        (let ((first (car current))
+              (second (cadr current)))
+          (cond
+            ((<<? second first)
+             (set-car! current second)
+             (set-car! (cdr current) first)
+             (set! changed? #t)
+             (loop (cdr current)))
+            (else
+             (loop (cdr current))))))))
+```
+
+## 5.7.2
+In our version of the insertion sort procedure, the outer loop runs from the end of the vector towards the start of the vector. The order of the inner loop is the opposite. Rewrite the procedure so that the order of the loops is reversed. Which order will be the easiest to apply to single linked lists?
+> **See Also wpo/libraries/wpo_h5.rkt**
+```scheme
+(define (insertion-sort vector <<?)
+      
+      (let outer-loop
+        ((outer-idx 1))
+        (display vector) (newline)
+        (let
+            ((current (vector-ref vector outer-idx)))
+          (vector-set! 
+           vector 
+           (let inner-loop
+             ((inner-idx (- outer-idx 1)))             
+             (cond
+               ((or (< inner-idx 0)
+                    (<<? (vector-ref vector inner-idx)
+                         current))
+                (+ inner-idx 1))
+               (else
+                (vector-set! vector (+ inner-idx 1) (vector-ref vector inner-idx))
+                (inner-loop (- inner-idx 1)))))
+           current)
+          (if (< outer-idx (- (vector-length vector) 1))
+              (outer-loop (+ outer-idx 1))))))
+```
+
+## 5.7.4
+Modify the selection sort procedure so that it returns an index vector instead of destructively changing the input vector.
+```scheme
+(define (selection-sort vector <<?)
+  (define index-vector (make-vector (vector-length vector)))
+  (define (swap vector i j)
+    (let ((keep (vector-ref vector i)))
+      (vector-set! vector i (vector-ref vector j))
+      (vector-set! vector j keep)))
+  (do ((i 0 (+ i 1)))
+    ((= i (vector-length index-vector)))
+    (vector-set! index-vector i i)
+    )
+  (let outer-loop
+    ((outer-idx 0)
+     (prev-smallest 0))
+    (let outer-loop
+      ((outer-idx 0))
+      (swap index-vector
+            outer-idx 
+            (let inner-loop
+              ((inner-idx (+ outer-idx 1))
+               (smallest-idx outer-idx))
+              (cond 
+                ((>= inner-idx (vector-length vector))
+                 smallest-idx)
+                ((<<? (vector-ref vector (vector-ref index-vector inner-idx))
+                      (vector-ref vector (vector-ref index-vector smallest-idx)))
+                 (inner-loop (+ inner-idx 1) inner-idx))
+                (else
+                 (inner-loop (+ inner-idx 1) smallest-idx)))))
+      (if (< outer-idx (- (vector-length vector) 1))
+          (outer-loop (+ outer-idx 1)))))
+  index-vector)
+```
