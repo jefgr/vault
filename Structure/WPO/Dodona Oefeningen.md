@@ -1934,10 +1934,7 @@ Volledige code samen
   (newline))
 ```
 
-TODO
-Split into 2 functions:
-- find label
-- print result tree
+### Print-vanaf
 
 ```scheme
 (define VUBOrganigram
@@ -1955,7 +1952,6 @@ Split into 2 functions:
                                             (ma-fysica)
                                             (ma-cw)))))
         (administratief (personeel) (financien))))
-
 (define (display-n n d)
   (cond ((> n 0) (display d)
                  (display-n (- n 1) d))))
@@ -1967,21 +1963,33 @@ Split into 2 functions:
 (define (print-vanaf organigram label)
   (define (parent tree) (car tree))
   (define (children tree) (cdr tree))
-
-  (define (tree-proc tree level b)
-    (cond (b (print-lijn level (parent tree)))
-          ((eq? (parent tree) label)
-           (print-lijn level (parent tree))
-           (tree-proc-in (children tree) (+ level 1) #t))
-          ((null? (children tree)) #f)
-          (else (tree-proc-in (children tree) (+ level 1) b))))
-
-  (define (tree-proc-in lst level b)
-    (cond ((null? lst) #f)
+  (define (print-boom boom)
+    (define (tree-proc tree level)
+      (print-lijn level (parent tree))
+      (tree-proc-in (children tree) (+ level 1)))
+    (define (tree-proc-in lst level)
+      (cond ((null? lst))
+            (else
+             (tree-proc (car lst) level)
+             (tree-proc-in (cdr lst) level))
+            ))
+    (tree-proc boom 0))
+  (define (tree-proc tree)
+    (cond ((eq? (parent tree) label)
+           (print-boom tree))
+          ((null? (children tree)))
+          (else (tree-proc-in (children tree)))))
+  (define (tree-proc-in lst)
+    (cond ((null? lst))
           (else
-           (tree-proc (car lst) level b)
-           (tree-proc-in (cdr lst) level b))
-          ))
-  
-  (tree-proc organigram 0 #f))
+           (tree-proc (car lst))
+           (tree-proc-in (cdr lst))
+          )))
+  (tree-proc organigram))
+```
+
+### Print-tot
+
+```scheme
+
 ```
