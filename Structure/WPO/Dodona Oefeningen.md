@@ -1769,6 +1769,8 @@ Volledige code samen
 ## Circulaire Datastructuren: cycles?
 > Note: we are only looking at cycles in cdr
 ```scheme
+(define (atom? x)
+  (not (pair? x)))
 (define (cycles? r)
   (define (loop visited r)
     (cond ((null? r)
@@ -1783,5 +1785,53 @@ Volledige code samen
 ## Correcte versie count-pairs
 
 ```scheme
+(define (atom? x)
+  (not (pair? x)))
 
+(define (count-pairs xin)
+  (define (loop visited x)
+    (cond ((not (pair? x))
+           0)
+          ((member x visited)
+          0)
+          (else
+           (+ (loop (cons x visited) (cdr x))
+              1))))
+  (loop '() xin))
 ```
+
+# Bomen en procedures op bomen: Familiebomen & Hiërarchische Relaties
+
+## Modeloplossing
+
+```scheme
+(define (parent tree)   ...)
+(define (children tree) ...)
+ 
+(define (tree-proc tree ...)
+  (cond ((test-parent (parent tree)) ...)
+        (else (tree-proc-in (children tree) ...))))
+ 
+(define (tree-proc-in lst ...)
+  (cond ((null? lst) ...)
+        (else (combine-res (tree-proc (car lst) ...)
+                           (tree-proc-in (cdr lst) ...)))))
+```
+
+## Examen Informatica 2e Zit 1995
+
+![[examen-informatica-2e-zit-1995-organigram.png]]
+```scheme
+(define organigram
+  '(directeur
+    (hoofd-verkoop (verkoopsleider-vlaanderen)
+                   (verkoopsleider-brussel))
+    (hoofd-productie (hoofd-inkoop (bediende1)
+                                   (bediende2)
+                                   (bediende3))
+                     (hoofd-fakturen))
+    (hoofd-administratie (hoofd-personeel)
+                         (hoofd-boekhouding))))
+```
+
+### Bazen
