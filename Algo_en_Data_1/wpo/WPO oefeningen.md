@@ -779,6 +779,7 @@ In our version of the insertion sort procedure, the outer loop runs from the end
 
 ## 5.7.4
 Modify the selection sort procedure so that it returns an index vector instead of destructively changing the input vector.
+> **See Also wpo/libraries/wpo_h5.rkt**
 ```scheme
 (define (selection-sort vector <<?)
   (define index-vector (make-vector (vector-length vector)))
