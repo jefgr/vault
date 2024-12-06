@@ -1835,3 +1835,27 @@ Volledige code samen
 ```
 
 ### Bazen
+
+```scheme
+(define (bazen-van organigram employee)
+  (define (parent tree) (car tree))
+  (define (children tree) (cdr tree))
+  (define (tree-proc tree result)
+    (display result)(newline)
+    (cond ((eq? (parent tree) employee) result)
+          ((null? (children tree)) #f)
+          (else (tree-proc-in (children tree) (cons (parent tree) result)))))
+  (define (tree-proc-in lst result)
+    (cond ((null? lst) #f)
+          (else
+           (or (tree-proc (car lst) result)
+           (tree-proc-in (cdr lst) result))
+           )))
+  (tree-proc organigram '()))
+```
+
+### Hiërarchie
+
+```scheme
+
+```
