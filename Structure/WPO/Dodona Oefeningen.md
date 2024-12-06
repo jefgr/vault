@@ -1857,5 +1857,79 @@ Volledige code samen
 ### Hiërarchie
 
 ```scheme
+(define (hierarchisch? p1 p2 organigram)
+  (define (parent tree) (car tree))
+  (define (children tree) (cdr tree))
 
+  (define (tree-proc tree b1 b2)
+    (cond ((eq? (parent tree) p1) (tree-proc-in (children tree) #t b2))
+          ((eq? (parent tree) p2) (tree-proc-in (children tree) b1 #t))
+          (else (tree-proc-in (children tree) b1 b2))))
+  
+  (define (tree-proc-in lst b1 b2)
+    (cond ((and b1 b2) #t)
+          ((null? lst) #f)
+          (else
+           (or (tree-proc (car lst) b1 b2)
+           (tree-proc-in (cdr lst) b1 b2))
+           )))
+  (tree-proc organigram #f #f))
+```
+
+### Collega's
+
+```scheme
+(define (collegas employee organigram)
+  (define (flatten lst)
+  (cond
+    ((null? lst) '())
+    ((not (pair? lst)) (list lst)) 
+    (else (append (flatten (car lst))      
+                  (flatten (cdr lst))))))
+  (define (parent tree) (car tree))
+  (define (children tree) (cdr tree))
+  (define (tree-proc tree result)
+    (display result)(newline)
+    (cond ((eq? (parent tree) employee) (append result (flatten (children tree))))
+          ((null? (children tree)) #f)
+          (else (tree-proc-in (children tree) (cons (parent tree) result)))))
+  (define (tree-proc-in lst result)
+    (cond ((null? lst) #f)
+          (else
+           (or (tree-proc (car lst) result)
+           (tree-proc-in (cdr lst) result))
+           )))
+  (tree-proc organigram '()))
+```
+
+## Examen Informatica januari 2010
+
+```scheme
+(define VUBOrganigram
+  '(VUB (academisch (rectoraat)
+                    (faculteiten
+                     (rechten (bachelor (ba-rechten)
+                                        (ba-criminologie))
+                              (master (ma-rechten)
+                                      (ma-criminologie)))
+                     (economie)
+                     (wetenschappen (bachelor (ba-wiskunde)
+                                              (ba-fysica)
+                                              (ba-cw))
+                                    (master (ma-wiskunde)
+                                            (ma-fysica)
+                                            (ma-cw)))))
+        (administratief (personeel) (financien))))
+```
+
+![[examen-informatica-2010-organigram.png]]
+
+```scheme
+(define (display-n n d)
+  (cond ((> n 0) (display d)
+                 (display-n (- n 1) d))))
+(define (print-lijn aantalblanco tekst)
+  (display-n aantalblanco " ")
+  (display tekst)
+  (newline))
 ```
