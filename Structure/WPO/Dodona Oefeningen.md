@@ -1933,3 +1933,55 @@ Volledige code samen
   (display tekst)
   (newline))
 ```
+
+TODO
+Split into 2 functions:
+- find label
+- print result tree
+
+```scheme
+(define VUBOrganigram
+  '(VUB (academisch (rectoraat)
+                    (faculteiten
+                     (rechten (bachelor (ba-rechten)
+                                        (ba-criminologie))
+                              (master (ma-rechten)
+                                      (ma-criminologie)))
+                     (economie)
+                     (wetenschappen (bachelor (ba-wiskunde)
+                                              (ba-fysica)
+                                              (ba-cw))
+                                    (master (ma-wiskunde)
+                                            (ma-fysica)
+                                            (ma-cw)))))
+        (administratief (personeel) (financien))))
+
+(define (display-n n d)
+  (cond ((> n 0) (display d)
+                 (display-n (- n 1) d))))
+(define (print-lijn aantalblanco tekst)
+  (display-n aantalblanco " ")
+  (display tekst)
+  (newline))
+
+(define (print-vanaf organigram label)
+  (define (parent tree) (car tree))
+  (define (children tree) (cdr tree))
+
+  (define (tree-proc tree level b)
+    (cond (b (print-lijn level (parent tree)))
+          ((eq? (parent tree) label)
+           (print-lijn level (parent tree))
+           (tree-proc-in (children tree) (+ level 1) #t))
+          ((null? (children tree)) #f)
+          (else (tree-proc-in (children tree) (+ level 1) b))))
+
+  (define (tree-proc-in lst level b)
+    (cond ((null? lst) #f)
+          (else
+           (tree-proc (car lst) level b)
+           (tree-proc-in (cdr lst) level b))
+          ))
+  
+  (tree-proc organigram 0 #f))
+```
