@@ -3,3 +3,7 @@
 
 In het kort
 BST voorwaarde: Alle waarden kleiner als Node n in de linker child-boom, alle waarden groter in de rechter child-boom
+
+# AVL-boom
+> Een AVL-boom is een zoekboom waarbij het hoogteverschil tussen beide subbomen van elke node maximaal 1 is.
+
