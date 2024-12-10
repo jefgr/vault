@@ -2055,3 +2055,90 @@ Volledige code samen
   (tree-proc familieboom budget))
 ```
 
+# Stromen en uitgestelde evaluatie
+
+## Introductie
+> **See Also WPO/streams.rkt**
+```scheme
+(load "streams.rkt")
+```
+**Let op!** Je moet er wel voor zorgen dat het bestand met je code en het streams.rkt bestand in dezelfde directory opgeslagen zijn.
+
+In dit bestand zijn de volgende procedures gedefinieerd: `cons-stream`, `head`, `tail`, `empty-stream?`, `stream-accumulate`, `stream-accumulate-n`, `stream-map`, `stream-filter`, `stream-for-each`, `stream-append`, `enumerate-int`, `enumerate-tree`, `stream-print`, `take`, `pairs`, `stream-flatten`, `stream-interleave`, `stream-flatten/interleaved`, `stream-accumulate-delayed`, `stream-interleave-delayed` en `stream-values`. Ook `the-empty-stream` is in dit bestand gedefinieerd.
+
+## Reeksontwikkelingen
+
+```scheme
+(load "streams.rkt")
+(define (factorial n)
+  (do ((count 1 (+ count 1))
+       (result 1 (* result count)))
+    ((< n count) result)
+    ))
+(define (calc-e n)
+  (stream-accumulate
+   + 0
+   (stream-map
+    (lambda (x) (/ 1 (factorial x)))
+    (enumerate-int 0 n))))
+(define (sinus x n)
+  (stream-accumulate
+   + 0
+   (stream-map
+    (lambda (a) (let ((b (+ (* a 2) 1)))
+                  (if (even? a)
+                    (/ (expt x b) (factorial b))
+                    (- 0 (/ (expt x b) (factorial b))))))
+      (enumerate-int 0 (- n 1)))))
+```
+
+## som-kwadraten-oneven-elementen
+
+```scheme
+(load "streams.rkt")
+(define (sum-odd-squares stream)
+  (stream-accumulate
+   + 0
+   (stream-map
+    (lambda (x) (* x x))
+    (stream-filter
+     odd?
+     stream))))
+```
+
+## triples
+
+```scheme
+(define (odd-sum-triples max)
+  (stream-flatten
+   (stream-map
+    (lambda (y)
+      (stream-map
+       (lambda (x) (list x  y (+ x y)))
+       (stream-filter odd? (enumerate-int 1 (- max 1)))))
+    (stream-filter odd? (enumerate-int 1 (- max 1))))))
+```
+
+## integers
+
+```scheme
+(define integers (cons-stream 1 (stream-map (lambda (x) (+ x 1)) integers)))
+```
+
+## Stream-filter
+
+```scheme
+(define integers (cons-stream 1 (stream-map (lambda (x) (+ x 1)) integers)))
+(define (integers-special integers)
+   (stream-filter
+    (lambda (y) (not (or (= (modulo y 2) 0)
+                         (= (modulo y 3) 0)
+                         (= (modulo y 5) 0))))
+    integers))
+```
+
+## triplets
+
+```scheme
+
+```
