@@ -2009,4 +2009,49 @@ Volledige code samen
 ```
 
 ## Examen Informatica januari 2008
-### Boom vraag
+### Verdeel democratisch
+
+```scheme
+(define (atom? x)
+  (not (pair? x)))
+(define (leaf-count lst)
+  (cond ((null? lst) 0)
+        ((atom? lst) 1)
+        (else (+ (leaf-count (car lst))
+                 (leaf-count (cdr lst))))))
+(define (verdeel-democratisch familieboom budget)
+  (/ budget (- (leaf-count familieboom) 1))
+  )
+```
+### Bereken budget
+
+```scheme
+(define (budget familieboom lst)
+  (define parent car)
+  (define children cdr)
+  (define (tree-proc tree verdeling)
+    (+ (car verdeling) (tree-proc-in (children tree) (cdr verdeling))))
+  (define (tree-proc-in lst verdeling)
+    (cond ((null? lst) 0)
+          ((null? verdeling) 0)
+          (else (+ (tree-proc (car lst) verdeling)
+                   (tree-proc-in (cdr lst) verdeling)))))
+  (tree-proc-in (children familieboom) lst))
+```
+
+### Verdeel budget onder kinderen zonder nakomelingen
+
+```scheme
+(define (verdeel familieboom budget)
+  (define parent car)
+  (define children cdr)
+  (define (tree-proc tree budget)
+    (cond ((null? (children tree)) (list (list (parent tree) budget)))
+          (else (tree-proc-in (children tree) (/ budget (length (children tree)))))))
+  (define (tree-proc-in lst budget)
+    (cond ((null? lst) '())
+          (else (append (tree-proc (car lst) budget)
+                   (tree-proc-in (cdr lst) budget)))))
+  (tree-proc familieboom budget))
+```
+
