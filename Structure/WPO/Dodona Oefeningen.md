@@ -1991,5 +1991,22 @@ Volledige code samen
 ### Print-tot
 
 ```scheme
-
+(define (print-tot organigram niveau)
+  (define (parent tree) (car tree))
+  (define (children tree) (cdr tree))
+  
+    (define (tree-proc tree level)
+      (print-lijn level (parent tree))
+      (tree-proc-in (children tree) (+ level 1)))
+    (define (tree-proc-in lst level)
+      (cond ((null? lst))
+            ((> level niveau))
+            (else
+             (tree-proc (car lst) level)
+             (tree-proc-in (cdr lst) level))
+            ))
+  (tree-proc organigram 0))
 ```
+
+## Examen Informatica januari 2008
+### Boom vraag
