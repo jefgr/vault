@@ -2058,7 +2058,7 @@ Volledige code samen
 # Stromen en uitgestelde evaluatie
 
 ## Introductie
-> **See Also WPO/streams.rkt**
+> **See Also WPO/streams.rkt & WPO/dodona-streams.rkt**
 ```scheme
 (load "streams.rkt")
 ```
@@ -2138,6 +2138,95 @@ In dit bestand zijn de volgende procedures gedefinieerd: `cons-stream`, `head`
 ```
 
 ## triplets
+
+```scheme
+(define (triplets)
+  (stream-map
+   (lambda (l) (car l))
+   (stream-flatten/interleaved
+    (stream-map
+     (lambda (x)
+       (stream-map
+        (lambda (y)
+          (stream-map
+           (lambda (k) (list x y k))
+           (enumerate-int 1 (+ x y))))
+        integers))
+     integers))))
+```
+
+## Examen Informatica eerste zit 1997
+> **See Also WPO/examen-informatica-1997-streams.rkt**
+### Cuts
+```scheme
+(define (cut stream)
+  (if (empty-stream? stream)
+      the-empty-stream
+      (let ((current (head stream)))
+        (let ((current-group (stream-filter (lambda (x) (= x current)) stream)))
+          (cons-stream
+           current-group
+           (cut (stream-filter (lambda (x) (> x current)) (tail stream))))))))
+```
+
+### Merge
+
+```scheme
+(define (merge str1 str2)
+  (cond
+    ((empty-stream? str1) str2) 
+    ((empty-stream? str2) str1)
+    (else
+     (let ((head1 (head str1))
+           (head2 (head str2)))
+       (if (< head1 head2)
+           (cons-stream head1 (merge (tail str1) str2))
+           (cons-stream head2 (merge str1 (tail str2))))))))
+```
+
+### Merge-n
+
+```scheme
+(define (merge str1 str2)
+  (cond
+    ((empty-stream? str1) str2) 
+    ((empty-stream? str2) str1)
+    (else
+     (let ((head1 (head str1))
+           (head2 (head str2)))
+       (if (< head1 head2)
+           (cons-stream head1 (merge (tail str1) str2))
+           (cons-stream head2 (merge str1 (tail str2))))))))
+(define (merge-n strs)
+  (if (empty-stream? (tail strs))
+      (head strs)
+      (let* ((h1 (head strs))
+            (h2 (head (tail strs)))
+            (rest (tail (tail strs))))
+        (display h1)(newline)
+        (display h2)(newline)
+        (display strs)(newline)
+        (merge-n (cons-stream (merge h1 h2) rest))
+      )))
+```
+
+### Traffiek in een pretpark
+
+```scheme
+(define (pretpark-traffiek strs)
+  (stream-map
+   (lambda (str)
+     (cons
+      (head str)
+      (stream-accumulate
+       + 0 (stream-map (lambda (x) 1) str))))
+   (cut
+    (merge-n strs))))
+```
+
+## Examen Januari 2008
+> **See Also WPO/examen-informatica-januari-2008-streams.rkt**
+### Prune
 
 ```scheme
 
