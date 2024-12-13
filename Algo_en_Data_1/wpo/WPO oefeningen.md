@@ -813,3 +813,56 @@ Modify the selection sort procedure so that it returns an index vector instead o
           (outer-loop (+ outer-idx 1)))))
   index-vector)
 ```
+
+# Hoofdstuk 6
+
+## 6.6.1
+Write a procedure that counts the number of leaves in a binary tree. What is the performance characteristic of your procedure?
+```scheme
+(define (count-leaves tree)
+  (cond  ((and (bt:null-tree? (bt:left tree)) (bt:null-tree? (bt:right tree)))
+          1)
+         ((bt:null-tree? (bt:left tree))
+          (count-leaves (bt:right tree)))
+         ((bt:null-tree? (bt:right tree))
+          (count-leaves (bt:left tree)))
+         (else
+          (+ (count-leaves (bt:left tree)) (count-leaves (bt:right tree))))))
+```
+
+## 6.6.2
+Write a procedure that calculates the height of a binary tree. What is the performance characteristic of your procedure? What is the performance characteristic if you know that the tree is a complete tree?
+> O(n), full traversel
+> O(log(n)), you can just check one branch to get the height
+
+```scheme
+(define (height tree)
+  (cond
+    ((leaf? tree)
+     0)
+    ((bt:null-tree? (bt:left tree))
+     (+ 1 (height (bt:right tree))))
+    ((bt:null-tree? (bt:right tree))
+     (+ 1 (height (bt:left tree))))
+    (else
+     (+ 1 (max (height (bt:left tree)) (height (bt:right tree)))))))
+```
+
+## 6.6.3
+Write a procedure that calculates the number of subtrees of a binary tree. Determine its performance characteristic.
+> O(n)
+```scheme
+(define (amount-of-subtrees tree)
+  (- 
+  (let traverse ((t tree))
+  (cond
+    ((leaf? t)
+     1)
+    ((bt:null-tree? (bt:left t))
+     (+ 1 (traverse (bt:right t))))
+    ((bt:null-tree? (bt:right t))
+     (+ 1 (traverse (bt:left t))))
+    (else
+     (+ 1 (traverse (bt:left t)) (traverse (bt:right t)))))) 1))
+```
+
