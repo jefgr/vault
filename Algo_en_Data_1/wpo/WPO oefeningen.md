@@ -860,6 +860,9 @@ Write a procedure that calculates the number of subtrees of a binary tree. Deter
 
 ## 6.6.6
 Draw all binary search trees that you can construct using the numbers 1, 2, 3 and 4
+> amount of trees with 4 nodes:
+> $\frac{1} {(n + 1)}×\frac{((2 n)!)}{(n! n!)}$
+> $\frac{1} {(4 + 1)}×\frac{((2*4)!)}{(4! 4!)} = 14$
 
 ```
 	1             1             1             1             1
