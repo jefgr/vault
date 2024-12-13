@@ -17,6 +17,8 @@ video lessen kijken voor de volgende les
 
 Permanentie
 
+Calculus 1: zowiezo DV classificatie op theorie examen
+
 # **Canvas**
 ## Elk hoofdstuk:
 - slides
