@@ -815,19 +815,20 @@ Modify the selection sort procedure so that it returns an index vector instead o
 ```
 
 # Hoofdstuk 6
-
+> **See Also wpo/libraries/wpo_h6.rkt**
 ## 6.6.1
+
 Write a procedure that counts the number of leaves in a binary tree. What is the performance characteristic of your procedure?
 ```scheme
+(define (leaf? tree)
+  (and (bt:null-tree? (bt:left tree)) (bt:null-tree? (bt:right tree))))
+
 (define (count-leaves tree)
-  (cond  ((and (bt:null-tree? (bt:left tree)) (bt:null-tree? (bt:right tree)))
-          1)
-         ((bt:null-tree? (bt:left tree))
-          (count-leaves (bt:right tree)))
-         ((bt:null-tree? (bt:right tree))
-          (count-leaves (bt:left tree)))
-         (else
-          (+ (count-leaves (bt:left tree)) (count-leaves (bt:right tree))))))
+  (cond ((bt:null-tree? tree) 0)
+        ((leaf? tree)
+         1)
+        (else
+         (+ (count-leaves (bt:left tree)) (count-leaves (bt:right tree))))))
 ```
 
 ## 6.6.2
@@ -837,15 +838,10 @@ Write a procedure that calculates the height of a binary tree. What is the perfo
 
 ```scheme
 (define (height tree)
-  (cond
-    ((leaf? tree)
-     0)
-    ((bt:null-tree? (bt:left tree))
-     (+ 1 (height (bt:right tree))))
-    ((bt:null-tree? (bt:right tree))
-     (+ 1 (height (bt:left tree))))
-    (else
-     (+ 1 (max (height (bt:left tree)) (height (bt:right tree)))))))
+  (cond ((bt:null-tree? tree) 0)
+        ((leaf? tree) 0)
+        (else
+         (+ 1 (max (height (bt:left tree)) (height (bt:right tree)))))))
 ```
 
 ## 6.6.3
@@ -854,15 +850,44 @@ Write a procedure that calculates the number of subtrees of a binary tree. Deter
 ```scheme
 (define (amount-of-subtrees tree)
   (- 
-  (let traverse ((t tree))
-  (cond
-    ((leaf? t)
-     1)
-    ((bt:null-tree? (bt:left t))
-     (+ 1 (traverse (bt:right t))))
-    ((bt:null-tree? (bt:right t))
-     (+ 1 (traverse (bt:left t))))
-    (else
-     (+ 1 (traverse (bt:left t)) (traverse (bt:right t)))))) 1))
+   (let traverse ((t tree))
+     (cond
+       ((bt:null-tree? t) 0)
+       ((leaf? t) 1)
+       (else
+        (+ 1 (traverse (bt:left t)) (traverse (bt:right t)))))) 1))
+```
+
+## 6.6.6
+Draw all binary search trees that you can construct using the numbers 1, 2, 3 and 4
+
+```
+	1             1             1             1             1
+     \             \             \             \             \
+      2             2             3             4             4
+       \             \           / \           /             /
+        3             4         2   4         2             3
+         \           /                         \           /
+          4         3                           3         2
+
+    2             2
+   / \           / \
+  1   3         1   4
+       \           /
+        4         3
+
+    3             3
+   / \           / \
+  1   4         2   4
+   \           /
+    2         1
+
+	4             4             4             4
+   /             /             /             /
+  1             1             2             3
+   \             \           / \           /
+    2             3         1   3         2
+     \           /                       /
+      3         2                       1
 ```
 
