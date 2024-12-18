@@ -894,3 +894,75 @@ Draw all binary search trees that you can construct using the numbers 1, 2, 3
       3         2                       1
 ```
 
+## 6.6.5
+Manually execute the iterative versions of `pre-order`, `post-order` and `in-order` on the application of `display` to the `times` tree discussed in [Section 6.1.3](https://soft.vub.ac.be/~jnicolay/courses/ad1/html-dynamic/index.html#arithmeticexpression). Draw the evolution of the stack during the successive phases of the algorithm.
+> bekijk deftig de verschillende delen van de code nog eens
+```scheme
+; import (a-d tree binary-tree-algorithms)
+(define t4 (bt:new 4 bt:null-tree bt:null-tree))
+(define t9 (bt:new 9 bt:null-tree bt:null-tree))
+(define t5 (bt:new 5 bt:null-tree bt:null-tree))
+(define t6 (bt:new 6 bt:null-tree bt:null-tree))
+(define minus (bt:new '- t4 t9))
+(define plus (bt:new '+ t5 t6))
+(define times (bt:new '* minus plus))
+
+(iterative-pre-order times display) (newline)
+(iterative-in-order times display) (newline)
+(iterative-post-order times display)
+
+> *-49+56
+> 4-9*5+6
+> 49-56+*
+```
+
+## 6.6.7
+The `delete!` procedure on binary search trees can be conceived in two ways that are entirely symmetric. Replace the presented procedure by its symmetric counterpart.
+> instead of replacing node by the smallest larger child, replace by the largest smaller child
+> **See Also a-d/tree/binary-search-tree-wpo6.rkt**
+
+```scheme
+(define (delete-with-largest-small-element! bst val)
+      (define <<? (lesser bst))
+      (define ==? (equality bst))
+      (define (find-rightmost deleted parent child! child)
+        (if (tree:null-tree? (tree:right child))
+            (begin 
+              (tree:value! deleted (tree:value child))
+              (child! parent (tree:left child)))
+            (find-rightmost deleted child 
+                            tree:right!
+                            (tree:right child))))
+      (define (delete-node parent child! child)
+        (cond 
+          ((tree:null-tree? (tree:left child))
+           (child! parent (tree:right child)))
+          ((tree:null-tree? (tree:right child))
+           (child! parent (tree:left child)))
+          (else
+           (find-rightmost child
+                           child 
+                           tree:left! 
+                           (tree:left child)))))
+      (let find-node
+        ((parent tree:null-tree)
+         (child! (lambda (ignore child) (root! bst child)))
+         (child (root bst)))
+        (cond 
+          ((tree:null-tree? child)
+           #f)
+          ((==? (tree:value child) val)
+           (delete-node parent child! child)
+           (tree:value child))
+          ((<<? (tree:value child) val)
+           (find-node child tree:right! (tree:right child)))
+          ((<<? val (tree:value child))
+           (find-node child tree:left! (tree:left child))))))
+```
+
+## 6.6.11
+Unfortunately, debugging code as complicated as the AVL tree implementation is an extremely tedious task. Write a procedure `check` that allows a debugger to check automatically whether or not a given tree is indeed a correct AVL tree.
+> **See solutions**
+```scheme
+
+```
