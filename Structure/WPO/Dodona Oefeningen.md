@@ -2229,5 +2229,62 @@ In dit bestand zijn de volgende procedures gedefinieerd: `cons-stream`, `head`
 ### Prune
 
 ```scheme
+(define (prune str n)
+  (define i -1)
+  (stream-filter
+   (lambda (x)
+     (set! i (+ i 1))
+     (even? (quotient i n)))
+   str))
+```
 
+### Split
+
+```scheme
+(define (split str n)
+  (define (helper stream curr count)
+    (if (empty-stream? stream)
+        (if (empty-stream? curr)
+            the-empty-stream
+            (cons-stream curr the-empty-stream))
+        (let ((x (head stream)))
+          (if (= count n)
+              (cons-stream curr (helper (tail stream) (cons-stream x the-empty-stream) 1))
+              (helper (tail stream) (stream-append curr (cons-stream x the-empty-stream)) (+ count 1))))))
+  (helper str the-empty-stream 0))
+```
+
+### Daggemiddelden
+
+```scheme
+(define (daggemiddelden str)
+  (stream-map
+   (lambda (x)
+     (/ x 12))
+   (stream-map
+    (lambda (x)
+      (stream-accumulate + 0 x))
+    (split (prune str 12) 12))))
+```
+
+### Nachtgemiddelden
+
+```scheme
+; Alternative version that starts with pruning instead of starting with streaming
+(define (prune-alt str n)
+  (define i -1)
+  (stream-filter
+   (lambda (x)
+     (set! i (+ i 1))
+     (odd? (quotient i n)))
+   str))
+; Dodona expects inexact numbers here in contrast with previous exercise
+(define (nachtgemiddelden str)
+  (stream-map
+   (lambda (x)
+     (exact->inexact (/ x 12)))
+   (stream-map
+    (lambda (x)
+      (stream-accumulate + 0 x))
+    (split (prune-alt str 12) 12))))
 ```
