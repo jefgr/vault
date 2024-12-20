@@ -966,3 +966,22 @@ Unfortunately, debugging code as complicated as the AVL tree implementation is a
 ```scheme
 
 ```
+
+# Hoofdstuk 7
+
+## 7.5.1
+Suppose that we have to store the following keys in a hash table of size M=10: 4371, 1323, 6173, 4199, 43344, 9679, 1989. Use h(k)=k mod10. Draw the hash table and indicate what happens should collisions occur.
+    - External Chaining
+    - Linear Probing (C = 1)
+    - Double rehashing where h2(k) = 7 − (k mod 7)
+
+| Key           | 4371 | 1323 | 6173 | 4199 | 43344  | 9679     | 1989     |
+| ------------- | ---- | ---- | ---- | ---- | ------ | -------- | -------- |
+| Hash          | 1    | 3    | 3    | 9    | 4      | 9        | 9        |
+| Double Rehash |      |      | + 1  |      | +7  +7 | +2 +2 +2 | +6 +6 +6 |
+
+|                   | 0    | 1    | 2    | 3            | 4     | 5     | 6   | 7    | 8     | 9                  |
+| ----------------- | ---- | ---- | ---- | ------------ | ----- | ----- | --- | ---- | ----- | ------------------ |
+| External chaining |      | 4371 |      | (1323, 6173) | 43344 |       |     |      |       | (4199, 9679, 1989) |
+| Linear Probing    | 9679 | 4371 | 1989 | 1323         | 6173  | 43344 |     |      |       | 4199               |
+| Double rehashing  |      | 4371 |      | 1323         | 6173  | 9679  |     | 1989 | 43344 | 4199               |
