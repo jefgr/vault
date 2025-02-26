@@ -33,3 +33,7 @@ Compare the following terms
 | Doctor                  | Amount of helped patients                                                                  | Docter's office, patients, other specialists, nurses, medical files from the patient, medical instruments, medical literature | Medical implements, prescription writing implement, speakers, arms to manipulate patients, monitor to display things to patient | Camera, microphone, pressuresensors, thermometer, IR-scanner, stetoscope |
 | Internet shopping agent | Requisted items delivered (within certain time period, price rang,...) client-satisfaction | The Internet, consumer, payment methods                                                                                       | Internet navigation tools (webrequests, API-calls), communication tool to consumer,                                             | Webscraper, webcontent analyser (text, images, webpages,...)             |
 | Interactive Dutch tutor | Succesfully teaching Dutch, Student satisfaction                                           | classroom, students, blackboard, projector, webplatform, lesmateriaal                                                         | Speakers, writing arm, remote for slides, rode styllo                                                                           | Camera, microphone                                                       |
+
+# Sessie 3
+> Zie papieren notities
+
