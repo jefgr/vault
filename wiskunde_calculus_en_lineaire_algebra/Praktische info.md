@@ -19,6 +19,8 @@ Permanentie
 
 Calculus 1: zowiezo DV classificatie op theorie examen
 
+Calculus 2 examen:
+* Bewijs van meetkundige reeks convergentie
 # **Canvas**
 ## Elk hoofdstuk:
 - slides
