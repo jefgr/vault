@@ -339,3 +339,15 @@ putting it directly in the list of primitives gives an error:
 ```
 
 ### B: inc als derived expression
+```scheme
+;; Oefening INC
+(define (inc? exp) (tagged-list? exp 'inc))
+(define (inc-var exp) (cadr exp))
+
+(define (inc->begin exp)
+  (list 'begin (list 'set! (inc-var exp) (list '+ 1 (inc-var exp))) (inc-var exp)))
+
+;; OOK TOEVOEGEN aan eval
+((inc? exp)
+         (eval (inc->begin exp) env))
+```
