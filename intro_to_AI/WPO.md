@@ -37,3 +37,9 @@ Compare the following terms
 # Sessie 3
 > Zie papieren notities
 
+# Sessie 4
+eerste orde predicaat logica
+
+valid: alle waarderingen modellen, altijd waar
+satisfiable: minstens 1 model
+unsatisfiable: geen enkel model
