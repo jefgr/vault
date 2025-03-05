@@ -43,3 +43,6 @@ eerste orde predicaat logica
 valid: alle waarderingen modellen, altijd waar
 satisfiable: minstens 1 model
 unsatisfiable: geen enkel model
+
+> Zie papieren notities
+
