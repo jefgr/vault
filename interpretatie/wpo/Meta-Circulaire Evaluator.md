@@ -287,3 +287,55 @@ Eigen eval-let*
          (error "Unknown expression type -- EVAL" exp))))
 
 ```
+
+# intermezzo: quasiquote:
+
+```scheme
+`(set! y x)
+> gewoon quote gedrag, maar:
+`(set! y ,x)
+> Hier zal de x wel geevalueerd worden, de rest niet
+```
+
+## Hogere-orde procedures als primitieven
+
+```scheme
+(define (my-map f lst) 
+	(define (loop l) 
+		(if (null? l) 
+			'() 
+			(cons 
+				(f (car l)) 
+				(loop (cdr l)))))
+	(loop lst))
+```
+
+putting it directly in the list of primitives gives an error:
+![[error-hogere-orde-primitieven-error.png]]
+
+#TODO nog eens deftig nakijken
+
+## Het omgevingsmodel in detail bekijken
+
+## Examenvraag: Tab toevoegen aan de evaluator
+### A: tab als special form
+```scheme
+;; Oefening TAB
+(define (tab? exp) (tagged-list? exp 'tab))
+(define (tab-size-exp exp) (cadr exp))
+(define (tab-filler-exp exp) (caddr exp))
+
+(define (eval-tab exp env)
+  (let* ((filler (tab-filler-exp exp))
+         (size (eval (tab-size-exp exp) env))
+         (v (make-vector size)))
+    (let loop ((index 0))
+      (if (< index size)
+          (begin
+            (vector-set! v index (eval filler env))
+            (loop (+ index 1)))
+          v))))
+;; OOK TOEVOEGEN aan EVAL
+```
+
+### B: inc als derived expression

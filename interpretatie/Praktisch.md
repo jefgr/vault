@@ -3,3 +3,6 @@ Prof: Coen De Roover
 - http://soft.vub.ac.be/~cderoove/
 
 oefeningen
+
+Examen:
+* Zeker vraag over uitbreiden van meta-circulaire evaluator op het (oefeningen) examen
