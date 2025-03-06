@@ -16,3 +16,10 @@ Stelling van Taylor
 * chauchy-swartz vergelijking
 * L2-norm
 * Taylor expansie
+
+# Session 3
+
+afleiden van conditionering op het examen zie oplossing oefening 1 van reeks 2
+
+
+
