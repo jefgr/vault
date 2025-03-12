@@ -351,3 +351,36 @@ putting it directly in the list of primitives gives an error:
 ((inc? exp)
          (eval (inc->begin exp) env))
 ```
+
+> See also les4.rkt
+## While en Until toevoegen aan de evaluator
+
+```scheme
+;; Oefening while en until
+(define (while? exp) (tagged-list? exp 'while))
+(define (while-condition exp) (cadr exp))
+(define (while-body exp) (cddr exp))
+
+(define (eval-while exp env)
+  (define (loop) ;; kan ook zonder hulpfunctie door rechtstreeks eval-while recursief aan te roepen
+    (eval-sequence (while-body exp) env)
+    (if (eval (while-condition exp) env)
+        (loop)))
+  (if (eval (while-condition exp) env)
+      (loop)))
+
+(define (until? exp) (tagged-list? exp 'until))
+(define (until-condition exp) (cadr exp))
+(define (until-body exp) (cddr exp))
+
+(define (eval-until exp env)
+  (define (loop)
+    (eval-sequence (until-body exp) env)
+    (if (not (eval (until-condition exp) env))
+        (loop)))
+  (if (not (eval (until-condition exp) env))
+      (loop)))
+```
+
+## Freeze toevoegen aan de evaluator
+Veel aanpassingen zie oplossingen
