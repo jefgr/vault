@@ -6,3 +6,5 @@ oefeningen
 
 Examen:
 * Zeker vraag over uitbreiden van meta-circulaire evaluator op het (oefeningen) examen
+* recursieve procedure omzetten naar registermachine
+

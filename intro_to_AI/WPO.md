@@ -46,3 +46,6 @@ unsatisfiable: geen enkel model
 
 > Zie papieren notities
 
+# Sessie 5
+> Zie papieren notities
+
