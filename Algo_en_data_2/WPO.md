@@ -36,3 +36,5 @@
 
 ## Oefening 2
 > Zie 04-ongerichte-grafen/opgave/Vraag2-Tests.rkt 
+
+Zit nog ergens een bug in idk
