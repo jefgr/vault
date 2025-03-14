@@ -29,3 +29,10 @@
 
 ### D:
 #TODO 
+# WPO 3
+
+## Oefening 1
+> Zie 04-ongerichte-grafen/opgave/Vraag1-Tests.rkt 
+
+## Oefening 2
+> Zie 04-ongerichte-grafen/opgave/Vraag2-Tests.rkt 
