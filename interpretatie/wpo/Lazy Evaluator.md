@@ -6,3 +6,7 @@
 ```
 
 
+## Achterwaards-compatibele lazy evaluator
+> zie wpo/les5.rkt
+#TODO
+nog eens oplossing vergelijken want die van mij werkt niet maar is gelijk aan degene die getoond werd
