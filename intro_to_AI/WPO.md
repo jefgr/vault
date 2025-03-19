@@ -6,6 +6,7 @@ Compare the following terms
 - wisdom
 
 # Session 2
+> zie wpo1.pdf
 
 1. For a robotic football player, develop a PEAS description of the task environment. 
 
@@ -35,7 +36,7 @@ Compare the following terms
 | Interactive Dutch tutor | Succesfully teaching Dutch, Student satisfaction                                           | classroom, students, blackboard, projector, webplatform, lesmateriaal                                                         | Speakers, writing arm, remote for slides, rode styllo                                                                           | Camera, microphone                                                       |
 
 # Sessie 3
-> Zie papieren notities
+> Zie papieren notities en wpo2a.pdf
 
 # Sessie 4
 eerste orde predicaat logica
@@ -44,8 +45,10 @@ valid: alle waarderingen modellen, altijd waar
 satisfiable: minstens 1 model
 unsatisfiable: geen enkel model
 
-> Zie papieren notities
+> Zie papieren notities en wpo2b.pdf
 
 # Sessie 5
-> Zie papieren notities
+> Zie papieren notities en wpo3.pdf
 
+# Sessie 6
+> wpo4.pdf

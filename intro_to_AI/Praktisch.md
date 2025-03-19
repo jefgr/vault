@@ -5,3 +5,4 @@ Exam:
 - 3 uur
 - 100%
 - gesloten boek
+- Code uit WPO's is puur als voorbeeld, moet niet kennen voor examen maar is goede extra
