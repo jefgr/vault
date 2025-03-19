@@ -51,4 +51,5 @@ unsatisfiable: geen enkel model
 > Zie papieren notities en wpo3.pdf
 
 # Sessie 6
-> wpo4.pdf
+> Zie papieren notities en wpo4.pdf
+> Bekijk ook oplossingen van Youri
