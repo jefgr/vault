@@ -1,0 +1,1 @@
+Slide 62 errata: Because f(G2) ~~≥~~ > f(n),A* will never select G2 for expansion

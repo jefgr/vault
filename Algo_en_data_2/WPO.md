@@ -29,7 +29,7 @@
 
 ### D:
 #TODO 
-# WPO 3
+# WPO 4
 
 ## Oefening 1
 > Zie 04-ongerichte-grafen/opgave/Vraag1-Tests.rkt 
@@ -38,3 +38,16 @@
 > Zie 04-ongerichte-grafen/opgave/Vraag2-Tests.rkt 
 
 Zit nog ergens een bug in idk
+
+# WPO 5
+## Oefening 2
+> Zie 05-ongerichte-grafen/opgave/Vraag2.rkt
+
+### part 2
+Complexity
+> O(|E|.log(|N|))
+
+## Oefening 3
+
+### part 3
+> O((|E| + |V|) . log(|V|))
