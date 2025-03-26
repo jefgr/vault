@@ -233,3 +233,63 @@ Eerste oplossing, maar som is iteratief en niet recursief zoals in de vraag
           
           stop)))
 ```
+
+Met recursieve som
+```scheme
+(define helling-machine
+       (make-machine
+         '(cont v1 v2 res)
+         `((null? ,null?) (car ,car) (cdr ,cdr) (+ ,+) (* ,*) (/ ,/))
+         '(start
+          (assign v1 (const ( 228   52   72   43   64   53   67   72  194))) ; hoogtes
+          (assign v2 (const (3000 1000 3000 1000 1000 1000 1000 2000 2800))) ; lengtes
+          (assign cont (label stop))
+          (goto (label hellingsgraad))
+
+          ;;; <jouw code hier>
+
+          hellingsgraad
+          (save cont)
+          (assign cont (label after-hoogtes))
+          (goto (label som))
+          
+          after-hoogtes
+          (assign v1 (reg v2))
+          (assign v2 (reg res))
+          (assign cont (label after-lengtes))
+          (goto (label som))
+          
+          after-lengtes
+          (assign v1 (reg v2))
+          (assign v2 (reg res))
+          (restore cont)
+                  
+          (assign res (op /) (reg v1) (reg v2))
+          (assign res (op *) (reg res) (const 100))
+          (goto (reg cont))
+
+          som
+          (save cont)
+          som-iter-down
+          (test (op null?) (reg v1))
+          (branch (label som-base))
+          (assign res (op car) (reg v1))
+          (assign cont (label som-iter-up))
+          (save res)
+          (save cont)
+          (assign v1 (op cdr) (reg v1))
+          (goto (label som-iter-down))
+
+          som-iter-up
+          (restore v1)
+          (assign res (op +) (reg res) (reg v1))
+          (restore cont)
+          (goto (reg cont))
+
+          som-base
+          (assign res (const 0.0))
+          (restore cont)
+          (goto (reg cont))
+          
+          stop)))
+```
