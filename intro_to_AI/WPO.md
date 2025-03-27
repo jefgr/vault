@@ -53,3 +53,6 @@ unsatisfiable: geen enkel model
 # Sessie 6
 > Zie papieren notities en wpo4.pdf
 > Bekijk ook oplossingen van Youri
+
+# Sessie 7
+> Zie papieren notities en wpo5.pdf
