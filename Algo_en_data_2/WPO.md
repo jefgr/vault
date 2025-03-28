@@ -51,3 +51,13 @@ Complexity
 
 ### part 3
 > O((|E| + |V|) . log(|V|))
+
+# WPO 6
+## Oefening 1
+> Zie 06-gerichte-grafen/opgave/Vraag1.rkt
+
+## Oefening 2
+> Zie 06-gerichte-grafen/opgave/Vraag2.rkt
+
+## Oefening 3
+#TODO Bekijk oefeningen nog
