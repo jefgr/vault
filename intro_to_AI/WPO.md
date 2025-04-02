@@ -56,3 +56,8 @@ unsatisfiable: geen enkel model
 
 # Sessie 7
 > Zie papieren notities en wpo5.pdf
+
+# Sessie 8
+> Zie papieren notities en wpo6.pdf
+> Aanpassingen van de code zijn niet gedaan in de local-search-exercises/simulated-annealing.rkt,
+> maar in de copy in ai/simulated-annealing.rkt
