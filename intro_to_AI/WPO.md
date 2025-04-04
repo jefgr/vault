@@ -61,3 +61,5 @@ unsatisfiable: geen enkel model
 > Zie papieren notities en wpo6.pdf
 > Aanpassingen van de code zijn niet gedaan in de local-search-exercises/simulated-annealing.rkt,
 > maar in de copy in ai/simulated-annealing.rkt
+> 2 mogelijke oplossingen, ik heb andere als Youri
+

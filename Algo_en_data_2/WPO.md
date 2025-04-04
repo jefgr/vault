@@ -61,3 +61,7 @@ Complexity
 
 ## Oefening 3
 #TODO Bekijk oefeningen nog
+
+# WPO 7
+
+> Zie 07-dynamisch-programmeren/opgave/value-iteration.rkt

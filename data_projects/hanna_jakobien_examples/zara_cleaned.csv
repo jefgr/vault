@@ -1,0 +1,253 @@
+Product ID,Promotion,Seasonal,Sales Volume,name,price,section,Aisle,End-cap,Front of Store,jackets,jeans,shoes,sweaters,t-shirts
+185102,False,False,2823,BASIC PUFFER JACKET,19.99,False,True,False,False,True,False,False,False,False
+188771,False,False,654,TUXEDO JACKET,169.0,False,True,False,False,True,False,False,False,False
+180176,True,True,2220,SLIM FIT SUIT JACKET,129.0,False,False,True,False,True,False,False,False,False
+112917,True,True,1568,STRETCH SUIT JACKET,129.0,False,True,False,False,True,False,False,False,False
+192936,False,True,2942,DOUBLE FACED JACKET,139.0,False,False,True,False,True,False,False,False,False
+117590,False,False,2968,CONTRASTING COLLAR JACKET,79.9,False,False,True,False,True,False,False,False,False
+189118,True,True,952,FAUX LEATHER PUFFER JACKET,69.99,False,False,False,True,True,False,False,False,False
+182157,False,False,2421,SUIT JACKET IN 100% LINEN,159.0,False,True,False,False,True,False,False,False,False
+141861,True,True,1916,100% WOOL SUIT JACKET,169.0,False,True,False,False,True,False,False,False,False
+137121,False,True,656,100% FEATHER FILL PUFFER JACKET,169.0,False,True,False,False,True,False,False,False,False
+113143,True,True,2663,HERRINGBONE TEXTURED JACKET,129.0,False,True,False,False,True,False,False,False,False
+140028,True,True,1260,OVERSIZED CROPPED JACKET LIMITED EDITION,159.0,False,True,False,False,True,False,False,False,False
+134693,True,False,2124,LEATHER BIKER JACKET,169.0,False,True,False,False,True,False,False,False,False
+151396,True,True,729,CROPPED LEATHER JACKET,439.0,False,False,False,True,True,False,False,False,False
+132889,True,True,2265,FAUX LEATHER BOXY FIT JACKET,99.9,False,True,False,False,True,False,False,False,False
+152174,False,False,2226,FAUX LEATHER JACKET,99.9,False,False,True,False,True,False,False,False,False
+129906,False,False,2089,FAUX SUEDE BOMBER JACKET,69.9,False,True,False,False,True,False,False,False,False
+195879,True,True,2339,DENIM BOMBER JACKET,129.0,False,False,False,True,True,False,False,False,False
+155050,False,True,2321,BOUCLÉ TEXTURED JACKET,129.0,False,True,False,False,True,False,False,False,False
+194410,False,False,669,SUIT JACKET IN 100% LINEN,159.0,False,False,True,False,True,False,False,False,False
+141904,True,True,1712,JACQUARD DENIM JACKET,109.0,False,False,True,False,True,False,False,False,False
+124981,False,True,1832,PADDED DENIM JACKET,89.9,False,False,False,True,True,False,False,False,False
+161909,True,False,1290,LEATHER JACKET,299.0,False,True,False,False,True,False,False,False,False
+129152,False,False,2356,LIGHTWEIGHT BOMBER JACKET,49.9,False,False,True,False,True,False,False,False,False
+183243,True,False,1524,SUIT JACKET,169.0,False,False,False,True,True,False,False,False,False
+198248,True,False,1644,FAUX LEATHER BOMBER JACKET,69.9,False,False,False,True,True,False,False,False,False
+191230,False,False,966,PATCH BOMBER JACKET,89.9,False,False,True,False,True,False,False,False,False
+187234,True,True,2575,STRETCH POCKET OVERSHIRT,59.9,False,False,False,True,True,False,False,False,False
+148888,False,False,2774,RIB COLLAR JACKET,109.0,False,False,False,True,True,False,False,False,False
+110805,True,False,2477,FAUX LEATHER OVERSIZED JACKET LIMITED EDITION,159.0,False,False,False,True,True,False,False,False,False
+179801,False,True,2608,CONTRASTING PATCHES BOMBER JACKET,129.0,False,False,False,True,True,False,False,False,False
+134927,True,True,2252,PATCH BOMBER JACKET,129.0,False,True,False,False,True,False,False,False,False
+123150,True,False,2074,CROPPED BOMBER JACKET LIMITED EDITION,129.0,False,False,True,False,True,False,False,False,False
+159145,True,False,2579,FAUX LEATHER PUFFER JACKET,109.0,False,False,True,False,True,False,False,False,False
+172364,True,False,2931,FAUX LEATHER BOMBER JACKET,109.0,False,True,False,False,True,False,False,False,False
+178281,False,True,1145,BOMBER JACKET,109.0,False,False,True,False,True,False,False,False,False
+194339,False,False,1792,FAUX SUEDE JACKET,89.9,False,False,True,False,True,False,False,False,False
+174412,False,True,1796,FAUX SUEDE BOMBER JACKET,69.9,False,True,False,False,True,False,False,False,False
+114877,False,False,1860,SUEDE JACKET,349.0,False,True,False,False,True,False,False,False,False
+140727,True,True,1002,CONTRASTING COLLAR JACKET,79.9,False,False,True,False,True,False,False,False,False
+133109,False,True,2063,TEXTURED JACKET,79.9,False,False,False,True,True,False,False,False,False
+127296,False,False,1165,CROPPED TEXTURED JACKET,89.9,False,True,False,False,True,False,False,False,False
+133757,True,False,2071,POCKET PUFFER JACKET,129.0,False,True,False,False,True,False,False,False,False
+111760,False,False,1474,TECHNICAL JACKET WITH POCKETS,109.0,False,False,True,False,True,False,False,False,False
+198375,False,False,2202,FAUX LEATHER JACKET,69.9,False,False,True,False,True,False,False,False,False
+168837,False,False,665,FAUX SUEDE JACKET,89.9,False,True,False,False,True,False,False,False,False
+138505,False,False,2478,RIPPED DENIM JACKET,69.9,False,False,False,True,True,False,False,False,False
+116228,True,False,647,TEXTURED POCKET JACKET,89.9,False,False,True,False,True,False,False,False,False
+167592,True,False,707,FAUX SUEDE PATCH JACKET,89.9,False,False,False,True,True,False,False,False,False
+133100,True,False,2729,PUFFER JACKET WITH POUCH POCKET,89.9,False,False,True,False,True,False,False,False,False
+119955,False,False,1590,BOMBER JACKET,89.9,False,False,False,True,True,False,False,False,False
+189349,True,False,1245,TEXTURED WEAVE OVERSHIRT,89.9,False,False,True,False,True,False,False,False,False
+127478,False,True,2498,STRAIGHT SUIT JACKET,129.0,False,False,False,True,True,False,False,False,False
+180661,False,True,1041,HOODED QUILTED JACKET,129.0,False,False,False,True,True,False,False,False,False
+186681,False,True,1717,LIGHTWEIGHT PUFFER JACKET,19.99,False,False,True,False,True,False,False,False,False
+133183,True,True,2859,COTTON BLEND BOMBER JACKET,89.9,False,False,False,True,True,False,False,False,False
+173508,True,False,1658,POCKET JACKET,129.0,False,True,False,False,True,False,False,False,False
+187930,False,True,706,OVERSIZED BOMBER JACKET,89.9,False,False,True,False,True,False,False,False,False
+124088,True,True,2065,EMBROIDERED PATCH JACKET,79.9,False,False,True,False,True,False,False,False,False
+190238,False,True,1917,ACID WASH DENIM JACKET,89.9,False,False,False,True,True,False,False,False,False
+151925,True,True,2179,VINTAGE EFFECT LEATHER BOMBER JACKET,299.0,False,False,True,False,True,False,False,False,False
+163234,False,False,1633,TEXTURED DENIM JACKET LIMITED EDITION,89.9,False,False,False,True,True,False,False,False,False
+135610,True,True,1513,WOOL BLEND JACKET,109.0,False,True,False,False,True,False,False,False,False
+117065,True,True,758,COTTON - LINEN BLEND JACKET,109.0,False,True,False,False,True,False,False,False,False
+149315,True,False,718,FLEECE BOMBER JACKET,109.0,False,False,True,False,True,False,False,False,False
+149510,False,True,1412,ZIPPERED JACKET,59.9,False,True,False,False,True,False,False,False,False
+137990,False,False,2929,COTTON JACKET,29.99,False,True,False,False,True,False,False,False,False
+154016,True,True,2366,WOOL BLEND TEXTURED JACKET,189.0,False,False,True,False,True,False,False,False,False
+117751,False,False,2749,CONTRAST JACQUARD JACKET,89.9,False,True,False,False,True,False,False,False,False
+182362,False,False,2019,CROPPED OVERSHIRT,69.9,False,False,False,True,True,False,False,False,False
+117725,False,True,1506,CONTRASTING PATCHES HOODED JACKET,109.0,False,True,False,False,True,False,False,False,False
+145289,False,False,1012,UTILITY POCKET JACKET,109.0,False,False,True,False,True,False,False,False,False
+173576,True,False,1838,,129.0,False,False,True,False,True,False,False,False,False
+175059,True,False,2170,LIGHTWEIGHT BOMBER JACKET,49.9,False,True,False,False,True,False,False,False,False
+199368,False,True,1061,WOOL BLEND JACKET,139.0,False,False,False,True,True,False,False,False,False
+162883,True,False,786,TECHNICAL PADDED JACKET,139.0,False,False,False,True,True,False,False,False,False
+135490,False,False,1094,MIXED COLLAR WAXED JACKET,139.0,False,False,False,True,True,False,False,False,False
+125408,True,True,2220,CONTRASTING PATCHES BOMBER JACKET,89.9,False,False,True,False,True,False,False,False,False
+134763,False,True,2048,PADDED BOMBER JACKET,89.9,False,False,False,True,True,False,False,False,False
+143231,False,False,2578,TECHNICAL PADDED JACKET,89.9,False,True,False,False,True,False,False,False,False
+125409,True,False,2040,POCKET DENIM JACKET,89.9,False,False,True,False,True,False,False,False,False
+183074,False,False,2791,BOXY FIT DENIM JACKET,89.9,False,True,False,False,True,False,False,False,False
+147947,True,True,1249,FAUX SHEARLING PLAID JACKET,89.9,False,True,False,False,True,False,False,False,False
+174171,True,True,2273,EMBROIDERED FOREST JACKET,89.9,False,False,False,True,True,False,False,False,False
+183064,True,False,1773,POCKET OVERSHIRT,89.9,False,False,False,True,True,False,False,False,False
+177131,True,True,1733,BOUCLE TEXTURED VEST,69.9,False,True,False,False,True,False,False,False,False
+128179,True,False,2060,COLOR BLOCK PUFFER JACKET,89.9,False,False,True,False,True,False,False,False,False
+152723,False,True,2849,LONGLINE QUILTED JACKET,169.0,False,True,False,False,True,False,False,False,False
+123824,True,False,2277,WOOL BLEND SUIT JACKET,169.0,False,True,False,False,True,False,False,False,False
+166345,False,True,1135,HOODED KNIT CARDIGAN,69.9,False,True,False,False,True,False,False,False,False
+199279,False,False,1770,HOODED TECHNICAL JACKET,19.99,False,True,False,False,True,False,False,False,False
+167981,False,False,730,HOUNDSTOOTH SUIT JACKET,139.0,False,False,True,False,True,False,False,False,False
+146839,False,False,1525,BOMBER JACKET,109.0,False,True,False,False,True,False,False,False,False
+187180,False,True,647,HOODED TECHNICAL JACKET,109.0,False,False,False,True,True,False,False,False,False
+167640,True,True,1017,HOODED TECHNICAL JACKET,109.0,False,False,True,False,True,False,False,False,False
+165158,False,False,1622,WASHED EFFECT BOMBER JACKET,109.0,False,False,False,True,True,False,False,False,False
+111521,True,True,2553,WASHED TECHNICAL JACKET,99.9,False,False,False,True,True,False,False,False,False
+120228,False,False,2347,100% FEATHER FILL PUFFER JACKET,89.9,False,False,True,False,True,False,False,False,False
+133078,False,True,2535,PADDED BOMBER JACKET,69.9,False,True,False,False,True,False,False,False,False
+137598,False,True,2839,POCKET JACKET,139.0,False,True,False,False,True,False,False,False,False
+138779,True,True,2801,SLIM FIT SUIT JACKET,139.0,False,False,False,True,True,False,False,False,False
+198329,True,True,628,MIXED COLLAR JACKET,109.0,False,False,False,True,True,False,False,False,False
+110295,True,False,1448,HOODED DENIM JACKET,129.0,False,False,True,False,True,False,False,False,False
+196427,True,False,1401,WAXED EFFECT PLAID JACKET,169.0,False,True,False,False,True,False,False,False,False
+110075,True,True,2185,WOOL BLEND FELT TEXTURE JACKET,159.0,False,False,False,True,True,False,False,False,False
+132322,True,False,2135,PRINTED DENIM OVERSHIRT,12.99,False,False,False,True,True,False,False,False,False
+199631,True,False,1269,STRUCTURED TWILL OVERSHIRT,89.9,False,False,False,True,True,False,False,False,False
+182306,False,False,2805,COTTON OVERSHIRT,89.9,False,False,False,True,True,False,False,False,False
+194915,True,False,1796,REVERSIBLE PLAID OVERSHIRT,79.9,False,True,False,False,True,False,False,False,False
+131298,True,False,2133,PLAID OVERSHIRT,69.9,False,False,True,False,True,False,False,False,False
+168571,False,False,1778,POCKET OVERSHIRT,89.9,False,True,False,False,True,False,False,False,False
+154224,True,False,2474,100% LINEN OVERSHIRT,89.9,False,False,True,False,True,False,False,False,False
+171061,False,True,2032,PLAID OVERSHIRT,59.9,False,True,False,False,True,False,False,False,False
+119049,False,True,1659,POCKET DENIM OVERSHIRT,89.9,False,True,False,False,True,False,False,False,False
+158781,True,True,2443,FAUX SUEDE OVERSHIRT,69.9,False,False,True,False,True,False,False,False,False
+151438,False,True,1137,PLAID OVERSHIRT,69.9,False,True,False,False,True,False,False,False,False
+152871,False,True,1847,TEXTURED POCKET OVERSHIRT,69.9,False,False,True,False,True,False,False,False,False
+126806,True,True,2404,POCKET OVERSHIRT,109.0,False,False,True,False,True,False,False,False,False
+134104,False,True,1466,OVERSHIRT,59.9,False,False,True,False,True,False,False,False,False
+120266,False,False,2328,PLAID OVERSHIRT,59.9,False,False,False,True,True,False,False,False,False
+173550,False,True,1431,POCKET OVERSHIRT,59.9,False,False,True,False,True,False,False,False,False
+175927,False,True,1506,ZIPPERED WOOL BLEND OVERSHIRT,109.0,False,False,True,False,True,False,False,False,False
+154278,False,True,2749,GEOMETRIC JACQUARD OVERSHIRT,89.9,False,False,True,False,True,False,False,False,False
+183537,True,True,2434,PAINT PRINT OVERSHIRT,19.99,False,False,False,True,True,False,False,False,False
+150424,False,True,2067,PADDED CORDUROY OVERSHIRT,79.9,False,False,False,True,True,False,False,False,False
+183825,True,True,2989,PLAID TIE DYE OVERSHIRT,19.99,False,True,False,False,True,False,False,False,False
+144012,True,False,743,OVERSHIRT WITH CONTRASTING TOPSTITCHING,59.9,False,False,False,True,True,False,False,False,False
+147051,False,False,2325,QUILTED STRUCTURED OVERSHIRT,109.0,False,False,False,True,True,False,False,False,False
+185800,False,True,1841,TECHNICAL OVERSHIRT,109.0,False,False,True,False,True,False,False,False,False
+197524,True,True,2231,PLAID OVERSHIRT,49.9,False,True,False,False,True,False,False,False,False
+148823,False,True,2211,SUEDE FISHERMAN SANDALS,89.9,False,True,False,False,False,False,True,False,False
+114550,False,False,2114,ZIPPER MULTIPIECE SNEAKERS,69.9,False,False,True,False,False,False,True,False,False
+125398,True,True,1350,SUEDE LACELESS SNEAKERS,69.9,False,True,False,False,False,False,True,False,False
+123985,False,False,2240,MULTICOLOR SNEAKERS,69.9,False,False,True,False,False,False,True,False,False
+186638,True,False,1296,RETRO RUNNING SNEAKERS,59.9,False,False,True,False,False,False,True,False,False
+167281,True,True,892,SUEDE HIGH-TOPS,59.9,False,False,True,False,False,False,True,False,False
+118578,False,True,1678,SUEDE STRAP SANDALS,49.9,False,False,True,False,False,False,True,False,False
+174041,False,False,2016,MULTIPIECE SNEAKERS,49.9,False,False,True,False,False,False,True,False,False
+127644,False,True,1498,TOPSTITCH SNEAKERS,45.9,False,False,False,True,False,False,True,False,False
+132007,False,True,2491,RETRO SNEAKERS,9.99,False,True,False,False,False,False,True,False,False
+147998,False,False,2556,RETRO HIGH TOP SNEAKERS,9.99,False,True,False,False,False,False,True,False,False
+176666,True,False,2852,MULTI-PIECED RETRO SNEAKERS,45.9,False,True,False,False,False,False,True,False,False
+193686,True,False,1899,TASSEL LEATHER LOAFERS,99.9,False,True,False,False,False,False,True,False,False
+163610,True,False,2466,MOC-TOE SUEDE BOOTS,89.9,False,False,False,True,False,False,True,False,False
+170364,False,False,818,STRAP SANDALS,45.9,False,True,False,False,False,False,True,False,False
+167599,False,False,1500,SUEDE RETRO SNEAKERS,59.9,False,True,False,False,False,False,True,False,False
+166421,True,False,2878,HIKING BOOTS,79.9,False,False,True,False,False,False,True,False,False
+129247,True,False,2386,SUEDE SNEAKERS,69.9,False,False,False,True,False,False,True,False,False
+127314,True,True,2076,FAUX SHEARLING LINED SUEDE BOOTS,99.9,False,False,True,False,False,False,True,False,False
+111979,False,False,2734,CHUNKY SNEAKERS,59.9,False,False,False,True,False,False,True,False,False
+120354,True,False,2836,DOUBLE STRAP SUEDE SANDALS,59.9,False,True,False,False,False,False,True,False,False
+144848,False,False,2193,CHUNKY SOLE CANVAS LACE-UP BOOTS,89.9,False,False,False,True,False,False,True,False,False
+111957,True,False,2164,SUEDE PENNY LOAFERS,89.9,False,True,False,False,False,False,True,False,False
+160763,True,True,991,ADHERENT STRIPES SNEAKERS,45.9,False,False,False,True,False,False,True,False,False
+168270,True,True,1525,MULTIPIECE SNEAKERS,69.9,False,False,True,False,False,False,True,False,False
+195082,False,False,923,CHUNKY SOLE HIGH TOP SNEAKERS,69.9,False,False,False,True,False,False,True,False,False
+110329,False,True,2397,CONTRAST SOLE LEATHER SNEAKERS,69.9,False,False,False,True,False,False,True,False,False
+147449,False,False,1191,SUEDE RUNNING SNEAKERS,69.9,False,False,True,False,False,False,True,False,False
+193332,True,False,1237,WOVEN LEATHER SLIDES,49.9,False,True,False,False,False,False,True,False,False
+146804,True,False,1504,SUEDE SNEAKERS,69.9,False,True,False,False,False,False,True,False,False
+188909,True,True,2863,ASYMMETRIC CROPPED KNIT SWEATER,39.9,True,True,False,False,False,False,False,True,False
+165910,True,False,2760,KNIT SWEATER WITH PEARLS,69.9,True,False,True,False,False,False,False,True,False
+136738,False,True,542,HIGH COLLAR KNIT SWEATER,7.99,True,False,False,True,False,False,False,True,False
+144497,True,True,1105,STRIPED KNIT SWEATER,49.9,True,False,True,False,False,False,False,True,False
+135036,True,False,1435,CABLE KNIT METALLIC SWEATER,49.9,True,False,True,False,False,False,False,True,False
+166331,True,True,2877,ASYMMETRICAL WOOL AND SILK BLEND SWEATER,59.9,True,True,False,False,False,False,False,True,False
+139789,False,True,1094,WOOL AND CASHMERE BLEND RIB SWEATER,69.9,True,True,False,False,False,False,False,True,False
+118569,False,True,994,ALPACA AND WOOL BLEND TIE DYE KNIT SWEATER,49.9,True,True,False,False,False,False,False,True,False
+155848,True,False,1942,MOCK NECK WOOL AND SILK BLEND KNIT TOP,49.9,True,False,True,False,False,False,False,True,False
+152563,False,True,2572,CASHMERE BLEND KNIT SWEATER,169.0,True,False,False,True,False,False,False,True,False
+115153,False,False,1736,ALPACA BLEND OPEN KNIT SWEATER,79.9,True,True,False,False,False,False,False,True,False
+125938,True,True,1204,OVERSIZED KNIT SWEATER,49.9,True,True,False,False,False,False,False,True,False
+122809,False,True,1592,WOOL BLEND KNIT SWEATER,49.9,True,False,True,False,False,False,False,True,False
+181502,True,False,2591,SOFT JEWEL SWEATER,39.9,True,False,False,True,False,False,False,True,False
+182779,True,True,2097,FAUX FUR JEWEL SWEATER,35.9,True,False,True,False,False,False,False,True,False
+155674,False,False,897,METAL BEAD KNIT SWEATER,49.9,True,False,False,True,False,False,False,True,False
+182866,False,True,1552,KNIT SWEATER WITH BUTTONS,39.9,True,True,False,False,False,False,False,True,False
+148230,True,False,2494,JEWEL KNIT SWEATER,59.9,True,False,False,True,False,False,False,True,False
+126979,False,False,2141,KNIT SWEATER WITH PIPING,49.9,True,False,False,True,False,False,False,True,False
+135521,False,True,2835,FINE KNIT CROP SWEATER,39.9,True,False,True,False,False,False,False,True,False
+185809,False,False,622,KNIT SWEATER WITH RIPS,49.9,True,False,True,False,False,False,False,True,False
+171520,True,True,2901,GATHERED WAIST KNIT SWEATER,47.9,True,False,True,False,False,False,False,True,False
+122926,False,False,867,KNIT V-NECK SWEATER,45.9,True,False,True,False,False,False,False,True,False
+150953,True,True,2434,BASIC FOIL KNIT SWEATER,35.9,True,False,False,True,False,False,False,True,False
+115873,True,True,2606,CONTRAST TOPSTITCHING CROP KNIT SWEATER,59.9,True,False,True,False,False,False,False,True,False
+115581,False,True,2728,STRIPED CROP KNIT SWEATER,47.9,True,True,False,False,False,False,False,True,False
+183634,True,True,2778,BASIC KNIT SWEATER,27.9,True,False,False,True,False,False,False,True,False
+122484,True,True,558,V-NECK KNIT SWEATER,47.9,True,True,False,False,False,False,False,True,False
+183574,True,True,1752,FOIL KNIT CROP SWEATER,47.9,True,True,False,False,False,False,False,True,False
+185307,False,True,2743,BASIC 100% WOOL SWEATER,7.99,True,False,False,True,False,False,False,True,False
+118719,False,True,1669,COLORBLOCK KNIT CROP SWEATER,45.9,True,False,True,False,False,False,False,True,False
+134788,False,False,2179,FINE KNIT SWEATER,45.9,True,False,False,True,False,False,False,True,False
+140142,True,False,606,KNIT OPEN BACK PEARLY SWEATER,49.9,True,False,False,True,False,False,False,True,False
+153997,False,True,1608,KNIT PEARL SWEATER,45.9,True,False,True,False,False,False,False,True,False
+123230,False,True,880,STRIPED TEXTURED OVERSHIRT,69.9,False,True,False,False,True,False,False,False,False
+154676,False,False,943,FLEECE OVERSHIRT,69.9,False,True,False,False,True,False,False,False,False
+152985,True,True,1049,PLAID OVERSHIRT,89.9,False,True,False,False,True,False,False,False,False
+175584,False,False,2084,BAGGY FIT JEANS LIMITED EDITION,69.9,False,False,False,True,False,True,False,False,False
+147491,False,False,1563,BAGGY BELTED JEANS,59.9,False,False,True,False,False,True,False,False,False
+198283,True,True,1558,BAGGY FIT JEANS,69.9,False,False,True,False,False,True,False,False,False
+141547,False,False,1426,BAGGY FIT JEANS,69.9,False,False,True,False,False,True,False,False,False
+156342,True,True,1466,FLARED FIT CARGO JEANS,109.0,False,False,False,True,False,True,False,False,False
+186083,False,True,624,PLEATED WIDE FIT JEANS,49.9,False,False,True,False,False,True,False,False,False
+171776,True,False,1685,DENIM SHIRT,12.99,False,True,False,False,False,True,False,False,False
+134429,False,False,2914,RIPPED STRAIGHT FIT JEANS,69.9,False,True,False,False,False,True,False,False,False
+172816,False,True,1524,TEXTURED SWEATER,69.9,False,True,False,False,False,False,False,True,False
+136272,False,True,2887,PURL KNIT SWEATER,12.99,False,False,True,False,False,False,False,True,False
+193227,True,True,1778,BRAIDED COLOR BLOCK SWEATER,69.9,False,False,True,False,False,False,False,True,False
+165786,False,True,1278,CONTRAST INTERIOR SWEATER,59.9,False,False,True,False,False,False,False,True,False
+174708,False,True,529,ABSTRACT JACQUARD SWEATER,59.9,False,False,False,True,False,False,False,True,False
+142257,True,True,1180,BASIC SLIM FIT T-SHIRT,19.9,False,True,False,False,False,False,False,False,True
+126146,False,False,2759,CROPPED WASHED T-SHIRT,39.9,False,True,False,False,False,False,False,False,True
+129134,False,True,1831,BASIC HEAVYWEIGHT T-SHIRT,29.9,False,True,False,False,False,False,False,False,True
+129898,False,False,1866,HEART PRINT T-SHIRT,39.9,False,False,True,False,False,False,False,False,True
+189692,True,False,1553,TEXT T-SHIRT,39.9,False,False,True,False,False,False,False,False,True
+154846,True,False,917,PRINTED CROPPED FIT SHIRT LIMITED EDITION,39.9,False,False,True,False,False,False,False,False,True
+122307,False,False,702,RIBBED KNIT T-SHIRT,49.9,False,False,True,False,False,False,False,False,True
+182099,True,False,1978,OVERSIZE FIT T-SHIRT,39.9,False,True,False,False,False,False,False,False,True
+159816,False,True,1961,BASIC MEDIUM WEIGHT T-SHIRT,27.9,False,False,False,True,False,False,False,False,True
+165326,False,False,1188,STRUCTURED TEXT T-SHIRT,45.9,False,True,False,False,False,False,False,False,True
+185154,True,False,996,ABSTRACT PRINT T-SHIRT,39.9,False,True,False,False,False,False,False,False,True
+141330,False,True,1915,RAISED TEXT T-SHIRT LIMITED EDITION,39.9,False,True,False,False,False,False,False,False,True
+158958,False,False,903,RIBBED KNIT T-SHIRT,45.9,False,False,True,False,False,False,False,False,True
+155010,True,True,729,SEMI-SHEER KNIT SHIRT LIMITED EDITION,45.9,False,True,False,False,False,False,False,False,True
+135857,False,True,2045,VISCOSE BLEND KNIT T-SHIRT,45.9,False,True,False,False,False,False,False,False,True
+147690,True,False,881,STRIPED JACQUARD T-SHIRT,39.9,False,True,False,False,False,False,False,False,True
+130321,True,False,2093,ABSTRACT PRINT KNIT T-SHIRT,39.9,False,False,True,False,False,False,False,False,True
+196752,False,False,2227,STRUCTURED TEXT T-SHIRT,45.9,False,False,True,False,False,False,False,False,True
+181011,True,True,994,HERRINGBONE TEXTURED JACKET,89.9,False,True,False,False,False,False,True,False,False
+139967,False,False,2634,OVERSIZED CROPPED JACKET LIMITED EDITION,69.9,False,False,True,False,False,False,False,False,True
+162699,False,True,2732,LEATHER BIKER JACKET,89.9,False,False,True,False,False,False,False,True,False
+119044,False,True,1140,CROPPED LEATHER JACKET,169.0,False,True,False,False,False,False,False,True,False
+121348,False,True,1008,FAUX LEATHER BOXY FIT JACKET,169.0,False,False,True,False,False,False,False,False,True
+163982,False,False,2685,FAUX LEATHER JACKET,69.9,False,False,False,True,False,False,False,False,True
+185774,True,True,1145,FAUX SUEDE BOMBER JACKET,19.99,False,False,True,False,False,False,False,False,True
+144651,True,False,1791,DENIM BOMBER JACKET,139.0,False,True,False,False,False,False,False,False,True
+195103,True,False,2849,BOUCLÉ TEXTURED JACKET,109.0,False,True,False,False,False,False,False,False,True
+123047,False,True,2985,SUIT JACKET IN 100% LINEN,109.0,False,True,False,False,False,False,False,False,True
+123077,False,False,1603,JACQUARD DENIM JACKET,109.0,False,False,False,True,False,False,False,False,True
+171860,True,False,707,PADDED DENIM JACKET,109.0,False,True,False,False,False,False,False,False,True
+149487,False,True,1258,LEATHER JACKET,99.9,False,True,False,False,False,False,False,False,True
+168516,True,False,2168,LIGHTWEIGHT BOMBER JACKET,89.9,False,False,False,True,False,False,False,False,True
+177771,True,True,1764,SUIT JACKET,69.9,False,False,True,False,False,False,False,False,True
+172015,True,True,2622,FAUX LEATHER BOMBER JACKET,139.0,False,False,True,False,False,False,False,False,True
+118985,False,True,694,PATCH BOMBER JACKET,139.0,False,True,False,False,False,False,False,False,True
+112194,True,True,2187,STRETCH POCKET OVERSHIRT,109.0,False,True,False,False,True,False,False,False,False
+113435,False,True,2973,RIB COLLAR JACKET,129.0,False,True,False,False,True,False,False,False,False
+159182,True,False,1014,FAUX LEATHER OVERSIZED JACKET LIMITED EDITION,169.0,False,False,False,True,True,False,False,False,False
+199233,True,False,2222,CONTRASTING PATCHES BOMBER JACKET,159.0,False,True,False,False,True,False,False,False,False
+137044,False,True,2534,PATCH BOMBER JACKET,12.99,False,True,False,False,True,False,False,False,False
+154736,True,True,1466,CROPPED BOMBER JACKET LIMITED EDITION,19.9,False,False,False,True,True,False,False,False,False
+141434,False,True,2870,FAUX LEATHER PUFFER JACKET,39.9,False,False,False,True,True,False,False,False,False
