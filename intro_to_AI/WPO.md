@@ -63,3 +63,13 @@ unsatisfiable: geen enkel model
 > maar in de copy in ai/simulated-annealing.rkt
 > 2 mogelijke oplossingen, ik heb andere als Youri
 
+# Sessie 9
+> Zie papieren notities en wpo7.pdf
+
+## Oefening 1
+![[gametree-wpo7-oefening1.png]]
+MiniMax:
+![[gametree-oef1-wpo7-minimax.png]]
+
+ αβ-pruning:
+ 

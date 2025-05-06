@@ -65,3 +65,7 @@ Complexity
 # WPO 7
 
 > Zie 07-dynamisch-programmeren/opgave/value-iteration.rkt
+
+# WPO 8
+> Zie a-d/sat/dpll/optimized/iterative.rkt
+

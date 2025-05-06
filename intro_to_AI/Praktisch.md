@@ -8,4 +8,5 @@ Exam:
 - Code uit WPO's is puur als voorbeeld, moet niet kennen voor examen maar is goede extra
 - pseudo-code van de slides wel kennen
 - alles op de slides is te kennen
+- rekenmachine
 - 
