@@ -72,4 +72,10 @@ MiniMax:
 ![[gametree-oef1-wpo7-minimax.png]]
 
  αβ-pruning:
- 
+
+# Session 10
+
+
+|     |     |
+| --- | --- |
+|     |     |

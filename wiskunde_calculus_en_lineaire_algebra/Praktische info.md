@@ -21,6 +21,15 @@ Calculus 1: zowiezo DV classificatie op theorie examen
 
 Calculus 2 examen:
 * Bewijs van meetkundige reeks convergentie
+
+Lineaire Algebra:
+* Structuur elk jaar hetzelfde
+	* 4 waar/niet-waar vragen met giscorrectie (je kan niet onder 0 voor dit deel)
+	* bespreek oplossingenverzameling van een stelsel met een parameter
+	  of
+	  lineaire transformatie met een parameter
+	* vraag rond vectorruimten (vb. basisovergangen)
+	* diagonaliseren
 # **Canvas**
 ## Elk hoofdstuk:
 - slides
