@@ -69,3 +69,9 @@ Complexity
 # WPO 8
 > Zie a-d/sat/dpll/optimized/iterative.rkt
 
+# WPO 9
+
+# WPO 10
+
+remp procedural remove van r7rs, verwijdert alle elementen waar de lambda true voor geeft
+(procedure(k -> bool) list\<k>) -> list\<k>
