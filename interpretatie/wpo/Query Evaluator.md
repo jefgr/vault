@@ -96,6 +96,86 @@
 (assert! (rule (selection () ?list)))
 (assert! (rule (selection (?first . ?rest) (?first . ?rest2))
                (selection ?rest ?rest2)))
-(assert! (rule (selection (?first . ?rest) (?first2 . ?rest2))
-               (selection (?first . ?rest) ?rest2)))
+(assert! (rule (selection ?selection (?first2 . ?rest2))
+               (selection ?selection ?rest2)))
+;; prefix
+(assert! (rule (prefix () ?lijst)))
+(assert! (rule (prefix (?first . ?rest) (?first . ?lijst) )
+               (prefix ?rest ?lijst)))
+;; postfix
+(assert! (rule (postfix ?last ?last)))
+(assert! (rule (postfix ?post (?rest . ?last))
+               (postfix ?post ?last)))
+;; sublist
+(assert! (rule (prefix () ?lijst)))
+(assert! (rule (prefix (?first . ?rest) (?first . ?lijst) )
+               (prefix ?rest ?lijst)))
+(assert! (rule (postfix ?last ?last)))
+(assert! (rule (postfix ?post (?rest . ?last))
+               (postfix ?post ?last)))
+(assert! (rule (sublist ?sub ?lijst)
+               (and (prefix ?pre ?lijst)
+                    (postfix ?sub ?pre))))
+;; omgekeerde
+
+```
+
+# Volledig Logisch Programma
+```scheme
+;; input
+(assert! (is-kleur rood))
+(assert! (is-kleur groen))
+(assert! (is-kleur beige))
+(assert! (is-kleur zwart))
+(assert! (is-kleur geel))
+(assert! (is-kleur kaki))
+(assert! (is-kleur paars))
+(assert! (is-kleur wit))
+(assert! (kleur-heeft-helderheid rood 333))
+(assert! (kleur-heeft-helderheid groen 196))
+(assert! (kleur-heeft-helderheid beige 944))
+(assert! (kleur-heeft-helderheid zwart 0))
+(assert! (kleur-heeft-helderheid geel 833))
+(assert! (kleur-heeft-helderheid kaki 856))
+(assert! (kleur-heeft-helderheid paars 722))
+(assert! (kleur-heeft-helderheid wit 1000))
+(assert! (persoon-draagt ilse ((jurk wit) (tas zwart))))
+(assert! (persoon-draagt evi ((hemd rood) (riem zwart) (broek zwart))))
+(assert! (persoon-draagt jan ((hemd wit) (linkersok zwart) (rechtersok zwart))))
+;; program
+(assert! (rule (kleur-is-donker ?kleur)
+               (and (is-kleur ?kleur)
+                    (kleur-heeft-helderheid ?kleur ?helder)
+                    (lisp-value < ?helder 500))))
+(assert! (rule (kleur-is-licht ?kleur)
+               (and (is-kleur ?kleur)
+                    (not (kleur-is-donker ?kleur)))))
+
+(assert! (rule (element ?first (?first . ?rest))))
+(assert! (rule (element ?el (?first . ?rest))
+               (element ?el ?rest)))
+(assert! (rule (yinyang-persoon ?p)
+               (and (persoon-draagt ?p ?kledij)
+                    (element (?stuk-licht ?kleur-licht) ?kledij)
+                    (element (?stuk-donker ?kleur-donker) ?kledij)
+                    (kleur-is-licht ?kleur-licht)
+                    (kleur-is-donker ?kleur-donker))))
+
+(assert! (rule (kleur-suggestie ?kleur ?suggestie)
+               (and (kleur-is-donker ?kleur)
+                    (kleur-is-licht ?suggestie))))
+(assert! (rule (kleur-suggestie ?kleur ?kleur)
+               (kleur-is-licht ?kleur)))
+
+(assert! (rule (suggestie-stuk (?stuk ?kleur) (?stuk ?suggestie))
+                (kleur-suggestie ?kleur ?suggestie)))
+(assert! (rule (suggesties (?kledij) (?suggesties))
+               (suggestie-stuk ?kledij ?suggesties)))
+(assert! (rule (suggesties (?car . ?kledij) (?car2 . ?suggesties))
+               (and (suggestie-stuk ?car ?car2)
+                    (suggesties ?kledij ?suggesties))))
+
+(assert! (rule (lichtere-kledij-voor ?p ?suggestie)
+               (and (persoon-draagt ?p ?kledij)
+                    (suggesties ?kledij ?suggestie))))
 ```
