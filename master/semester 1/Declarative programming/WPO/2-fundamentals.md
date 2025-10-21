@@ -25,3 +25,17 @@
    X = [a, b, c], Y = [] ?
    False
 ## 3.2 Unifying lists
+1)  A = a, B = [a]
+2)  A = d, C = b, D = [a]
+3)  X = [a,[a]]
+4) False
+## 3.3 Building an answer
+
+```prolog
+flatten( [], [] ). % deal with empty lists
+flatten( [pair( A, B )|Pairs], Answer ) :-
+    flatten( Pairs, Lst ), append( [A, B], Lst, Answer ).
+```
+
+# 4 Unification
+
